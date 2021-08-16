@@ -32,5 +32,5 @@ def seed_types():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_types():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE types RESTART IDENTITY CASCADE;')
     db.session.commit()
