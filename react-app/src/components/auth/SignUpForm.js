@@ -10,13 +10,18 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [description, setDescription] = useState('')
+  const [vehicle, setVehicle] = useState('')
+  const [vehiclePic, setVehiclePic] = useState('')
+  const [typeId, setTypeId] = useState(1)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      console.log('in sign up')
+      const data = await dispatch(signUp(username, email, password, description, vehicle, vehiclePic, typeId));
       if (data) {
         setErrors(data)
       }
@@ -87,6 +92,33 @@ const SignUpForm = () => {
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
+            ></input>
+        </div>
+        <div>
+            <label>Description</label>
+            <textarea
+            name='description'
+            onChange={e => setDescription(e.target.value)}
+            value={description}
+            required={true}
+            ></textarea>
+        </div>
+        <div>
+            <label>Vehicle</label>
+            <input
+            type='text'
+            name='Vehicle'
+            onChange={e => setVehicle(e.target.value)}
+            value={vehicle}
+            ></input>
+        </div>
+        <div>
+            <label>Vehicle Picture</label>
+            <input
+            type='text'
+            name='VehiclePic'
+            onChange={e => setVehiclePic(e.target.value)}
+            value={vehiclePic}
             ></input>
         </div>
         <button type='submit'>Sign Up</button>
