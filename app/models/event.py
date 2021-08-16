@@ -13,8 +13,8 @@ class Event(db.Model):
     city = db.Column(db.String)
     state = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
-    start = db.Column(db.DateTime, nullable=False)
-    end = db.Column(db.DateTime, nullable=False)
+    start = db.Column(db.String, nullable=False)
+    end = db.Column(db.String, nullable=False)
 
     respondez = db.relationship(
         "Event",
