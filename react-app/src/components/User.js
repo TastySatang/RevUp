@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../store/session';
 
 function User() {
+  const currentUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
   const [user, setUser] = useState({});
-  const { userId }  = useParams();
+  const [update, setUpdate] = useState(false)
+  const { userId } = useParams();
 
   useEffect(() => {
     if (!userId) {
@@ -20,18 +25,62 @@ function User() {
     return null;
   }
 
-  return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
-  );
+  const deleteUser = async () => {
+    await fetch(`/api/auth/delete/${userId}`, {
+      method: 'DELETE'
+    })
+    dispatch(logout())
+  }
+
+  const editUser = () => {
+    console.log('edit')
+  }
+
+  if (currentUser.id !== 1) {
+    return (
+      <ul>
+        <li>
+          <strong>User Id</strong> {userId}
+        </li>
+        <li>
+          <strong>Username</strong> {user.username}
+        </li>
+        <li>
+          <strong>Email</strong> {user.email}
+        </li>
+        {currentUser.id === user.id &&
+          <div>
+            <button onClick={deleteUser}>
+              delete
+            </button>
+            {!update &&
+              <button onClick={() => setUpdate(true)}>
+                edit
+              </button>
+            }
+            {update &&
+              <button onClick={() => setUpdate(false)}>
+                don't edit
+              </button>
+            }
+          </div>
+        }
+      </ul>
+    );
+  } else {
+    return (
+      <ul>
+        <li>
+          <strong>User Id</strong> {userId}
+        </li>
+        <li>
+          <strong>Username</strong> {user.username}
+        </li>
+        <li>
+          <strong>Email</strong> {user.email}
+        </li>
+      </ul>
+    );
+  }
 }
 export default User;
