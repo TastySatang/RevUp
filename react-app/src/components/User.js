@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
-import { useSelector} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../store/session';
 
 function User() {
   const currentUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
   const [user, setUser] = useState({});
-  const { userId }  = useParams();
+  const [update, setUpdate] = useState(false)
+  const { userId } = useParams();
 
   useEffect(() => {
     if (!userId) {
@@ -23,38 +26,61 @@ function User() {
   }
 
   const deleteUser = async () => {
-    const res = await fetch(`/api/auth/delete/${userId}`, {
+    await fetch(`/api/auth/delete/${userId}`, {
       method: 'DELETE'
     })
-    if(res.ok)
-      return <Redirect to='/' />;
+    dispatch(logout())
   }
+
   const editUser = () => {
     console.log('edit')
   }
 
-  return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-      {currentUser.id === user.id &&
-      <div>
-        <button  onClick={deleteUser}>
-          delete
-        </button>
-        <button onClick={editUser}>
-          edit
-        </button>
-      </div>
-      }
-    </ul>
-  );
+  if (currentUser.id !== 1) {
+    return (
+      <ul>
+        <li>
+          <strong>User Id</strong> {userId}
+        </li>
+        <li>
+          <strong>Username</strong> {user.username}
+        </li>
+        <li>
+          <strong>Email</strong> {user.email}
+        </li>
+        {currentUser.id === user.id &&
+          <div>
+            <button onClick={deleteUser}>
+              delete
+            </button>
+            {!update &&
+              <button onClick={() => setUpdate(true)}>
+                edit
+              </button>
+            }
+            {update &&
+              <button onClick={() => setUpdate(false)}>
+                don't edit
+              </button>
+            }
+          </div>
+        }
+      </ul>
+    );
+  } else {
+    return (
+      <ul>
+        <li>
+          <strong>User Id</strong> {userId}
+        </li>
+        <li>
+          <strong>Username</strong> {user.username}
+        </li>
+        <li>
+          <strong>Email</strong> {user.email}
+        </li>
+      </ul>
+    );
+  }
 }
 export default User;

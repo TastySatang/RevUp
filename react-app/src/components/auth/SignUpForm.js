@@ -20,7 +20,6 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      console.log('in sign up')
       const data = await dispatch(signUp(username, email, password, description, vehicle, vehiclePic, typeId));
       if (data) {
         setErrors(data)
