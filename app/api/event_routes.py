@@ -27,7 +27,7 @@ def eventPost():
     form.populate_obj(event)
     db.session.add(event)
     db.session.commit()
-    return {'events': event.to_dict()}
+    return {'events': [event.to_dict()]}
   return {'errors': [form.errors]}
 
 @event_routes.route('/<id>', methods=['PUT'])
@@ -40,7 +40,7 @@ def eventPut(id):
     form.populate_obj(event)
     db.session.add(event)
     db.session.commit()
-    return {'events': event.to_dict()}
+    return {'events': [event.to_dict()]}
   return {'errors': [form.errors]}
 
 @event_routes.route('/<id>', methods=['DELETE'])
