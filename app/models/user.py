@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .rsvp import rsvps
 
 
 class User(db.Model, UserMixin):
@@ -10,6 +11,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(255), nullable=False)
+    vehicle = db.Column(db.String(50))
+    vehicle_pic = db.Column(db.String)
+    type_id = db.Column(db.Integer, db.ForeignKey("types.id"))
 
     @property
     def password(self):
@@ -28,3 +33,15 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+    rsvps = db.relationship(
+        "User",
+        secondary=rsvps,
+        primaryjoin=(rsvps.c.users_id == id),
+        backref=db.backref("rsvps", lazy="dynamic"),
+        lazy="dynamic"
+    )
+
+    comments = db.relationship("Comment", back_populates='user')
+    events = db.relationship("Event", back_populates='user')
+    type = db.relationship("Type", back_populates='users')
