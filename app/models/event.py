@@ -24,6 +24,21 @@ class Event(db.Model):
         lazy="dynamic"
     )
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'user': self.user.username,
+            'category': self.category.category,
+            'day': self.day,
+            'address' : self.address,
+            'city' : self.city,
+            'state' : self.state,
+            'image' : self.image,
+            'start' : self.start,
+            'end' : self.end
+        }
+
     comments = db.relationship("Comment", back_populates='event')
     user = db.relationship("User", back_populates="events")
     category = db.relationship("Category", back_populates="events")
