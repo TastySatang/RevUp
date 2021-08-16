@@ -61,7 +61,6 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('form.validate_on_submit()')
     if form.validate_on_submit():
         user = User(
             username=form.data['username'],
@@ -72,12 +71,23 @@ def sign_up():
             vehicle_pic=form.data['vehicle_pic'],
             type_id=form.data['type_id']
         )
-        print(user)
         db.session.add(user)
         db.session.commit()
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@auth_routes.route('/delete/<int:id>', methods=['DELETE'])
+def delete():
+    """
+    Deletes a user and logs them out
+    """
+    user = User.query.get(id)
+    db.session.delete(user)
+    db.session.commit()
+    logout_user()
+    return {'message': 'User logged out'}
 
 
 @auth_routes.route('/unauthorized')

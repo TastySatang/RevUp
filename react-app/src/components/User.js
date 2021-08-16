@@ -25,6 +25,9 @@ function User() {
   const deleteUser = () => {
     console.log('delete')
   }
+  const editUser = () => {
+    console.log('edit')
+  }
 
   return (
     <ul>
@@ -37,12 +40,12 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
-      {currentUser.id === user.id &&
+      {currentUser.id === user.id & !user.id === 1 &&
       <div>
         <button  onClick={deleteUser}>
           delete
         </button>
-        <button>
+        <button onClick={editUser}>
           edit
         </button>
       </div>
