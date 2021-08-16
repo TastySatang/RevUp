@@ -16,7 +16,7 @@ class Event(db.Model):
     start = db.Column(db.DateTime, nullable=False)
     end = db.Column(db.DateTime, nullable=False)
 
-    rsvps = db.relationship(
+    respondez = db.relationship(
         "Event",
         secondary=rsvps,
         primaryjoin=(rsvps.c.events_id == id),
@@ -24,6 +24,6 @@ class Event(db.Model):
         lazy="dynamic"
     )
 
-    comments = db.relationship("Comment", back_populates='events')
+    comments = db.relationship("Comment", back_populates='event')
     user = db.relationship("User", back_populates="events")
     category = db.relationship("Category", back_populates="events")

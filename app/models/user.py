@@ -34,7 +34,7 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
-    rsvps = db.relationship(
+    respondez = db.relationship(
         "User",
         secondary=rsvps,
         primaryjoin=(rsvps.c.users_id == id),
