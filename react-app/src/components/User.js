@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector} from 'react-redux'
 
 function User() {
+  const currentUser = useSelector(state => state.session.user);
   const [user, setUser] = useState({});
   const { userId }  = useParams();
 
@@ -20,6 +22,10 @@ function User() {
     return null;
   }
 
+  const deleteUser = () => {
+    console.log('delete')
+  }
+
   return (
     <ul>
       <li>
@@ -31,6 +37,16 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
+      {currentUser.id === user.id &&
+      <div>
+        <button  onClick={deleteUser}>
+          delete
+        </button>
+        <button>
+          edit
+        </button>
+      </div>
+      }
     </ul>
   );
 }
