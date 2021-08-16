@@ -79,11 +79,12 @@ def sign_up():
 
 
 @auth_routes.route('/delete/<int:id>', methods=['DELETE'])
-def delete():
+def delete(id):
     """
     Deletes a user and logs them out
     """
     user = User.query.get(id)
+    print('user', user)
     db.session.delete(user)
     db.session.commit()
     logout_user()

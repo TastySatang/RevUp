@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import { useSelector} from 'react-redux'
 
 function User() {
@@ -22,8 +22,12 @@ function User() {
     return null;
   }
 
-  const deleteUser = () => {
-    console.log('delete')
+  const deleteUser = async () => {
+    const res = await fetch(`/api/auth/delete/${userId}`, {
+      method: 'DELETE'
+    })
+    if(res.ok)
+      return <Redirect to='/' />;
   }
   const editUser = () => {
     console.log('edit')
@@ -40,7 +44,7 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
-      {currentUser.id === user.id & !user.id === 1 &&
+      {currentUser.id === user.id &&
       <div>
         <button  onClick={deleteUser}>
           delete
