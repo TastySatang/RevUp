@@ -10,11 +10,11 @@ class Event(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
     day = db.Column(db.Date, nullable=False)
     address = db.Column(db.String, nullable=False)
-    city = db.Column(db.String)
+    city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
-    start = db.Column(db.DateTime, nullable=False)
-    end = db.Column(db.DateTime, nullable=False)
+    start = db.Column(db.String, nullable=False)
+    end = db.Column(db.String, nullable=False)
 
     respondez = db.relationship(
         "Event",
@@ -23,6 +23,21 @@ class Event(db.Model):
         backref=db.backref("rsvps", lazy="dynamic"),
         lazy="dynamic"
     )
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'user': self.user.username,
+            'category': self.category.category,
+            'day': self.day,
+            'address' : self.address,
+            'city' : self.city,
+            'state' : self.state,
+            'image' : self.image,
+            'start' : self.start,
+            'end' : self.end
+        }
 
     comments = db.relationship("Comment", back_populates='event')
     user = db.relationship("User", back_populates="events")

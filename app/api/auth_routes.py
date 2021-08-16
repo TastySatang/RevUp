@@ -65,13 +65,30 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            description=form.data['description'],
+            vehicle=form.data['vehicle'],
+            vehicle_pic=form.data['vehicle_pic'],
+            type_id=form.data['type_id']
         )
         db.session.add(user)
         db.session.commit()
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@auth_routes.route('/delete/<int:id>', methods=['DELETE'])
+def delete(id):
+    """
+    Deletes a user and logs them out
+    """
+    user = User.query.get(id)
+    print('user', user)
+    db.session.delete(user)
+    db.session.commit()
+    logout_user()
+    return {'message': 'User logged out'}
 
 
 @auth_routes.route('/unauthorized')
