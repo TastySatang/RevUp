@@ -1,0 +1,60 @@
+* {
+	box-sizing: border-box;
+}
+
+.nav-bar {
+    display: flex;
+	height: 60px;
+	background: rgb(0, 0, 0);
+	position: sticky;
+	width: 100%;
+	overflow: hidden;
+}
+
+.logo {
+	height:  30px;
+	width: 60px;
+	min-height: 60px;
+	min-width: 100px;
+	display: flex;
+	display:-webkit-flex;
+    display:flex;
+    list-style-type:none;
+    padding:0;
+    justify-content:flex-end;
+	position: absolute;
+	border: 3px solid red;
+
+
+}
+
+.createAccount {
+	padding: 4px;
+	border-radius: 5px;
+	width: 120px;
+	border: 3px solid red;
+    text-decoration: none;
+	font-style: none;
+}
+
+.login-link {
+    text-decoration: none;
+	font-style: none;
+	border: 3px solid red;
+
+}
+
+.users-link {
+    text-decoration: none;
+	font-style: none;
+	border: 3px solid red;
+
+}
+
+.navLinks {
+	display: flex;
+	height: 40px;
+	width: 100%;
+	border: 3px solid red;
+
+}
