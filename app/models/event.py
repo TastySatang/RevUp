@@ -10,7 +10,7 @@ class Event(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
     day = db.Column(db.Date, nullable=False)
     address = db.Column(db.String, nullable=False)
-    city = db.Column(db.String)
+    city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
     start = db.Column(db.String, nullable=False)
