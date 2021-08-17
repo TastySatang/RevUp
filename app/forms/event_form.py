@@ -6,9 +6,7 @@ dr = [DataRequired()]
 
 class EventForm(FlaskForm):
     name = StringField('name', dr)
-    category = SelectField('category', choices=[(1,'Meet & Greet'),
-    (2, 'Track Event'), (3, 'Drag Event'), (4, 'Car show'), (5, 'Virtual'),
-    (6, 'Promotional'), (7, 'Cruise'), (8, 'Demolition Derby'), (9, 'Others')])
+    category = StringField('category'),
     day = DateField('Date', dr)
     address = StringField('Address', dr)
     city = StringField('City', dr)
@@ -16,4 +14,3 @@ class EventForm(FlaskForm):
     image = StringField('Image', dr)
     start = StringField('State Time', dr)
     end = StringField('End Time', dr)
-

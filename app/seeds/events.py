@@ -7,7 +7,7 @@ def seed_events():
     one = Event(
       name = "Running Event",
       user_id = 1,
-      category_id = 1,
+      category = 'Drag Event',
       day = datetime.datetime.now(),
       address = '123 car street',
       city = 'Detroit',

@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     description = db.Column(db.String(255), nullable=False)
     vehicle = db.Column(db.String(50))
     vehicle_pic = db.Column(db.String)
-    type_id = db.Column(db.Integer, db.ForeignKey("types.id"))
+    type = db.Column(db.String)
 
     @property
     def password(self):
@@ -31,7 +31,11 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'description': self.description,
+            'vehicle': self.vehicle,
+            'vehicle_pic': self.vehicle_pic,
+            'type': self.type
         }
 
     respondez = db.relationship(
@@ -44,4 +48,4 @@ class User(db.Model, UserMixin):
 
     comments = db.relationship("Comment", back_populates='user')
     events = db.relationship("Event", back_populates='user')
-    type = db.relationship("Type", back_populates='users')
+

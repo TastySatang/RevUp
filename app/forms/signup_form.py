@@ -28,4 +28,4 @@ class SignUpForm(FlaskForm):
     description = StringField('description', validators=[DataRequired()])
     vehicle = StringField('vehicle')
     vehicle_pic = StringField('vehicle_pic')
-    type_id = IntegerField('type_id')
+    type = StringField('type')

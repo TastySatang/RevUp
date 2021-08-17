@@ -69,10 +69,11 @@ def sign_up():
             description=form.data['description'],
             vehicle=form.data['vehicle'],
             vehicle_pic=form.data['vehicle_pic'],
-            type_id=form.data['type_id']
+            type=form.data['type']
         )
         db.session.add(user)
         db.session.commit()
+        print(user.to_dict())
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

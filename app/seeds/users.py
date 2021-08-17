@@ -7,19 +7,19 @@ def seed_users():
         username='Demo', email='demo@aa.io', password='password',
         description='into drag racing', vehicle='69 Camaro ss',
         vehicle_pic='https://manofmany.com/wp-content/uploads/2018/12/1969-chevrolet-camaro-SS.jpg',
-        type_id=1
+        type='American Muscle'
         )
     marnie = User(
         username='marnie', email='marnie@aa.io', password='password',
         description='rb28 all the way', vehicle='r34 skyline',
         vehicle_pic='https://toprankglobal.jp/picture/vehicle/22672_1096.jpg',
-        type_id=2
+        type='JDM'
         )
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password',
         description='dorito power', vehicle='RX-7',
         vehicle_pic='https://www.rx7club.com/attachments/3rd-generation-specific-1993-2002-16/453578d1326906156-david-hayes%92-end-3-rotor-build-rebuild-rebuild-reflection-untitled_3.jpg',
-        type_id=2
+        type='JDM'
         )
 
 

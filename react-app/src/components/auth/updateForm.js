@@ -4,26 +4,22 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import Errors from '.././Errors'
 
-const SignUpForm = () => {
+const updateForm = (user) => {
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
   const [description, setDescription] = useState('')
   const [vehicle, setVehicle] = useState('')
-  const [vehicle_pic, setVehiclePic] = useState('')
-  const [type, setType] = useState('')
-  const user = useSelector(state => state.session.user);
+  const [vehiclePic, setVehiclePic] = useState('')
+  const [typeId, setTypeId] = useState(1)
+  const userId = user.id
   const dispatch = useDispatch();
 
-  const onSignUp = async (e) => {
+  const onUpdate = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, description, vehicle, vehicle_pic, type));
+      const data = await dispatch(update(username, email, password, description, vehicle, vehiclePic, typeId, userId));
       if (data) {
         setErrors(data)
-      }
     }
   };
 
@@ -75,25 +71,6 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div>
-          <label>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-          ></input>
-        </div>
-        <div>
-          <label>Repeat Password</label>
-          <input
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div>
-        <div>
           <label>Description</label>
           <textarea
             name='description'
@@ -117,25 +94,21 @@ const SignUpForm = () => {
             type='text'
             name='VehiclePic'
             onChange={e => setVehiclePic(e.target.value)}
-            value={vehicle_pic}
+            value={vehiclePic}
           ></input>
         </div>
         <div>
           <label>Vehicle Type</label>
-          <select
-          onChange={e => setType(e.target.value)}
-          value={type}
-          >
-            <option value='American Muscle'>American Muscle</option>
-            <option value='JDM'>JDM</option>
-            <option value='Luxury'>Luxury</option>
-            <option value='Sport Bike'>Sport Bike</option>
-            <option value='Cruiser'>Cruiser</option>
-            <option value="European Sport">European Sport</option>
-            <option value='Off-road/Baja'>Off-road/Baja</option>
-            <option value='Economy'>Economy</option>
-            <option value='Formula'>Formula</option>
-            <option value='Other'>Formula</option>
+          <select onChange={e => setTypeId(e.target.value)}>
+            <option value='1'>American Muscle</option>
+            <option value="2">JDM</option>
+            <option value="3">Luxury</option>
+            <option value="4">Sport Bike</option>
+            <option value="5">Cruiser</option>
+            <option value="6">European Sport</option>
+            <option value="7">Off-road/Baja</option>
+            <option value="8">Economy</option>
+            <option value="9">Formula</option>
           </select>
         </div>
         <button type='submit'>Sign Up</button>
@@ -144,4 +117,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default updateForm;

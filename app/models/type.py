@@ -7,4 +7,4 @@ class Type(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String, nullable=False)
 
-    users = db.relationship("User", back_populates="type")
+

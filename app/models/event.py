@@ -7,7 +7,7 @@ class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
     user_id = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
+    category = db.Column(db.String)
     day = db.Column(db.Date, nullable=False)
     address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
@@ -29,7 +29,7 @@ class Event(db.Model):
             'id': self.id,
             'name': self.name,
             'user': self.user.username,
-            'category': self.category.category,
+            'category': self.category,
             'day': self.day,
             'address' : self.address,
             'city' : self.city,
@@ -41,4 +41,3 @@ class Event(db.Model):
 
     comments = db.relationship("Comment", back_populates='event')
     user = db.relationship("User", back_populates="events")
-    category = db.relationship("Category", back_populates="events")

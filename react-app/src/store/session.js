@@ -70,7 +70,7 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password, description, vehicle, vehiclePic, typeId) => async (dispatch) => {
+export const signUp = (username, email, password, description, vehicle, vehicle_pic, type) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
@@ -82,13 +82,14 @@ export const signUp = (username, email, password, description, vehicle, vehicleP
       password,
       description,
       vehicle,
-      vehiclePic,
-      typeId
+      vehicle_pic,
+      type
     }),
   });
 
   if (response.ok) {
     const data = await response.json();
+    console.log(data)
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {

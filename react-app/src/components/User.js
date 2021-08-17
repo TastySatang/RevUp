@@ -32,10 +32,6 @@ function User() {
     dispatch(logout())
   }
 
-  const editUser = () => {
-    console.log('edit')
-  }
-
   if (currentUser.id !== 1) {
     return (
       <ul>
@@ -47,6 +43,18 @@ function User() {
         </li>
         <li>
           <strong>Email</strong> {user.email}
+        </li>
+        <li>
+          <strong>Vehicle</strong> {user.vehicle}
+        </li>
+        <li>
+          <strong>Pic</strong> {user.vehicle_pic}
+        </li>
+        <li>
+          <strong>Type</strong> {user.type_id}
+        </li>
+        <li>
+          <strong>Description</strong> {user.description}
         </li>
         {currentUser.id === user.id &&
           <div>
@@ -78,6 +86,18 @@ function User() {
         </li>
         <li>
           <strong>Email</strong> {user.email}
+        </li>
+        <li>
+          <strong>Vehicle</strong> {user.vehicle}
+        </li>
+        <li>
+          <strong>Pic</strong> {user.vehicle_pic}
+        </li>
+        <li>
+          <strong>Type</strong> {user.type_id}
+        </li>
+        <li>
+          <strong>Description</strong> {user.description}
         </li>
       </ul>
     );
