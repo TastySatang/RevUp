@@ -22,21 +22,37 @@ def eventPost():
   form = EventForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
+  print('before validate', form.data)
   if form.validate_on_submit():
-    event = Event()
-    form.populate_obj(event)
+    print('INSIDE EVENT ROUTE VALIDATE ON SUBMIT')
+    event = Event(
+      name=form.data['name'],
+      user_id=form.data['user_id'],
+      category=form.data['category'],
+      day=form.data['day'],
+      address=form.data['address'],
+        city=form.data['city'],
+      state=form.data['state'],
+      image=form.data['image'],
+      start=form.data['start'],
+      end=form.data['end'],
+    )
+
     db.session.add(event)
     db.session.commit()
+    print('inside validation p', event.to_dict())
     return {'events': [event.to_dict()]}
   return {'errors': [form.errors]}
 
 @event_routes.route('/<id>', methods=['PUT'])
 def eventPut(id):
+  print('inside the put route', id)
   form = EventForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
-    event = Event.query.filter_by(id=id).first()
+    print('inside validate')
+    event = Event.query.filter(Event.id==id).first()
     form.populate_obj(event)
     db.session.add(event)
     db.session.commit()
@@ -45,7 +61,9 @@ def eventPut(id):
 
 @event_routes.route('/<id>', methods=['DELETE'])
 def eventDel(id):
-  event = Event.query.filter_by(id=id).first()
+
+  event = Event.query.filter(Event.id==id).first()
+  print('inside delete route api', event)
   db.session.delete(event)
   db.session.commit()
   return {'events': id}
