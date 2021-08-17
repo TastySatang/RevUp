@@ -31,7 +31,7 @@ def eventPost():
       category=form.data['category'],
       day=form.data['day'],
       address=form.data['address'],
-      city=form.data['city'],
+        city=form.data['city'],
       state=form.data['state'],
       image=form.data['image'],
       start=form.data['start'],
@@ -46,11 +46,13 @@ def eventPost():
 
 @event_routes.route('/<id>', methods=['PUT'])
 def eventPut(id):
+  print('inside the put route', id)
   form = EventForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
-    event = Event.query.filter_by(id=id).first()
+    print('inside validate')
+    event = Event.query.filter(Event.id==id).first()
     form.populate_obj(event)
     db.session.add(event)
     db.session.commit()

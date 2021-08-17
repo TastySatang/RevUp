@@ -9,18 +9,28 @@ export default function EventPage() {
   const user = useSelector((state) => state.session.user)
   const event = useSelector((state) => state.events[id])
 
-  const [name, setName] = useState(event?.name);
-  const [category, setCategory] = useState(event?.category);
-  const [day, setDay] = useState(event?.day)
-  const [address, setAddress] = useState(event?.address)
-  const [city, setCity] = useState(event?.city)
-  const [state, setState] = useState(event?.state)
-  const [image, setImage] = useState(event?.image)
-  const [start, setStart] = useState(event?.start)
-  const [end, setEnd] = useState(event?.end)
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('Meet & Greet');
+  const [day, setDay] = useState(null)
+  const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [state, setState] = useState('AL')
+  const [image, setImage] = useState('')
+  const [start, setStart] = useState('')
+  const [end, setEnd] = useState('')
 
   useEffect(() => {
     dispatch(getEvent(id))
+    setName(event?.name)
+    setCategory(event?.category)
+    setDay(event?.day)
+    setAddress(event?.address)
+    setCity(event?.city)
+    setState(event?.state)
+    setImage(event?.image)
+    setStart(event?.start)
+    setEnd(event?.end)
+
   }, [dispatch, id])
 
   const handleSubmit = async e => {
@@ -50,10 +60,10 @@ export default function EventPage() {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <input type='text' placeholder='name' required
+        <input type='text' placeholder='name'
         onChange={e => setName(e.target.value)}
         value={name}/>
-        <select onchange={e => setCategory(e.target.value)}>
+        <select value={category} onChange={e => setCategory(e.target.value)}>
             <option value={`Meet & Greet`}>Meet and Greet</option>
             <option value='Track Event'>Track Event</option>
             <option value='Drag Event'>Drag Event</option>
@@ -64,11 +74,11 @@ export default function EventPage() {
             <option value='Demolition-Derby'>Demolition-Derby</option>
             <option value='Others'>Others</option>
         </select>
-        <input type='date' required
+        <input type='date'
         onChange={e => setDay(e.target.value)}/>
-        <input type='text' placeholder='address' required
+        <input type='text' placeholder='address'
         onChange={e => setAddress(e.target.value)}/>
-        <input type='text' placeholder='city' required
+        <input type='text' placeholder='city'
         onChange={e => setCity(e.target.value)}/>
         <select onChange={e => setState(e.target.value)}>
             <option value="AL">Alabama</option>
@@ -123,14 +133,14 @@ export default function EventPage() {
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
         </select>
-        <input type='url' placeholder='imageUrl' required
+        <input type='url' placeholder='imageUrl'
         onChange={e => setImage(e.target.value)}/>
 
 
-        <input type='datetime-local' required
+        <input type='datetime-local'
             value={start}
             onChange={e => setStart(e.target.value)} />
-        <input type='datetime-local' required
+        <input type='datetime-local'
             value={end}
             onChange={e => setEnd(e.target.value)} />
 

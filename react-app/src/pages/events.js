@@ -61,7 +61,7 @@ export default function EventsPage() {
                     <input type='text' placeholder='name' required
                     value={name}
                     onChange={e => setName(e.target.value)}/>
-                    <select onchange={e => setCategory(e.target.value)}>
+                    <select value={category} onChange={e => setCategory(e.target.value)}>
                         <option value={`Meet & Greet`}>Meet and Greet</option>
                         <option value='Track Event'>Track Event</option>
                         <option value='Drag Event'>Drag Event</option>

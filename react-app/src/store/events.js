@@ -68,7 +68,7 @@ export const updateEvent = (event) => async dispatch => {
     day, address, city, state,
     image, start, end } = event;
 
-  const res = await fetch(`/api/events/${event.id}/`, {
+  const res = await fetch(`/api/events/${event.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -82,6 +82,7 @@ export const updateEvent = (event) => async dispatch => {
 
   if (res.ok) {
     const data = await res.json();
+    console.log('monkeydata',data)
     dispatch(setEvent(data))
     return data
   } else if (res.status < 500) {
