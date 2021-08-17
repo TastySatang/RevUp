@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getEvent, updateEvent } from "../store/events";
+import { deleteEvent, getEvent, updateEvent } from "../store/events";
 
 export default function EventPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { id } = useParams();
   const user = useSelector((state) => state.session.user)
   const event = useSelector((state) => state.events[id])
@@ -33,7 +34,7 @@ export default function EventPage() {
 
   }, [dispatch, id])
 
-  const handleSubmit = async e => {
+  const handleSubmit =  e => {
     e.preventDefault();
 
     const newEvent = {
@@ -50,7 +51,7 @@ export default function EventPage() {
       end
     }
     console.log('inside handlesubmit before dispatch', newEvent)
-    await dispatch(updateEvent(newEvent))
+    dispatch(updateEvent(newEvent))
   }
 
   return(
@@ -135,8 +136,6 @@ export default function EventPage() {
         </select>
         <input type='url' placeholder='imageUrl'
         onChange={e => setImage(e.target.value)}/>
-
-
         <input type='datetime-local'
             value={start}
             onChange={e => setStart(e.target.value)} />
@@ -145,6 +144,10 @@ export default function EventPage() {
             onChange={e => setEnd(e.target.value)} />
 
         <button type="submit">Submit</button>
+        <button type="button" onClick={() => {
+          dispatch(deleteEvent(id))
+          history.push('/events')
+        }}>delete</button>
     </form>
     </>
   )

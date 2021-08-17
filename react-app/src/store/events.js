@@ -95,13 +95,15 @@ export const updateEvent = (event) => async dispatch => {
   }
 }
 
-export const deleteEvent = id => async dispatch => {
-  const res = await fetch(`/api/events/${id}/`, {
+export const deleteEvent = (id) => async dispatch => {
+  console.log('inside thunk start')
+  const res = await fetch(`/api/events/${id}`, {
     method: "DELETE",
   });
 
   if (res.ok) {
     await res.json();
+    console.log('after res ok', res.json)
     dispatch(removeEvent(id))
   }
 }

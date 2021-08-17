@@ -61,7 +61,9 @@ def eventPut(id):
 
 @event_routes.route('/<id>', methods=['DELETE'])
 def eventDel(id):
-  event = Event.query.filter_by(id=id).first()
+
+  event = Event.query.filter(Event.id==id).first()
+  print('inside delete route api', event)
   db.session.delete(event)
   db.session.commit()
   return {'events': id}
