@@ -6,6 +6,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
+import EventsPage from './pages/events';
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/events' exact={true}>
+            <EventsPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
