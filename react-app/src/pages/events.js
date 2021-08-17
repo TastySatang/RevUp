@@ -143,7 +143,6 @@ export default function EventsPage() {
                         onChange={e => setEnd(e.target.value)} />
 
                     <button type="submit">Submit</button>
-
                 </form>
             </div>
         </>
