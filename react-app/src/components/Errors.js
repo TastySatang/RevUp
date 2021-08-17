@@ -7,7 +7,7 @@ const Errors = () => {
     return (
         <div>
             {errors?.map((error, ind) => {
-                <div className='error' key={ind}>
+                return <div className='error' key={ind}>
                     {error}
                 </div>
             })}
