@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, useParams } from 'react-router-dom';
 import { update } from '../../store/session';
 import Errors from '.././Errors'
 
@@ -12,17 +11,22 @@ const UpdateForm = () => {
   const [description, setDescription] = useState(user.description);
   const [vehicle, setVehicle] = useState(user.vehicle);
   const [vehicle_pic, setVehicle_Pic] = useState(user.vehicle_pic);
-  const [type, setType] = useState(1);
-  const userId = useParams();
+  const [type, setType] = useState(user.type);
   const dispatch = useDispatch();
 
   const onUpdate = async (e) => {
     e.preventDefault();
-      const data = await dispatch(update(username, email, description, vehicle, vehicle_pic, type, userId));
+      const data = await dispatch(update(username, email, description, vehicle, vehicle_pic, type, user.id));
       if (data) {
         setErrors(data)
-    }
+      }
+      refresh()
   };
+
+
+  const refresh = () => {
+    window.location.reload(false)
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);

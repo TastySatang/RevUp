@@ -102,12 +102,12 @@ def unauthorized():
 @auth_routes.route('/update/<int:id>', methods=['POST'])
 def update(id):
     user = User.query.get(id)
-    data = request.json
-    user.username = data.username
-    user.email = data.email
-    user.description = data.description
-    user.vehicle = data.vehicle
-    user.vehicle_pic = data.vehicle_pic
-    user.type = data.type
+    data = request.get_json()
+    user.username = data['username']
+    user.email = data['email']
+    user.description = data['description']
+    user.vehicle = data['vehicle']
+    user.vehicle_pic = data['vehicle_pic']
+    user.type = data['type']
     db.session.commit()
-    return user
+    return user.to_dict()

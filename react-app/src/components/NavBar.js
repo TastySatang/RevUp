@@ -14,25 +14,19 @@ const NavBar = () => {
             <ul>
                 <nav className='nav__links'>
                     <li>
-                        <a>
-                            <NavLink to='/login' exact={true} activeClassName='active'>
-                                Sign In
-                            </NavLink>
-                        </a>
+                        <NavLink to='/login' exact={true} activeClassName='active'>
+                            Sign In
+                        </NavLink>
                     </li>
                     <li>
-                        <a>
-                            <NavLink to='/users' exact={true} activeClassName='active'>
-                                Users
-                            </NavLink>
-                        </a>
+                        <NavLink to='/users' exact={true} activeClassName='active'>
+                            Users
+                        </NavLink>
                     </li>
                     <li>
-                        <a>
-                            <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                                Create Account
-                            </NavLink>
-                        </a>
+                        <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                            Create Account
+                        </NavLink>
                     </li>
                     <li>
                         {current_user && <LogoutButton />}

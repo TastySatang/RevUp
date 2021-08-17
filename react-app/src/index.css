@@ -15,3 +15,7 @@ h1, label {
     color: #edf0f1;
     text-decoration: none;
 }
+
+input, textarea, select, option {
+    background-color: white;
+}
