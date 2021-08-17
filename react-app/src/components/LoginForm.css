@@ -1,60 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 * {
 	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #24242a
 }
 
-.nav-bar {
+li, a, logout-button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header {
     display: flex;
-	height: 60px;
-	background: rgb(0, 0, 0);
-	position: sticky;
-	width: 100%;
-	overflow: hidden;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%
 }
 
 .logo {
-	height:  30px;
-	width: 60px;
-	min-height: 60px;
-	min-width: 100px;
-	display: flex;
-	display:-webkit-flex;
-    display:flex;
-    list-style-type:none;
-    padding:0;
-    justify-content:flex-end;
-	position: absolute;
-	border: 3px solid red;
-
-
+    cursor: pointer;
+    margin-right: auto;
 }
 
-.createAccount {
-	padding: 4px;
-	border-radius: 5px;
-	width: 120px;
-	border: 3px solid red;
-    text-decoration: none;
-	font-style: none;
+.nav__links {
+    list-style: none
 }
 
-.login-link {
-    text-decoration: none;
-	font-style: none;
-	border: 3px solid red;
-
+.nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
 }
 
-.users-link {
-    text-decoration: none;
-	font-style: none;
-	border: 3px solid red;
-
+.nav__links li a{
+    transition: all 0.3s ease 0s;
 }
 
-.navLinks {
-	display: flex;
-	height: 40px;
-	width: 100%;
-	border: 3px solid red;
+.nav__links li a:hover {
+    color: #0088a9
+}
+
+.logout-button {
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgba(0,136,169,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s
+}
+
+.logout-button:hover {
+    background-color: rgba(0,136,169,0.8);
 
 }
