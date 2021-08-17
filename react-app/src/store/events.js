@@ -12,7 +12,7 @@ const removeEvent = (id) => ({
 })
 
 export const getEvents = () => async dispatch => {
-  const res = await fetch('/api/events');
+  const res = await fetch('/api/events/');
 
   if (res.ok) {
     const events = await res.json();
@@ -31,33 +31,36 @@ export const getEvent = (id) => async dispatch => {
 }
 
 export const createEvent = (event) => async dispatch => {
-  const {name, user_id, category_id,
+  const { name, user_id, category,
     day, address, city, state,
-    image, start, end} = event;
+    image, start, end } = event;
 
-  const formData = new FormData();
-  formData.append('name', name)
-  formData.append('user_id', user_id)
-  formData.append('category_id', category_id)
-  formData.append('day', day)
-  formData.append('address', address)
-  formData.append('city', city)
-  formData.append('state', state)
-  formData.append('image', image)
-  formData.append('start', start)
-  formData.append('end', end)
-
-  const res = await fetch('/api/events', {
+  const res = await fetch('/api/events/', {
     method: "POST",
     headers: {
-      "Content-Type": "multipart/form-data"
+      "Content-Type": "application/json"
     },
-    body: formData,
+    body: JSON.stringify({
+      name, user_id, category,
+      day, address, city, state,
+      image, start, end
+    } )
   });
 
-  const data = await res.json();
-  dispatch(setEvent(data))
-  return data
+  if (res.ok) {
+    const data = await res.json();
+    console.log('monki', data)
+    dispatch(setEvent(data))
+    return data
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+
 }
 
 export const updateEvent = (event) => async dispatch => {
@@ -77,7 +80,7 @@ export const updateEvent = (event) => async dispatch => {
   formData.append('start', start)
   formData.append('end', end)
 
-  const res = await fetch(`/api/events/${event.id}`, {
+  const res = await fetch(`/api/events/${event.id}/`, {
     method: "PUT",
     headers: {
       "Content-Type": "multipart/form-data"
@@ -91,7 +94,7 @@ export const updateEvent = (event) => async dispatch => {
 }
 
 export const deleteEvent = id => async dispatch => {
-  const res = await fetch(`/api/events/${id}`, {
+  const res = await fetch(`/api/events/${id}/`, {
     method: "DELETE",
   });
 

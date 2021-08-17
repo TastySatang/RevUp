@@ -22,11 +22,25 @@ def eventPost():
   form = EventForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
+  print('before validate', form.data)
   if form.validate_on_submit():
-    event = Event()
-    form.populate_obj(event)
+    print('INSIDE EVENT ROUTE VALIDATE ON SUBMIT')
+    event = Event(
+      name=form.data['name'],
+      user_id=form.data['user_id'],
+      category=form.data['category'],
+      day=form.data['day'],
+      address=form.data['address'],
+      city=form.data['city'],
+      state=form.data['state'],
+      image=form.data['image'],
+      start=form.data['start'],
+      end=form.data['end'],
+    )
+
     db.session.add(event)
     db.session.commit()
+    print('inside validation p', event.to_dict())
     return {'events': [event.to_dict()]}
   return {'errors': [form.errors]}
 
