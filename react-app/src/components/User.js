@@ -23,6 +23,14 @@ function User() {
         })();
     }, [userId]);
 
+    useEffect(() => {
+        (async () => {
+            const response = await fetch(`/api/users/${userId}`);
+            const user = await response.json();
+            setUser(user);
+        })();
+    }, [currentUser])
+
     if (!user) {
         return null;
     }
@@ -73,7 +81,7 @@ function User() {
                                 <button onClick={() => setUpdate(false)}>
                                     don't edit
                                 </button>
-                                <UpdateForm />
+                                <UpdateForm user={currentUser}/>
                             </div>
                         }
                     </div>

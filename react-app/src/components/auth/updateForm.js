@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { update } from '../../store/session';
 import Errors from '.././Errors'
+import { useHistory } from 'react-router-dom';
 
-const UpdateForm = () => {
-    const user = useSelector(state => state.session.user);
+const UpdateForm = ({user}) => {
+  // const user = useSelector(state => state.session.user);
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
@@ -20,13 +22,9 @@ const UpdateForm = () => {
       if (data) {
         setErrors(data)
       }
-      refresh()
+      history.push(`/users/${user.id}`)
+      // history.push(`/`)
   };
-
-
-  const refresh = () => {
-    window.location.reload(false)
-  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
