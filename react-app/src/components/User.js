@@ -51,7 +51,7 @@ function User() {
           <strong>Pic</strong> {user.vehicle_pic}
         </li>
         <li>
-          <strong>Type</strong> {user.type_id}
+          <strong>Type</strong> {user.type}
         </li>
         <li>
           <strong>Description</strong> {user.description}
@@ -94,7 +94,7 @@ function User() {
           <strong>Pic</strong> {user.vehicle_pic}
         </li>
         <li>
-          <strong>Type</strong> {user.type_id}
+          <strong>Type</strong> {user.type}
         </li>
         <li>
           <strong>Description</strong> {user.description}
