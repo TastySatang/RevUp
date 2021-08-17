@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux'
 
 const Errors = () => {
 
-
     const errors = useSelector((state) => state.errors);
     return (
         <div>

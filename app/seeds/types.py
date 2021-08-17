@@ -12,6 +12,7 @@ def seed_types():
     seven = Type(type='Off-road/Baja')
     eight = Type(type='Economy')
     nine = Type(type='Formula')
+    ten = Type(type='Other')
 
     db.session.add(one)
     db.session.add(two)
@@ -22,6 +23,7 @@ def seed_types():
     db.session.add(seven)
     db.session.add(eight)
     db.session.add(nine)
+    db.session.add(ten)
 
     db.session.commit()
 
