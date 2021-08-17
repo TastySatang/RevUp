@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom';
@@ -15,25 +14,19 @@ const NavBar = () => {
             <ul>
                 <nav className='nav__links'>
                     <li>
-                        <a href='/login'>
                         <NavLink to='/login' exact={true} activeClassName='active'>
                             Sign In
                         </NavLink>
-                        </a>
                     </li>
                     <li>
-                        <a href='/users'>
                         <NavLink to='/users' exact={true} activeClassName='active'>
                             Users
                         </NavLink>
-                        </a>
                     </li>
                     <li>
-                        <a href='/sign-up'>
                         <NavLink to='/sign-up' exact={true} activeClassName='active'>
                             Create Account
                         </NavLink>
-                        </a>
                     </li>
                     <li>
                         {current_user && <LogoutButton />}

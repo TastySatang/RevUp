@@ -1,5 +1,21 @@
-h1 {
-    font-color: white;
+/* TODO Add site wide styles */
+button {
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgba(0,136,169,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s
 }
 
 
+h1, label {
+    font-family: "Montserrat", sans-serif;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+input, textarea, select, option {
+    background-color: white;
+}

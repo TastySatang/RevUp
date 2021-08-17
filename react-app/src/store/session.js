@@ -89,7 +89,6 @@ export const signUp = (username, email, password, description, vehicle, vehicle_
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
@@ -102,8 +101,8 @@ export const signUp = (username, email, password, description, vehicle, vehicle_
   }
 }
 
-export const update = (username, email, password, description, vehicle, vehiclePic, typeId, userId) => async (dispatch) => {
-  const response = await fetch('/api/auth/signup', {
+export const update = (username, email, description, vehicle, vehicle_pic, type, userId) => async (dispatch) => {
+    const response = await fetch(`/api/auth/update/${userId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -111,18 +110,14 @@ export const update = (username, email, password, description, vehicle, vehicleP
     body: JSON.stringify({
       username,
       email,
-      password,
       description,
       vehicle,
-      vehiclePic,
-      typeId
+      vehicle_pic,
+      type
     }),
   });
 
   if (response.ok) {
-    await fetch(`/api/auth/delete/${userId}`, {
-      method: 'DELETE'
-    })
     const data = await response.json();
     dispatch(setUser(data))
     return null;

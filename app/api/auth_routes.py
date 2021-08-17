@@ -85,7 +85,6 @@ def delete(id):
     Deletes a user and logs them out
     """
     user = User.query.get(id)
-    print('user', user)
     db.session.delete(user)
     db.session.commit()
     logout_user()
@@ -98,3 +97,17 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
+
+
+@auth_routes.route('/update/<int:id>', methods=['POST'])
+def update(id):
+    user = User.query.get(id)
+    data = request.get_json()
+    user.username = data['username']
+    user.email = data['email']
+    user.description = data['description']
+    user.vehicle = data['vehicle']
+    user.vehicle_pic = data['vehicle_pic']
+    user.type = data['type']
+    db.session.commit()
+    return user.to_dict()

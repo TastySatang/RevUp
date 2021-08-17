@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { signUp, login } from '../../store/session';
 import Errors from '.././Errors'
 import '.././LoginForm.css'
 
@@ -43,6 +43,13 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const demoLogin = async () => {
+    const data = await dispatch(login('demo@aa.io', 'password'));
+      if (data) {
+        setErrors(data)
+      }
+  }
 
   if (user) {
     return <Redirect to='/' />;
@@ -141,6 +148,7 @@ const SignUpForm = () => {
         </div>
         <button type='submit'>Sign Up</button>
       </form>
+      <button onClick={demoLogin}>Demo User</button>
     </>
   );
 };
