@@ -10,25 +10,37 @@ const NavBar = () => {
     const current_user = useSelector(state => state.session.user)
 
     return (
-        <nav className='nav-bar'>
-            <div className='navLinks'>
-                <NavLink to='/' exact={true} className='logo'>Logo</NavLink>
-
-                <NavLink to='/login' exact={true} className='login-link' activeClassName='active'>
-                    Login
-                </NavLink>
-
-                <NavLink to='/sign-up' exact={true} className='createAccount' activeClassName='active'>
-                    Create Account
-                </NavLink>
-
-                <NavLink to='/users' exact={true} className='users-link' activeClassName='active'>
-                    Users
-                </NavLink>
-
-                {current_user && <LogoutButton />}
-            </div>
-        </nav>
+        <header>
+            <NavLink to='/' exact={true} className='logo'>Logo</NavLink>
+            <ul>
+                <nav className='nav__links'>
+                    <li>
+                        <a>
+                        <NavLink to='/login' exact={true} activeClassName='active'>
+                            Sign In
+                        </NavLink>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                        <NavLink to='/users' exact={true} activeClassName='active'>
+                            Users
+                        </NavLink>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                        <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                            Create Account
+                        </NavLink>
+                        </a>
+                    </li>
+                    <li>
+                        {current_user && <LogoutButton />}
+                    </li>
+                </nav>
+            </ul>
+        </header>
     );
 }
 
