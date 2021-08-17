@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { Redirect, useParams } from 'react-router-dom';
+import { update } from '../../store/session';
 import Errors from '.././Errors'
 
-const updateForm = (user) => {
+const UpdateForm = () => {
+    const user = useSelector(state => state.session.user);
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
-  const [description, setDescription] = useState('')
-  const [vehicle, setVehicle] = useState('')
-  const [vehiclePic, setVehiclePic] = useState('')
-  const [typeId, setTypeId] = useState(1)
-  const userId = user.id
+  const [description, setDescription] = useState(user.description);
+  const [vehicle, setVehicle] = useState(user.vehicle);
+  const [vehicle_pic, setVehicle_Pic] = useState(user.vehicle_pic);
+  const [type, setType] = useState(1);
+  const userId = useParams();
   const dispatch = useDispatch();
 
   const onUpdate = async (e) => {
     e.preventDefault();
-      const data = await dispatch(update(username, email, password, description, vehicle, vehiclePic, typeId, userId));
+      const data = await dispatch(update(username, email, description, vehicle, vehicle_pic, type, userId));
       if (data) {
         setErrors(data)
     }
@@ -31,22 +32,10 @@ const updateForm = (user) => {
     setEmail(e.target.value);
   };
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-  };
-
-  if (user) {
-    return <Redirect to='/' />;
-  }
-
   return (
     <>
       <Errors />
-      <form onSubmit={onSignUp}>
+      <form onSubmit={onUpdate}>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
@@ -93,28 +82,29 @@ const updateForm = (user) => {
           <input
             type='text'
             name='VehiclePic'
-            onChange={e => setVehiclePic(e.target.value)}
-            value={vehiclePic}
+            onChange={e => setVehicle_Pic(e.target.value)}
+            value={vehicle_pic}
           ></input>
         </div>
         <div>
           <label>Vehicle Type</label>
-          <select onChange={e => setTypeId(e.target.value)}>
-            <option value='1'>American Muscle</option>
-            <option value="2">JDM</option>
-            <option value="3">Luxury</option>
-            <option value="4">Sport Bike</option>
-            <option value="5">Cruiser</option>
-            <option value="6">European Sport</option>
-            <option value="7">Off-road/Baja</option>
-            <option value="8">Economy</option>
-            <option value="9">Formula</option>
+          <select onChange={e => setType(e.target.value)} value={type}>
+            <option value='American Muscle'>American Muscle</option>
+            <option value='JDM'>JDM</option>
+            <option value='Luxury'>Luxury</option>
+            <option value='Sport Bike'>Sport Bike</option>
+            <option value='Cruiser'>Cruiser</option>
+            <option value="European Sport">European Sport</option>
+            <option value='Off-road/Baja'>Off-road/Baja</option>
+            <option value='Economy'>Economy</option>
+            <option value='Formula'>Formula</option>
+            <option value='Other'>Formula</option>
           </select>
         </div>
-        <button type='submit'>Sign Up</button>
+        <button type='submit'>Confirm Update</button>
       </form>
     </>
   );
 };
 
-export default updateForm;
+export default UpdateForm;

@@ -102,27 +102,24 @@ export const signUp = (username, email, password, description, vehicle, vehicle_
   }
 }
 
-export const update = (username, email, password, description, vehicle, vehiclePic, typeId, userId) => async (dispatch) => {
-  const response = await fetch('/api/auth/signup', {
+export const update = (username, email, description, vehicle, vehicle_pic, type, userId) => async (dispatch) => {
+    console.log(userId.values)
+    const response = await fetch(`/api/auth/update/${userId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
+    body: JSON.stringify(
       username,
       email,
-      password,
       description,
       vehicle,
-      vehiclePic,
-      typeId
-    }),
+      vehicle_pic,
+      type
+    ),
   });
 
   if (response.ok) {
-    await fetch(`/api/auth/delete/${userId}`, {
-      method: 'DELETE'
-    })
     const data = await response.json();
     dispatch(setUser(data))
     return null;
