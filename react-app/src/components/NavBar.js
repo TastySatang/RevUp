@@ -15,21 +15,21 @@ const NavBar = () => {
             <ul>
                 <nav className='nav__links'>
                     <li>
-                        <a>
+                        <a href='/login'>
                         <NavLink to='/login' exact={true} activeClassName='active'>
                             Sign In
                         </NavLink>
                         </a>
                     </li>
                     <li>
-                        <a>
+                        <a href='/users'>
                         <NavLink to='/users' exact={true} activeClassName='active'>
                             Users
                         </NavLink>
                         </a>
                     </li>
                     <li>
-                        <a>
+                        <a href='/sign-up'>
                         <NavLink to='/sign-up' exact={true} activeClassName='active'>
                             Create Account
                         </NavLink>
@@ -42,6 +42,6 @@ const NavBar = () => {
             </ul>
         </header>
     );
-}
+};
 
 export default NavBar;

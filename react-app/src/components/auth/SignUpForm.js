@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import Errors from '.././Errors'
+import '.././LoginForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
