@@ -13,8 +13,8 @@ def seed_events():
       city = 'Detroit',
       state = 'Michigan',
       image = 'https://static.messynessychic.com/wp-content/uploads/2012/12/tumblr_m1g06arTYo1qh5xh1o1_1280.jpg',
-      start = '1200',
-      end = '1400'
+      start = '2021-08-22 12:00:00-00',
+      end = '2021-08-22 14:00:00-00'
     )
 
     db.session.add(one)
