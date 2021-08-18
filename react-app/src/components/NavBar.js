@@ -23,6 +23,10 @@ const NavBar = () => {
             {!current_user &&
                 <img className='logo' src='images/Logo3.png'></img>
             }
+            {/* <NavLink to='/' exact={true} className='logo'>Home</NavLink> */}
+            <a href='/'>
+                <img className='logo'src='/images/Logo3.png'></img>
+            </a>
             <ul>
                 <nav className='nav__links'>
                     {!current_user &&
