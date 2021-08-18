@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -14,11 +15,18 @@ li, a, logout-button {
     text-decoration: none;
 }
 
+body {
+    margin-top: 70px;
+}
+
 header {
+    position: fixed;
+    top: 0px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 10px 10%;
+    padding-bottom: 20px;
     height: 70px;
     padding-right: 0;
     width: 100%;
@@ -52,6 +60,13 @@ header {
     color: #f87878;
 }
 
+h1 {
+    display: flex;
+    justify-content: center;
+    font-family: 'Playfair Display SC', sans-serif;
+    padding-top: 5px;
+}
+
 .logout-button {
     margin-left: 5px;
     padding: 9px 25px;
@@ -77,20 +92,18 @@ header {
     text-align: center;
 }
 
-img {
+.logo {
     position: fixed;
     top: 0;
     left: 0;
     height: 70px;
-    /* border: 1px solid #2e2e2e;
-    border-radius: 8px; */
     background-color: #2e2e2e;
 }
 
 .backgroundLogin {
     background-image: url('https://images.unsplash.com/photo-1597687210367-a4915552d886?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVycmFyaSUyMDQ4OHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
     background-size: 100%;
-    background-position: 0 -150px;
+    background-position: 0 -350px;
     height: 900px;
     padding: 20px;
 }
@@ -98,6 +111,7 @@ img {
 .backgroundSignUp {
     background-image: url('https://www.leipzig.travel/fileadmin/mediamanager/POI_Datenbank/11_Architektur/Porsche-Werk-Leipzig_Architektur-Teststrecke-Auto_leipzig.travel.jpg');
     background-size: 100%;
+    background-position: 0 -300px;
     height: 900px;
     padding: 20px;
 }
@@ -107,11 +121,43 @@ img {
     right: 30%;
 }
 
-.login {
+.login-form {
     position: relative;
     right: 25%;
+    border-radius: 4px;
+    border: 1px solid black;
+    background: rgba(245, 102, 102, 0.5);
 }
 
 .loginButton {
-    margin-top: 15px;
+    margin: auto;
+    position: relative;
+    margin-left: 35px;
+    margin-right: 100px;
+    width: 80%;
+    height: 35px;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.loginButton:hover {
+    background-color: #f87878;
+}
+
+input {
+    width: 200px;
+    height: 27px;
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.profileTable {
+    position: absolute;
 }
