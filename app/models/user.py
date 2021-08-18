@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
             'description': self.description,
             'vehicle': self.vehicle,
             'vehicle_pic': self.vehicle_pic,
-            'type': self.type
+            'type': self.type,
         }
 
     respondez = db.relationship(
@@ -48,4 +48,3 @@ class User(db.Model, UserMixin):
 
     comments = db.relationship("Comment", back_populates='user')
     events = db.relationship("Event", back_populates='user')
-

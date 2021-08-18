@@ -16,6 +16,7 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    # print('users', {'vehicle':user.vehicle, 'description':user.description, 'vehicle_pic':user.vehicle_pic, 'type':type, 'username':user.username, 'email':user.email, 'id':user.id })
-    return user.to_dict()
-    # return {'vehicle':user.vehicle, 'description':user.description, 'vehicle_pic':user.vehicle_pic, 'type':type, 'username':user.username, 'email':user.email, 'id':user.id }
+    rsvp = user.respondez.all()
+    user = user.to_dict()
+    user['rsvps'] = rsvp
+    return user
