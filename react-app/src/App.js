@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import EventsPage from './pages/events';
 import EventPage from './pages/event';
+import CreateEvent from './pages/CreateEvent';
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -33,6 +34,7 @@ function App() {
         <Route path='/login' exact={true} component={LoginForm}/>
         <Route path='/sign-up' exact={true} component={SignUpForm}/>
         <Route path='/events' exact={true} component={EventsPage}/>
+        <Route path='/events/new' exact={true} component={CreateEvent}/>
         <Route path='/events/:id' exact component={EventPage}/>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

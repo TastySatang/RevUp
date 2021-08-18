@@ -1,0 +1,14 @@
+#event__form {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#event__form > input,
+#event__form > select,
+#event__form > .events__datepicker{
+  margin: 5px;
+  width: 80%;
+  height: 35px
+}

@@ -13,7 +13,7 @@ const NavBar = () => {
         <header>
             {/* <NavLink to='/' exact={true} className='logo'>Home</NavLink> */}
             <a href='/'>
-                <img classname='logo'src='images/Logo3.png'></img>
+                <img className='logo'src='/images/Logo3.png'></img>
             </a>
             <ul>
                 <nav className='nav__links'>
