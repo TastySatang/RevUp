@@ -28,7 +28,7 @@ class Event(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'user': self.user.username,
+            'user': self.user.to_dict(),
             'category': self.category,
             'day': self.day,
             'address' : self.address,

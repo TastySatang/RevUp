@@ -12,17 +12,17 @@ export default function EventPage() {
   const event = useSelector((state) => state.events[id])
 
   const [showForm, setShowForm] = useState(false);
-  const [name, setName] = useState('');
-  const [category, setCategory] = useState('Meet & Greet');
-  const [day, setDay] = useState(null)
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [state, setState] = useState('AL')
-  const [image, setImage] = useState('')
-  const [start, setStart] = useState('')
-  const [end, setEnd] = useState('')
+//   const [name, setName] = useState('');
+//   const [category, setCategory] = useState('Meet & Greet');
+//   const [day, setDay] = useState(null)
+//   const [address, setAddress] = useState('')
+//   const [city, setCity] = useState('')
+//   const [state, setState] = useState('AL')
+//   const [image, setImage] = useState('')
+//   const [start, setStart] = useState('')
+//   const [end, setEnd] = useState('')
 
-    console.log(event)
+    // console.log(event)
 
   useEffect(() => {
     dispatch(getEvent(id))
@@ -45,25 +45,25 @@ export default function EventPage() {
       )
   }
 
-  const handleSubmit =  e => {
-    e.preventDefault();
+//   const handleSubmit =  e => {
+//     e.preventDefault();
 
-    const newEvent = {
-      id,
-      name,
-      user_id: user.id,
-      category,
-      day,
-      address,
-      city,
-      state,
-      image,
-      start,
-      end
-    }
-    console.log('inside handlesubmit before dispatch', newEvent)
-    dispatch(updateEvent(newEvent))
-  }
+//     const newEvent = {
+//       id,
+//       name,
+//       user_id: user.id,
+//       category,
+//       day,
+//       address,
+//       city,
+//       state,
+//       image,
+//       start,
+//       end
+//     }
+//     console.log('inside handlesubmit before dispatch', newEvent)
+//     dispatch(updateEvent(newEvent))
+//   }
 
   let content;
   if (user) {
@@ -93,7 +93,7 @@ export default function EventPage() {
       </div>
       {content}
       {showForm && (
-          <EventForm id={id}/>
+          <EventForm id={id} event={event}/>
       )}
       {/* <form onSubmit={handleSubmit}>
         <input type='text' placeholder='name'

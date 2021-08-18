@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getEvents, createEvent, updateEvent } from "../store/events"
 import '../pages/events.css';
 
-export default function EventForm({id}) {
+export default function EventForm({id, event}) {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user)
@@ -19,9 +19,6 @@ export default function EventForm({id}) {
     const [start, setStart] = useState('')
     const [end, setEnd] = useState('')
 
-    useEffect(() => {
-        dispatch(getEvents());
-    }, [dispatch])
 
     const handleSubmit = async e => {
         e.preventDefault();
