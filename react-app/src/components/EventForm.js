@@ -109,13 +109,11 @@ export default function EventForm({id, event}) {
                     <div>
                         <label>write description
                         <textarea
+                        className='Event__Create--textarea'
                         onChange={e => setDescription(e.target.value)}
                         value={description}/>
                     </label>
                     </div>
-
-                    {/* <input type='date' required value={day}
-                    onChange={e => setDay(e.target.value)}/> */}
                     <div>
                         <input type='text' placeholder='address' required value={address}
                         onChange={e => setAddress(e.target.value)}/>
@@ -193,7 +191,8 @@ export default function EventForm({id, event}) {
                             showTimeSelect
                             dateFormat="Pp"
                             startdate={start}
-                            endDate={end}/>
+                            endDate={end}
+                            minDate={new Date()}/>
                     </label>
                   </div>
                    <div>

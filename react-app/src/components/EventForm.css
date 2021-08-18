@@ -13,10 +13,16 @@
 
 #event__form input,
 #event__form select,
-#event__form label{
+#event__form label {
   margin: 5px;
   width: 80%;
   height: 35px;
+  padding-left: 10px;
+}
+
+#event__form input,
+#event__form select {
+  border: 1px solid black;
 }
 
 .react-datepicker__input-container > input {
@@ -65,8 +71,24 @@
   padding-bottom: 5px;
   bottom: 10px;
   font-family: "Montserrat", sans-serif;
+  border: none;
+}
+
+.Event__Create--Button:hover{
+  background-color: #FFD9CA;
 }
 
 .events__datepicker {
   margin-bottom: 20px;
+}
+
+.Event__Create--textarea {
+  width: 80%;
+  font-size: 15px;
+  resize: vertical;
+  min-height: 60px;
+  max-height: 130px;
+  font-family: darkmode-off, sans-serif;
+  font-weight: 100;
+  overflow: none;
 }
