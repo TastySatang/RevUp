@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent, getEvent, updateEvent } from "../store/events";
+import EventForm from "../components/EventForm";
 
 export default function EventPage() {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ export default function EventPage() {
   const user = useSelector((state) => state.session.user)
   const event = useSelector((state) => state.events[id])
 
+  const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState('');
   const [category, setCategory] = useState('Meet & Greet');
   const [day, setDay] = useState(null)
@@ -20,19 +22,28 @@ export default function EventPage() {
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
 
+    console.log(event)
+
   useEffect(() => {
     dispatch(getEvent(id))
-    setName(event?.name)
-    setCategory(event?.category)
-    setDay(event?.day)
-    setAddress(event?.address)
-    setCity(event?.city)
-    setState(event?.state)
-    setImage(event?.image)
-    setStart(event?.start)
-    setEnd(event?.end)
+    // setName(event?.name)
+    // setCategory(event?.category)
+    // setDay(event?.day)
+    // setAddress(event?.address)
+    // setCity(event?.city)
+    // setState(event?.state)
+    // setImage(event?.image)
+    // setStart(event?.start)
+    // setEnd(event?.end)
 
-  }, [dispatch, id])
+  }, [dispatch, id, user])
+
+  if (event === undefined) {
+      return (
+          <>
+          </>
+      )
+  }
 
   const handleSubmit =  e => {
     e.preventDefault();
@@ -54,13 +65,37 @@ export default function EventPage() {
     dispatch(updateEvent(newEvent))
   }
 
+  let content;
+  if (user) {
+    if (user.name === event.user_id) {
+        content = (
+            <>
+                <button type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
+                <button type="button" onClick={() => {
+                    dispatch(deleteEvent(id))
+                    history.push('/events')
+                }}>delete</button>
+
+            </>
+        )
+    }
+  } else {
+        content = (
+            <>
+            </>
+        )
+  }
+
   return(
     <>
       <div>
         {event?.name}
       </div>
-
-      <form onSubmit={handleSubmit}>
+      {content}
+      {showForm && (
+          <EventForm id={id}/>
+      )}
+      {/* <form onSubmit={handleSubmit}>
         <input type='text' placeholder='name'
         onChange={e => setName(e.target.value)}
         value={name}/>
@@ -144,11 +179,11 @@ export default function EventPage() {
             onChange={e => setEnd(e.target.value)} />
 
         <button type="submit">Submit</button>
-        <button type="button" onClick={() => {
+    </form> */}
+        {/* <button type="button" onClick={() => {
           dispatch(deleteEvent(id))
           history.push('/events')
-        }}>delete</button>
-    </form>
+        }}>delete</button> */}
     </>
   )
 }
