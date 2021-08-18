@@ -3,12 +3,70 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0px;
+  background: rgb(255 171 46 / 60%);
 }
 
-#event__form > input,
-#event__form > select,
-#event__form > .events__datepicker{
+#event__form > div {
+  width: 100%;
+}
+
+#event__form input,
+#event__form select,
+#event__form label{
   margin: 5px;
   width: 80%;
-  height: 35px
+  height: 35px;
+}
+
+.react-datepicker__input-container > input {
+  width: 100%;
+}
+
+.react-datepicker__time-list-item {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.Event__Create--content {
+  background-image: url('https://images.unsplash.com/photo-1505691730847-e62da813ed0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1189&q=80');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fakeform {
+  background: hsl(36deg 100% 59% / 60%);
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
+.buttonHolder {
+  width: 100%;
+  background: hsl(36deg 100% 59% / 60%);
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.Event__Create--Button {
+  margin: auto;
+  position: relative;
+  width: 80%;
+  height: 35px;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding-bottom: 5px;
+  bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.events__datepicker {
+  margin-bottom: 20px;
 }
