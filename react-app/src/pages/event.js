@@ -47,14 +47,23 @@ export default function EventPage() {
   }
 
   return(
-    <>
-      <div>
-        {event?.name}
+    <div className='content'>
+      <div className='event__header'>
+        {event.user.username}
       </div>
+      <div className='event__content'>
+        <div className='event__image'>
+          <img src={event.image} alt='event'/>
+        </div>
+        <div>
+          {event.name}
+        </div>
+      </div>
+
       {content}
       {showForm && (
           <EventForm id={id} event={event}/>
       )}
-    </>
+    </ div>
   )
 }

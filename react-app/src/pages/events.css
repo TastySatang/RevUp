@@ -66,3 +66,7 @@
   font-style: normal;
   font-weight: 300;
 }
+
+.events__datepicker {
+  background-color: #F6F6F6;
+}

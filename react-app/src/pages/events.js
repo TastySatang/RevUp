@@ -20,7 +20,7 @@ export default function EventsPage() {
                     <div key={idx} className='event__tile--holder'>
                         <Link class='event__tile' to={`/events/${event.id}`}>
                             <div className='event__tile--imageholder' >
-                                    <img className='event__tile--img' src={event.image}/>
+                                    <img className='event__tile--img' src={event.image} alt='tile'/>
                                 </div>
                                 <div className='event__tile--adetail'>
                                     <div className='event__detail--start'>

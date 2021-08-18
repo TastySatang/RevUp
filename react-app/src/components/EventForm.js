@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
-import { getEvents, createEvent, updateEvent } from "../store/events"
+import DatePicker from "react-datepicker"
+import { createEvent, updateEvent } from "../store/events"
+
+import "react-datepicker/dist/react-datepicker.css";
 import '../pages/events.css';
 
 export default function EventForm({id, event}) {
@@ -11,14 +14,27 @@ export default function EventForm({id, event}) {
 
     const [name, setName] = useState('');
     const [category, setCategory] = useState('Meet & Greet');
-    const [day, setDay] = useState(null)
+    const [day, setDay] = useState(new Date())
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('AL')
     const [image, setImage] = useState('')
-    const [start, setStart] = useState('')
-    const [end, setEnd] = useState('')
+    const [start, setStart] = useState(new Date());
+    const [end, setEnd] = useState(start)
 
+    useEffect(() => {
+        if (id) {
+            setName(event.name)
+            setCategory(event.category)
+            setDay(event.day)
+            setAddress(event.address)
+            setCity(event.city)
+            setState(event.state)
+            setImage(event.image)
+            setStart(event.start)
+            setEnd(event.end)
+        }
+    }, [id, event?.name, event?.category, event?.day, event?.address, event?.city, event?.state, event?.image, event?.start, event?.end])
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -79,13 +95,13 @@ export default function EventForm({id, event}) {
                         <option value='Demolition-Derby'>Demolition-Derby</option>
                         <option value='Others'>Others</option>
                     </select>
-                    <input type='date' required
+                    <input type='date' required value={day}
                     onChange={e => setDay(e.target.value)}/>
-                    <input type='text' placeholder='address' required
+                    <input type='text' placeholder='address' required value={address}
                     onChange={e => setAddress(e.target.value)}/>
-                    <input type='text' placeholder='city' required
+                    <input type='text' placeholder='city' required value={city}
                     onChange={e => setCity(e.target.value)}/>
-                    <select onChange={e => setState(e.target.value)}>
+                    <select onChange={e => setState(e.target.value)} value={state}>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -138,16 +154,21 @@ export default function EventForm({id, event}) {
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
                     </select>
-                    <input type='url' placeholder='imageUrl' required
+                    <input type='url' placeholder='imageUrl' required value={image}
                     onChange={e => setImage(e.target.value)}/>
+                    <label>Select Start Date
+                      <DatePicker className='events__datepicker' onChange={date => setStart(date)} selected={start} showTimeSelect dateFormat="Pp"/>
+                    </label>
+                    <label>Select End Date
+                      <DatePicker className='events__datepicker' onChange={date => setEnd(date)} selected={end} showTimeSelect dateFormat="Pp"/>
+                    </label>
 
-
-                    <input type='datetime-local' required
+                    {/* <input type='datetime-local' required value={start}
                         value={start}
                         onChange={e => setStart(e.target.value)} />
-                    <input type='datetime-local' required
+                    <input type='datetime-local' required value={end}
                         value={end}
-                        onChange={e => setEnd(e.target.value)} />
+                        onChange={e => setEnd(e.target.value)} /> */}
 
                     <button type="submit">Submit</button>
                 </form>
