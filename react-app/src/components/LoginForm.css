@@ -4,14 +4,14 @@
 	box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #B2B2B2
+    background-color: #c0c0c0
 }
 
 li, a, logout-button {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
-    color: #edf0f1;
+    color: #F5100D;
     text-decoration: none;
 }
 
@@ -19,42 +19,96 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 30px 10%
+    padding: 10px 10%;
+    height: 70px;
+    padding-right: 0;
+    width: 100%;
+    background-color: #2e2e2e;
 }
 
 .logo {
     cursor: pointer;
     margin-right: auto;
+    background-color: #2e2e2e;
 }
 
 .nav__links {
-    list-style: none
+    list-style: none;
+    background-color: #2e2e2e;
+    margin-left: 0px;
 }
 
 .nav__links li {
     display: inline-block;
     padding: 0px 20px;
+    background-color: #2e2e2e;
 }
 
 .nav__links li a{
     transition: all 0.3s ease 0s;
+    background-color: #2e2e2e;
 }
 
 .nav__links li a:hover {
-    color: #0088a9
+    color: #f87878;
 }
 
 .logout-button {
-    margin-left: 20px;
+    margin-left: 5px;
     padding: 9px 25px;
-    background-color: rgba(0,136,169,1);
+    background-color: #F5100D;
     border: none;
     border-radius: 50px;
+    width: 100px;
+    height: 50px;
+
     cursor: pointer;
     transition: all 0.3s ease 0s
 }
 
 .logout-button:hover {
-    background-color: rgba(0,136,169,0.8);
+    background-color: #f87878;
+}
 
+.logout-button > p {
+    background-color: rgba(0,136,169,0);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+}
+
+img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    /* border: 1px solid #2e2e2e;
+    border-radius: 8px; */
+    background-color: #2e2e2e;
+}
+
+.backgroundLogin {
+    background-image: url('https://images.unsplash.com/photo-1597687210367-a4915552d886?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVycmFyaSUyMDQ4OHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
+    background-size: 100%;
+    background-position: 0 -150px;
+    height: 900px;
+    padding: 20px;
+}
+
+.backgroundSignUp {
+    background-image: url('https://www.leipzig.travel/fileadmin/mediamanager/POI_Datenbank/11_Architektur/Porsche-Werk-Leipzig_Architektur-Teststrecke-Auto_leipzig.travel.jpg');
+    background-size: 100%;
+    height: 900px;
+    padding: 20px;
+}
+
+.signUp {
+    position: relative;
+    right: 30%;
+}
+
+.login {
+    position: relative;
+    right: 25%;
 }
