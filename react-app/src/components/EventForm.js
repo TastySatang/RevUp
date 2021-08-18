@@ -15,7 +15,7 @@ export default function EventForm({id, event}) {
 
     const [name, setName] = useState('');
     const [category, setCategory] = useState('Meet & Greet');
-    const [day, setDay] = useState(new Date())
+    const [day, setDay] = useState('')
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('AL')
@@ -97,7 +97,10 @@ export default function EventForm({id, event}) {
                         <option value='Others'>Others</option>
                     </select>
                     <label>Select Day
-                    <DatePicker className='events__datepicker' onChange={date => setDay(date)} selected={start}/>
+                        <input type='date'
+                        className='events__datepicker'
+                        onChange={e => setDay(e.target.value)}
+                        value={day}/>
                     </label>
 
                     {/* <input type='date' required value={day}
