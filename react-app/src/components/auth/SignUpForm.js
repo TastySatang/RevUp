@@ -56,9 +56,10 @@ const SignUpForm = () => {
   }
 
   return (
-    <>
+    <div className='backgroundSignUp'>
       <Errors />
-      <form onSubmit={onSignUp}>
+      <form onSubmit={onSignUp} className='signUp'>
+        <h2>Create Acount</h2>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
@@ -147,9 +148,9 @@ const SignUpForm = () => {
           </select>
         </div>
         <button type='submit'>Sign Up</button>
+        <button onClick={demoLogin}>Demo User</button>
       </form>
-      <button onClick={demoLogin}>Demo User</button>
-    </>
+    </div>
   );
 };
 
