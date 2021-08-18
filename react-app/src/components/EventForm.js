@@ -1,65 +1,69 @@
 import { useEffect, useState } from "react"
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
-import { getEvents, createEvent } from "../store/events"
-// import EventForm from "../components/EventForm";
-import './events.css';
+import { getEvents, createEvent, updateEvent } from "../store/events"
+import '../pages/events.css';
 
-export default function EventsPage() {
+export default function EventForm({id, event}) {
     const dispatch = useDispatch();
-    // const history = useHistory();
-    const events = useSelector((state) => Object.values(state.events))
-    // const user = useSelector((state) => state.session.user)
+    const history = useHistory();
+    const user = useSelector((state) => state.session.user)
 
-    // const [name, setName] = useState('');
-    // const [category, setCategory] = useState('Meet & Greet');
-    // const [day, setDay] = useState(null)
-    // const [address, setAddress] = useState('')
-    // const [city, setCity] = useState('')
-    // const [state, setState] = useState('AL')
-    // const [image, setImage] = useState('')
-    // const [start, setStart] = useState('')
-    // const [end, setEnd] = useState('')
+    const [name, setName] = useState('');
+    const [category, setCategory] = useState('Meet & Greet');
+    const [day, setDay] = useState(null)
+    const [address, setAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [state, setState] = useState('AL')
+    const [image, setImage] = useState('')
+    const [start, setStart] = useState('')
+    const [end, setEnd] = useState('')
 
-    useEffect(() => {
-        dispatch(getEvents());
-    }, [dispatch])
 
-    // const handleSubmit = async e => {
-    //     e.preventDefault();
+    const handleSubmit = async e => {
+        e.preventDefault();
 
-    //     const event = {
-    //         name,
-    //         user_id: user.id,
-    //         category,
-    //         day,
-    //         address,
-    //         city,
-    //         state,
-    //         image,
-    //         start,
-    //         end
-    //     }
-    //     console.log('inside handlesubmit before dispatch', event)
-    //     const posted = await dispatch(createEvent(event))
+        if (id) {
+            const newEvent = {
+                id,
+                name,
+                user_id: user.id,
+                category,
+                day,
+                address,
+                city,
+                state,
+                image,
+                start,
+                end
+              }
+              console.log('inside handlesubmit before dispatch', newEvent)
+              dispatch(updateEvent(newEvent))
+              return
+        }
 
-    //     if (posted) {
-    //         history.push('/events')
-    //     }
-    // }
+        const event = {
+            name,
+            user_id: user.id,
+            category,
+            day,
+            address,
+            city,
+            state,
+            image,
+            start,
+            end
+        }
+        console.log('inside handlesubmit before dispatch', event)
+        const posted = await dispatch(createEvent(event))
+
+        if (posted) {
+            history.push('/events')
+        }
+    }
 
     return (
-        <>
-            {events.map((event, idx) => {
-                return(
-                    <div key={idx} style={{backgroundImage: `url(${event.image})`}}>
-                        {event.name}
-                    </div>
-                )
-            })}
-            {/* <EventForm /> */}
-
-            {/* <div>
+        <div>
                 <form onSubmit={handleSubmit}>
                     <input type='text' placeholder='name' required
                     value={name}
@@ -147,7 +151,6 @@ export default function EventsPage() {
 
                     <button type="submit">Submit</button>
                 </form>
-            </div> */}
-        </>
+            </div>
     )
 }
