@@ -18,7 +18,7 @@ export default function EventsPage() {
             {events.map((event, idx) => {
                 return(
                     <div key={idx} className='event__tile--holder'>
-                        <Link class='event__tile' to={`/events/${event.id}`}>
+                        <Link className='event__tile' to={`/events/${event.id}`}>
                             <div className='event__tile--imageholder' >
                                     <img className='event__tile--img' src={event.image} alt='tile'/>
                                 </div>

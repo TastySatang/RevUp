@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker"
 import { createEvent, updateEvent } from "../store/events"
 
 import "react-datepicker/dist/react-datepicker.css";
+import './EventForm.css'
 import '../pages/events.css';
 
 export default function EventForm({id, event}) {
@@ -31,8 +32,8 @@ export default function EventForm({id, event}) {
             setCity(event.city)
             setState(event.state)
             setImage(event.image)
-            setStart(event.start)
-            setEnd(event.end)
+            // setStart(event.start)
+            // setEnd(event.end)
         }
     }, [id, event?.name, event?.category, event?.day, event?.address, event?.city, event?.state, event?.image, event?.start, event?.end])
 
@@ -80,7 +81,7 @@ export default function EventForm({id, event}) {
 
     return (
         <div>
-                <form onSubmit={handleSubmit}>
+                <form id='event__form' onSubmit={handleSubmit}>
                     <input type='text' placeholder='name' required
                     value={name}
                     onChange={e => setName(e.target.value)}/>
@@ -95,8 +96,13 @@ export default function EventForm({id, event}) {
                         <option value='Demolition-Derby'>Demolition-Derby</option>
                         <option value='Others'>Others</option>
                     </select>
-                    <input type='date' required value={day}
-                    onChange={e => setDay(e.target.value)}/>
+                    <label>Select Day
+                    <DatePicker className='events__datepicker' onChange={date => setDay(date)} selected={start}/>
+                    </label>
+
+                    {/* <input type='date' required value={day}
+                    onChange={e => setDay(e.target.value)}/> */}
+
                     <input type='text' placeholder='address' required value={address}
                     onChange={e => setAddress(e.target.value)}/>
                     <input type='text' placeholder='city' required value={city}
@@ -157,19 +163,27 @@ export default function EventForm({id, event}) {
                     <input type='url' placeholder='imageUrl' required value={image}
                     onChange={e => setImage(e.target.value)}/>
                     <label>Select Start Date
-                      <DatePicker className='events__datepicker' onChange={date => setStart(date)} selected={start} showTimeSelect dateFormat="Pp"/>
+                        <DatePicker
+                            className='events__datepicker'
+                            selectsStart
+                            onChange={date => setStart(date)}
+                            selected={start}
+                            showTimeSelect
+                            dateFormat="Pp"
+                            startdate={start}
+                            endDate={end}/>
                     </label>
                     <label>Select End Date
-                      <DatePicker className='events__datepicker' onChange={date => setEnd(date)} selected={end} showTimeSelect dateFormat="Pp"/>
+                        <DatePicker
+                            selected={end}
+                            onChange={(date) => setEnd(date)}
+                            selectsEnd
+                            startDate={start}
+                            endDate={end}
+                            minDate={start}
+                            showTimeSelect
+                            dateFormat="Pp" />
                     </label>
-
-                    {/* <input type='datetime-local' required value={start}
-                        value={start}
-                        onChange={e => setStart(e.target.value)} />
-                    <input type='datetime-local' required value={end}
-                        value={end}
-                        onChange={e => setEnd(e.target.value)} /> */}
-
                     <button type="submit">Submit</button>
                 </form>
             </div>
