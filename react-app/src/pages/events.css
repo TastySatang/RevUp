@@ -1,0 +1,26 @@
+.events {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.event__tile--holder {
+  text-align: center;
+  width: 50%;
+}
+
+.event__tile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.event__tile--img {
+  position: relative;
+}
