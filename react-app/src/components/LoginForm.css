@@ -15,11 +15,18 @@ li, a, logout-button {
     text-decoration: none;
 }
 
+body {
+    margin-top: 70px;
+}
+
 header {
+    position: fixed;
+    top: 0px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 10px 10%;
+    padding-bottom: 20px;
     height: 70px;
     padding-right: 0;
     width: 100%;
@@ -78,20 +85,18 @@ header {
     text-align: center;
 }
 
-img {
+.logo {
     position: fixed;
     top: 0;
     left: 0;
     height: 70px;
-    /* border: 1px solid #2e2e2e;
-    border-radius: 8px; */
     background-color: #2e2e2e;
 }
 
 .backgroundLogin {
     background-image: url('https://images.unsplash.com/photo-1597687210367-a4915552d886?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVycmFyaSUyMDQ4OHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
     background-size: 100%;
-    background-position: 0 -150px;
+    background-position: 0 -350px;
     height: 900px;
     padding: 20px;
 }
@@ -99,6 +104,7 @@ img {
 .backgroundSignUp {
     background-image: url('https://www.leipzig.travel/fileadmin/mediamanager/POI_Datenbank/11_Architektur/Porsche-Werk-Leipzig_Architektur-Teststrecke-Auto_leipzig.travel.jpg');
     background-size: 100%;
+    background-position: 0 -300px;
     height: 900px;
     padding: 20px;
 }
@@ -115,4 +121,8 @@ img {
 
 .loginButton {
     margin-top: 15px;
+}
+
+.profileTable {
+    position: absolute;
 }

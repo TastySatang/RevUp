@@ -7,5 +7,3 @@ rsvps = db.Table(
   db.Column("users_id", db.Integer, db.ForeignKey('users.id'), nullable=False)
 )
 
-# events_id = relationship("Events")
-# users_id = relationship("Users")
