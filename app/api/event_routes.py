@@ -31,7 +31,7 @@ def eventPost():
       category=form.data['category'],
       day=form.data['day'],
       address=form.data['address'],
-        city=form.data['city'],
+      city=form.data['city'],
       state=form.data['state'],
       image=form.data['image'],
       start=form.data['start'],
@@ -72,6 +72,3 @@ def eventDel(id):
 @event_routes.route('/health')
 def events():
   return { 'message': 'set up correctly'}
-
-
-

@@ -24,20 +24,22 @@ def get_for_user(id):
 @rsvp_routes.route('/create', methods=['POST'])
 @login_required
 def create():
-    data = request.get_json()
-    new_rsvp = rsvp(
-        users_id=data['users_id'],
-        events_id=data['events_id']
-    )
-    db.session.add(new_rsvp)
+    data = request.get_json();
+    user = User.query.get(data['users_id'])
+    event = Event.query.get(data['events_id'])
+    print('THE USERRR', user)
+    print('THE EVENTTTTT', event)
+    user.respondez.append(user)
+    db.session.add(user)
     db.session.commit()
-    return jsonify(rsvp)
+    return {'message': 'rsvp DELETED'}
+
 
 
 @rsvp_routes.route('/delete/<int:id>', methods=['DELETE'])
 @login_required
 def delete(id):
-    old_rsvp = rsvp.query.get(id)
+    old_rsvp = rsvps.query.get(id)
     db.session.delete(old_rsvp)
     db.session.commit()
     return {'message': 'rsvp deleted'}
