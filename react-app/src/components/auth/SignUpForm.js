@@ -59,79 +59,88 @@ const SignUpForm = () => {
     <div className='backgroundSignUp'>
       <Errors />
       <form onSubmit={onSignUp} className='signUp'>
-        <h2>Create Acount</h2>
+        <h1>Create Acount</h1>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
         <div>
-          <label>User Name</label>
+
           <input
             type='text'
             name='username'
             onChange={updateUsername}
             value={username}
+            placeholder='username'
           ></input>
         </div>
         <div>
-          <label>Email</label>
+
           <input
             type='text'
             name='email'
             onChange={updateEmail}
             value={email}
+            placeholder='email'
           ></input>
         </div>
         <div>
-          <label>Password</label>
           <input
             type='password'
             name='password'
             onChange={updatePassword}
             value={password}
+            placeholder='password'
           ></input>
         </div>
         <div>
-          <label>Repeat Password</label>
+
           <input
             type='password'
             name='repeat_password'
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
+            placeholder='confirm password'
           ></input>
         </div>
         <div>
-          <label>Description</label>
+          <label className='label__textarea'>Tell us about your vehicle</label>
           <textarea
+            placeholder={`My car is the bestest car there is`}
+            className='description'
             name='description'
             onChange={e => setDescription(e.target.value)}
             value={description}
             required={true}
+
           ></textarea>
         </div>
         <div>
-          <label>Vehicle</label>
+
           <input
             type='text'
             name='Vehicle'
             onChange={e => setVehicle(e.target.value)}
             value={vehicle}
+            placeholder='Whats your vehicle?'
           ></input>
         </div>
         <div>
-          <label>Vehicle Picture</label>
           <input
             type='text'
             name='VehiclePic'
             onChange={e => setVehiclePic(e.target.value)}
             value={vehicle_pic}
+            placeholder='URL of your vehicle pic'
           ></input>
         </div>
+
         <div>
-          <label>Vehicle Type</label>
+          <label className='label__selectField' >Select vehicle Type</label>
           <select
+          className='signup__selectField'
           onChange={e => setType(e.target.value)}
           value={type}
           >
@@ -147,8 +156,8 @@ const SignUpForm = () => {
             <option value='Other'>Formula</option>
           </select>
         </div>
-        <button type='submit'>Sign Up</button>
-        <button onClick={demoLogin}>Demo User</button>
+        <button className='SignupB' type='submit'>Sign Up</button>
+        <button className='DemoB' onClick={demoLogin}>Demo User</button>
       </form>
     </div>
   );

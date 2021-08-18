@@ -15,6 +15,10 @@ li, a, logout-button {
     text-decoration: none;
 }
 
+html, body {
+    height: 100vh;
+}
+
 body {
     margin-top: 70px;
 }
@@ -101,32 +105,58 @@ h1 {
 }
 
 .backgroundLogin {
-    background-image: url('https://images.unsplash.com/photo-1597687210367-a4915552d886?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVycmFyaSUyMDQ4OHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
-    background-size: 100%;
-    background-position: 0 -350px;
-    height: 900px;
+    background-image: url('https://images.unsplash.com/photo-1493238792000-8113da705763?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .backgroundSignUp {
     background-image: url('https://www.leipzig.travel/fileadmin/mediamanager/POI_Datenbank/11_Architektur/Porsche-Werk-Leipzig_Architektur-Teststrecke-Auto_leipzig.travel.jpg');
-    background-size: 100%;
-    background-position: 0 -300px;
-    height: 900px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .signUp {
     position: relative;
-    right: 30%;
+    right: 25%;
+    border-radius: 4px;
+    border: 1px solid black;
+    background: hsl(36deg 100% 59% / 60%);
+    width: 50%;
 }
+
+
+.signUp input,
+.signUp textarea,
+.signUp select {
+  margin: 5px;
+  width: 80%;
+  height: 35px;
+  border-radius: 2px;
+  border: none;
+}
+
 
 .login-form {
     position: relative;
     right: 25%;
     border-radius: 4px;
     border: 1px solid black;
-    background: rgba(245, 102, 102, 0.5);
+    background: hsl(36deg 100% 59% / 60%);
+    height: 23%;
+    width: 50%;
 }
 
 .loginButton {
@@ -160,4 +190,40 @@ input {
 
 .profileTable {
     position: absolute;
+}
+
+.SignupB {
+    margin: auto;
+    position: relative;
+    margin: 8px 100px 13px 35px;
+    width: 80%;
+    height: 35px;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    background-color: #0C9FB7;
+}
+
+.DemoB {
+    margin: auto;
+    position: relative;
+    margin-left: 35px;
+    margin-right: 100px;
+    width: 80%;
+    height: 35px;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    background-color: #ED7265;
+    color: #08110A;
+    font-weight: 600;
+}
+
+.description {
+    margin-top: 5px;
+    width: 320px;
+    height: 130px;
+    resize: none;
 }
