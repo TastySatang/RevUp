@@ -15,7 +15,7 @@ export default function EventForm({id, event}) {
 
     const [name, setName] = useState('');
     const [category, setCategory] = useState('Meet & Greet');
-    const [day, setDay] = useState('')
+    const [description, setDescription] = useState('')
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('AL')
@@ -33,7 +33,7 @@ export default function EventForm({id, event}) {
         if (id) {
             setName(event.name)
             setCategory(event.category)
-            setDay(event.day)
+            setDescription(event.description)
             setAddress(event.address)
             setCity(event.city)
             setState(event.state)
@@ -41,7 +41,7 @@ export default function EventForm({id, event}) {
             // setStart(event.start)
             // setEnd(event.end)
         }
-    }, [id, event?.name, event?.category, event?.day, event?.address, event?.city, event?.state, event?.image, event?.start, event?.end])
+    }, [id, event?.name, event?.category, event?.description, event?.address, event?.city, event?.state, event?.image, event?.start, event?.end])
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -52,7 +52,7 @@ export default function EventForm({id, event}) {
                 name,
                 user_id: user.id,
                 category,
-                day,
+                description,
                 address,
                 city,
                 state,
@@ -69,7 +69,7 @@ export default function EventForm({id, event}) {
             name,
             user_id: user.id,
             category,
-            day,
+            description,
             address,
             city,
             state,
@@ -107,12 +107,11 @@ export default function EventForm({id, event}) {
                         </select>
                     </div>
                     <div>
-                        <label>Select Day
-                            <input type='date'
-                            className='events__datepicker'
-                            onChange={e => setDay(e.target.value)}
-                            value={day}/>
-                        </label>
+                        <label>write description
+                        <textarea
+                        onChange={e => setDescription(e.target.value)}
+                        value={description}/>
+                    </label>
                     </div>
 
                     {/* <input type='date' required value={day}
