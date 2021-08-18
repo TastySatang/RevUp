@@ -8,7 +8,7 @@ class Event(db.Model):
     name = db.Column(db.String(40), nullable=False)
     user_id = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)
     category = db.Column(db.String)
-    day = db.Column(db.Date, nullable=False)
+    description = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
@@ -30,7 +30,7 @@ class Event(db.Model):
             'name': self.name,
             'user': self.user.to_dict(),
             'category': self.category,
-            'day': self.day,
+            'description': self.description,
             'address' : self.address,
             'city' : self.city,
             'state' : self.state,

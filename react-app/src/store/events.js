@@ -31,9 +31,12 @@ export const getEvent = (id) => async dispatch => {
 }
 
 export const createEvent = (event) => async dispatch => {
+  console.log('please log')
   const { name, user_id, category,
-    day, address, city, state,
+    description, address, city, state,
     image, start, end } = event;
+
+  console.log('before sending to api', event)
 
   const res = await fetch('/api/events/', {
     method: "POST",
@@ -42,7 +45,7 @@ export const createEvent = (event) => async dispatch => {
     },
     body: JSON.stringify({
       name, user_id, category,
-      day, address, city, state,
+      description, address, city, state,
       image, start, end
     } )
   });
@@ -65,7 +68,7 @@ export const createEvent = (event) => async dispatch => {
 
 export const updateEvent = (event) => async dispatch => {
   const { name, user_id, category,
-    day, address, city, state,
+    description, address, city, state,
     image, start, end } = event;
 
   const res = await fetch(`/api/events/${event.id}`, {
@@ -75,7 +78,7 @@ export const updateEvent = (event) => async dispatch => {
     },
     body: JSON.stringify({
       name, user_id, category,
-      day, address, city, state,
+      description, address, city, state,
       image, start, end
     })
   });
