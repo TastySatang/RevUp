@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteEvent, getEvent } from "../store/events";
+import { deleteEvent, getEvent, createRsvp, deleteRsvp } from "../store/events";
 import EventForm from "../components/EventForm";
 import Comments from "../components/Comments";
 import { getComments } from "../store/comments";
@@ -15,7 +15,13 @@ export default function EventPage() {
   const comments = useSelector((state) => Object.values(state.comments)
   .filter(comment => comment.event_id === Number.parseInt(id)))
 
-  const [showForm, setShowForm] = useState(false);
+    const [showForm, setShowForm] = useState(false);
+    const [rsvp, setRsvp] = useState(false)
+
+    useEffect(() => {
+        dispatch(getEvent(id))
+        user.rsvp?.forEach(rsvp => {if(rsvp.id === event?.id) setRsvp(true)})
+    }, [dispatch, id, user])
 
   useEffect(() => {
     dispatch(getEvent(id))
@@ -31,26 +37,48 @@ export default function EventPage() {
       )
   }
 
-  let content;
-  if (user) {
-    if (user.name === event.user_id) {
-        content = (
-            <>
-                <button type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
-                <button type="button" onClick={() => {
-                    dispatch(deleteEvent(id))
-                    history.push('/events')
-                }}>delete</button>
 
+    if (event === undefined) {
+        return (
+            <>
             </>
         )
     }
-  } else {
+
+    const cRsvp = async () => {
+        const users_id = user.id;
+        const events_id = event.id;
+        dispatch(createRsvp(users_id, events_id))
+        setRsvp(true);
+    }
+
+    const dRsvp = async () => {
+        const users_id = user.id;
+        const events_id = event.id;
+        dispatch(deleteRsvp(users_id, events_id))
+        setRsvp(false);
+    }
+
+    let content;
+    if (user) {
+        if (user.name === event.user_id) {
+            content = (
+                <>
+                    <button type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
+                    <button type="button" onClick={() => {
+                        dispatch(deleteEvent(id))
+                        history.push('/events')
+                    }}>delete</button>
+
+                </>
+            )
+        }
+    } else {
         content = (
             <>
             </>
         )
-  }
+    }
 
   return(
     <div className='content'>
@@ -70,7 +98,12 @@ export default function EventPage() {
       {showForm && (
           <EventForm id={id} event={event}/>
       )}
-
+          {!rsvp &&
+              <button onClick={cRsvp}>Rsvp</button>
+          }
+          {rsvp &&
+              <button onClick={dRsvp}>Delete Rsvp</button>
+          }
     </ div>
 
   )

@@ -54,7 +54,6 @@ export const login = (email, password) => async (dispatch) => {
   } else {
     return ['An error occurred. Please try again.']
   }
-
 }
 
 export const logout = () => async (dispatch) => {
@@ -130,6 +129,14 @@ export const update = (username, email, description, vehicle, vehicle_pic, type,
     return ['An error occurred. Please try again.']
   }
 }
+
+export const refresh = (id) => async (dispatch) => {
+  const response = await fetch(`/api/users/${id}`);
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(setUser(data));
+  }
+};
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {

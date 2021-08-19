@@ -36,14 +36,24 @@ class User(db.Model, UserMixin):
             'vehicle': self.vehicle,
             'vehicle_pic': self.vehicle_pic,
             'type': self.type,
+            'rsvp': [event.to_dict_exUser() for event in self.meets]
         }
 
-    respondez = db.relationship(
-        "User",
+    def to_dict_exrsvp(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'description': self.description,
+            'vehicle': self.vehicle,
+            'vehicle_pic': self.vehicle_pic,
+            'type': self.type,
+        }
+
+    meets = db.relationship(
+        "Event",
         secondary=rsvps,
-        primaryjoin=(rsvps.c.users_id == id),
-        backref=db.backref("rsvps", lazy="dynamic"),
-        lazy="dynamic"
+        back_populates='attendees',
     )
 
     comments = db.relationship("Comment", back_populates='user')
