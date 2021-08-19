@@ -85,33 +85,8 @@ const Comments = ({id, comments}) => {
 
         return (
           <div key={idx}>
-            {content}
-          {/* {comment.user.username}
-          {' '}
-          {comment.comment}
-
-          {comment.user_id === user?.id && (
-            <div>
-             <button onClick={() => {
-               showEdit === false ? setShowEdit(true) : setShowEdit(false)
-               setEditId(comment.id)
-               setEditComment(comment.comment)
-               console.log(editId, showEdit)
-               }}>Show Edit</button>
-
-             {(showEdit && comment.id === editId) && (
-                  <form onSubmit={handleUpdateSubmit}>
-                    <textarea type='text'
-                      placeholder='Edit Comment'
-                      value={editComment}
-                      onChange={e => setEditComment(e.target.value)} />
-                    <button type='submit'>submit</button>
-                    <button onClick={() => dispatch(deleteComment(editId))}>Delete</button>
-                  </form>
-             )}
-            </div>
-          )} */}
-        </div>
+              {content}
+          </div>
         )
 
       })}

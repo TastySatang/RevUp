@@ -21,7 +21,7 @@ export default function EventPage() {
     useEffect(() => {
         dispatch(getEvent(id))
         user.rsvp?.forEach(rsvp => {if(rsvp.id === event?.id) setRsvp(true)})
-    }, [dispatch, id, user])
+    }, [dispatch, id, user, event?.id])
 
   useEffect(() => {
     dispatch(getEvent(id))
