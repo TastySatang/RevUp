@@ -23,7 +23,7 @@ const useCalendar = (daysShort = daysShortArr, monthNames = monthNamesArr) => {
   let prevMonthStartingPoint = prevMonthLastDate.getDate() - daysInWeek.indexOf(firstDayInMonth) + 1;
   let currentMonthCounter = 1;
   let nextMonthCounter = 1;
-  const rows = 6;
+  const rows = 5;
   const cols = 7;
   const calendarRows = {};
 
@@ -86,4 +86,4 @@ const useCalendar = (daysShort = daysShortArr, monthNames = monthNamesArr) => {
   }
 }
 
-export default useCalendar; 
+export default useCalendar;
