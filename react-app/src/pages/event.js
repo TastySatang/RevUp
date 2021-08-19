@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteEvent, getEvent } from "../store/events";
+import { deleteEvent, getEvent, createRsvp, deleteRsvp } from "../store/events";
 import EventForm from "../components/EventForm";
 
 export default function EventPage() {
@@ -16,8 +16,10 @@ export default function EventPage() {
 
     useEffect(() => {
         dispatch(getEvent(id))
-
+        user.rsvp.forEach(rsvp => {if(rsvp.id === event?.id) setRsvp(true)})
     }, [dispatch, id, user])
+
+
 
 
 
@@ -28,24 +30,17 @@ export default function EventPage() {
         )
     }
 
-    const createRsvp = async () => {
+    const cRsvp = async () => {
         const users_id = user.id;
         const events_id = event.id;
-        await fetch('/api/rsvp/create', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                users_id,
-                events_id,
-            })
-        });
+        dispatch(createRsvp(users_id, events_id))
         setRsvp(true);
     }
 
-    const deleteRsvp = async () => {
-        if (user) {
-
-        }
+    const dRsvp = async () => {
+        const users_id = user.id;
+        const events_id = event.id;
+        dispatch(deleteRsvp(users_id, events_id))
         setRsvp(false);
     }
 
@@ -90,10 +85,10 @@ export default function EventPage() {
                     <EventForm id={id} event={event} />
                 )}
                 {!rsvp &&
-                    <button onClick={createRsvp}>Rsvp</button>
+                    <button onClick={cRsvp}>Rsvp</button>
                 }
                 {rsvp &&
-                    <button onClick={deleteRsvp}>Delete Rsvp</button>
+                    <button onClick={dRsvp}>Delete Rsvp</button>
                 }
             </ div>
         </>

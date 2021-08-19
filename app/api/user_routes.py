@@ -16,7 +16,5 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    rsvp = user.respondez.all()
     user = user.to_dict()
-    user['rsvps'] = rsvp
     return user

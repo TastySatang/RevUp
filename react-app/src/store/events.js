@@ -1,7 +1,9 @@
+import { refresh } from './session';
+
 const SET_EVENT = 'events/SET_EVENT'
 const REMOVE_EVENT = 'events/REMOVE_EVENT'
 
-const setEvent = (event) =>({
+const setEvent = (event) => ({
   type: SET_EVENT,
   event
 })
@@ -47,7 +49,7 @@ export const createEvent = (event) => async dispatch => {
       name, user_id, category,
       description, address, city, state,
       image, start, end
-    } )
+    })
   });
 
   if (res.ok) {
@@ -85,7 +87,7 @@ export const updateEvent = (event) => async dispatch => {
 
   if (res.ok) {
     const data = await res.json();
-    console.log('monkeydata',data)
+    console.log('monkeydata', data)
     dispatch(setEvent(data))
     return data
   } else if (res.status < 500) {
@@ -111,11 +113,42 @@ export const deleteEvent = (id) => async dispatch => {
   }
 }
 
+export const deleteRsvp = (users_id, events_id) => async dispatch => {
+  const res = await fetch('/api/rsvp/delete', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      users_id,
+      events_id,
+    })
+  });
+  if (res.ok) {
+    await res.json();
+    dispatch(refresh(users_id))
+  }
+}
+
+export const createRsvp = (users_id, events_id) => async dispatch => {
+  console.log('in create rsvp')
+  const res = await fetch('/api/rsvp/create', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      users_id,
+      events_id,
+    })
+  });
+  if (res.ok) {
+    await res.json();
+    dispatch(refresh(users_id))
+  }
+}
+
 const initialState = {};
 
 const eventReducer = (state = initialState, action) => {
   let newState = { ...state };
-  switch (action.type){
+  switch (action.type) {
     case SET_EVENT:
       // newState = { ...state }
       action.event.events.forEach(eve => {
