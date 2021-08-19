@@ -17,11 +17,11 @@ const NavBar = () => {
         <header>
             {current_user &&
                 <a onClick={toHome}>
-                    <img className='logo' src='images/Logo3.png'></img>
+                    <img className='logo' src='/images/Logo3.png'></img>
                 </a>
             }
             {!current_user &&
-                <img className='logo' src='images/Logo3.png'></img>
+                <img className='logo' src='/images/Logo3.png'></img>
             }
             {/* <NavLink to='/' exact={true} className='logo'>Home</NavLink> */}
             <a href='/'>
