@@ -18,4 +18,5 @@ class Comment(db.Model):
             'comment': self.comment,
             'event_id': self.event_id,
             'user_id': self.user_id,
+            'user': self.user.to_dict(),
         }

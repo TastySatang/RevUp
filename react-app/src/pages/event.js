@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent, getEvent } from "../store/events";
 import EventForm from "../components/EventForm";
+import Comments from "../components/Comments";
 import { getComments } from "../store/comments";
 
 export default function EventPage() {
@@ -64,19 +65,12 @@ export default function EventPage() {
           {event.name}
         </div>
       </div>
-
+      <Comments id={id} comments={comments} />
       {content}
       {showForm && (
           <EventForm id={id} event={event}/>
       )}
 
-      {comments.map((comment, idx) => {
-        return (
-          <div key={idx}>
-            <p>{comment.comment}</p>
-          </div>
-        )
-      })}
     </ div>
 
   )
