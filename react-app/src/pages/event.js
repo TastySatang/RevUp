@@ -22,7 +22,7 @@ export default function EventPage() {
 
   useEffect(() => {
     dispatch(getEvent(id))
-    user.rsvp?.forEach(rsvp => { if (rsvp.id === event?.id) setRsvp(true) })
+    user?.rsvp?.forEach(rsvp => { if (rsvp.id === event?.id) setRsvp(true) })
   }, [dispatch, id, user, event?.id])
 
   useEffect(() => {
@@ -30,6 +30,7 @@ export default function EventPage() {
     dispatch(getComments(id))
   }, [dispatch, id, user])
 
+  if (!user) history.push('/login')
 
   if (event === undefined) {
     return (
