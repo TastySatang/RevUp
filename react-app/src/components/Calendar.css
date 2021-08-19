@@ -1,15 +1,34 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
-.calendar .day {
-    position: relative;
-    width: calc(100% / 7);
-    height: 44px;
-    display: inline-block;
-    background-color: white;
-    z-index: 1;
-    text-align: center;
+/* .calendar .day {
+	position: relative;
+	width: calc(100% / 7);
+	height: 44px;
+	display: inline-block;
+	background-color: white;
+	z-index: 1;
+	text-align: center;
+} */
+
+/* .table {
+	margin: 0 auto 20px;
+} */
+
+.today {
+	background-color: #e6b6b6;
+}
+
+.in-prev-month,
+.in-next-month {
+	opacity: 0.5;
+}
+
+.indv-date {
+	width: 100px;
+    height: 50px;
+	border: 1px solid black;
 }

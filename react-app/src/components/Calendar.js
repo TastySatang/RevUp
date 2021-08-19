@@ -1,45 +1,47 @@
-import React, { useState, useEffect } from "react";
-import Calendar from 'react-calendar'
-import moment from "moment"
+import React, { Fragment } from 'react';
+
+import useCalendar from './useCalendar';
 import "./Calendar.css"
 
-export default function CalendarComponent() {
-    const [value, setValue] = useState(moment());
-    const [calendar, setCalendar] = useState([]);
+const CalendarComponent = () => {
+  const { calendarRows, selectedDate, todayFormatted, daysShort, monthNames, getNextMonth, getPrevMonth } = useCalendar();
 
-    const startDay = value.clone().startOf("month").startOf("week");
-    const endDay = value.clone().endOf("month").endOf("week");
+  const dateClickHandler = date => {
+    console.log(date);
+  }
 
-    useEffect(() => {
-        const day = startDay.clone().subtract(1, "day");
-        const a = []
-        while (day.isBefore(endDay), "day") {
-            a.push(
-                Array(7).fill(0).map(() => day.add(1, "day").clone())
-            );
-        };
+  return(
+    <Fragment>
+      <p>Selected Month: {`${monthNames[selectedDate.getMonth()]} - ${selectedDate.getFullYear()}`}</p>
+      <table className="table">
+        <thead>
+          <tr>
+            {daysShort.map(day => (
+              <th key={day}>{day}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {
+            Object.values(calendarRows).map(cols => {
+              return <tr key={cols[0].date}>
+                {cols.map(col => (
+                  col.date === todayFormatted
+                    ? <td key={col.date} className={`${col.classes} today`} onClick={() => dateClickHandler(col.date)}>
+                      {col.value}
+                    </td>
+                    : <td key={col.date} onClick={() => dateClickHandler(col.date)}><div className='indv-date'>{col.value}</div></td>
+                ))}
+              </tr>
+            })
+          }
+        </tbody>
+      </table>
 
-        setCalendar(a)
+      <button className="button" onClick={getPrevMonth}>Prev</button>
+      <button className="button" onClick={getNextMonth}>Next</button>
+    </Fragment>
+  );
+}
 
-    }, [value])
-
-
-
-    return (
-        <>
-            <div className='calendar'>
-                {
-                    calendar.map((week) => <div>
-                        {
-                            week.map((day) => <div className='day' onClick={() => setValue(day)}>
-                                {day.format("D").toString()}
-                            </div>)
-                        }
-                    </div>)
-                }
-                {day.format("MM/DD")}
-            </div>
-        </>
-
-    );
-};
+export default CalendarComponent;
