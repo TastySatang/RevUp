@@ -47,7 +47,6 @@ def eventPost():
 
 @event_routes.route('/<id>', methods=['PUT'])
 def eventPut(id):
-  print('inside the put route', id)
   form = EventForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 

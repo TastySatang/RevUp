@@ -10,6 +10,7 @@ def commentPost(id):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    print('please print ')
     if form.validate_on_submit():
         comment = Comment.query.filter(Comment.id==id).first()
         form.populate_obj(comment)
