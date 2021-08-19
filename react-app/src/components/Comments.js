@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createComment, updateComment, deleteComment } from '../store/comments';
 
@@ -51,24 +51,55 @@ const Comments = ({id, comments}) => {
         <button type='submit'>submit</button>
       </form>
 
-
       {comments?.map((comment,idx) => {
+        let content;
+        if (showEdit && comment.id === editId) {
+          content = (
+            <form onSubmit={handleUpdateSubmit}>
+              <textarea type='text'
+                placeholder='Edit Comment'
+                value={editComment}
+                onChange={e => setEditComment(e.target.value)} />
+              <button type='submit'>submit</button>
+              <button onClick={() => setShowEdit(false)}>Cancel</button>
+              <button onClick={() => dispatch(deleteComment(editId))}>Delete</button>
+            </form>
+          )
+        } else {
+          content = (
+            <div>
+              {comment.user.username}
+              {comment.comment}
+
+              {comment.user_id === user?.id  && (
+                <button onClick={() => {
+                  showEdit === false ? setShowEdit(true) : setShowEdit(false)
+                  setEditId(comment.id)
+                  setEditComment(comment.comment)
+                  console.log(editId, showEdit)
+                }}>Show Edit</button>
+              )}
+            </div>
+          )
+        }
+
         return (
           <div key={idx}>
-          {comment.user.username}
+            {content}
+          {/* {comment.user.username}
           {' '}
           {comment.comment}
 
           {comment.user_id === user?.id && (
             <div>
              <button onClick={() => {
-               showEdit == false ? setShowEdit(true) : setShowEdit(false)
+               showEdit === false ? setShowEdit(true) : setShowEdit(false)
                setEditId(comment.id)
                setEditComment(comment.comment)
                console.log(editId, showEdit)
                }}>Show Edit</button>
 
-             {(showEdit && comment.id == editId) && (
+             {(showEdit && comment.id === editId) && (
                   <form onSubmit={handleUpdateSubmit}>
                     <textarea type='text'
                       placeholder='Edit Comment'
@@ -79,7 +110,7 @@ const Comments = ({id, comments}) => {
                   </form>
              )}
             </div>
-          )}
+          )} */}
         </div>
         )
 
