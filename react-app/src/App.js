@@ -10,10 +10,13 @@ import EventsPage from './pages/events';
 import EventPage from './pages/event';
 import CreateEvent from './pages/CreateEvent';
 import User from './components/User';
+import CalendarComponent from './components/Calendar'
 import { authenticate } from './store/session';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +29,8 @@ function App() {
   if (!loaded) {
     return null;
   }
+
+
 
   return (
     <BrowserRouter>
@@ -44,6 +49,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+          <CalendarComponent  />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -9,7 +9,7 @@ class EventForm(FlaskForm):
     name = StringField('Name', dr)
     user_id = IntegerField('User ID', dr)
     category = StringField('Category', dr)
-    day = DateField('Date', dr)
+    description = StringField('Description', dr)
     address = StringField('Address', dr)
     city = StringField('City', dr)
     state = StringField('State', dr)

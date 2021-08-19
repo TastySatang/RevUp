@@ -4,9 +4,9 @@ button {
     padding: 9px 25px;
     width: 100px;
     height: 50px;
-    background-color: #F5100D;
+    background-color: #ffcbca;
     border: 2px solid black;
-    border-radius: 50px;
+    border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease 0s
 }
@@ -20,7 +20,6 @@ h1, label {
 
 input, textarea, select, option {
     background-color: #edf0f1;
-    border: 2px solid black;
 }
 
 
@@ -30,7 +29,6 @@ form{
 	margin: 10px auto;
 	padding: 16px;
 	background-color: #F7F7F7;
-    border: 2px solid black;
 }
 
 form > div {
