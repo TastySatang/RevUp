@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent, getEvent } from "../store/events";
 import EventForm from "../components/EventForm";
+import { getComments } from "../store/comments";
 
 export default function EventPage() {
   const dispatch = useDispatch();
@@ -10,13 +11,17 @@ export default function EventPage() {
   const { id } = useParams();
   const user = useSelector((state) => state.session.user)
   const event = useSelector((state) => state.events[id])
+  const comments = useSelector((state) => Object.values(state.comments)
+  .filter(comment => comment.event_id === Number.parseInt(id)))
 
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     dispatch(getEvent(id))
-
+    dispatch(getComments(id))
   }, [dispatch, id, user])
+
+  console.log(comments)
 
   if (event === undefined) {
       return (
@@ -64,6 +69,15 @@ export default function EventPage() {
       {showForm && (
           <EventForm id={id} event={event}/>
       )}
+
+      {comments.map((comment, idx) => {
+        return (
+          <div key={idx}>
+            <p>{comment.comment}</p>
+          </div>
+        )
+      })}
     </ div>
+
   )
 }

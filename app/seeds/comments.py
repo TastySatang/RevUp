@@ -14,8 +14,15 @@ def seed_comments():
       user_id =1,
     )
 
+    three = Comment(
+      comment = 'comment on second event',
+      event_id = 2,
+      user_id = 1,
+    )
+
     db.session.add(one)
     db.session.add(two)
+    db.session.add(three)
 
     db.session.commit()
 
