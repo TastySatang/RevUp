@@ -17,8 +17,11 @@ const Comments = ({id, comments}) => {
       event_id: Number.parseInt(id),
     }
 
+    setComment('')
     await dispatch(createComment(payload))
   }
+
+
 
   return (
     <>
@@ -33,8 +36,15 @@ const Comments = ({id, comments}) => {
 
       {comments?.map((comment,idx) => (
         <div key={idx}>
-          {comment.comment}
           {comment.user.username}
+          {'  '}
+          {comment.comment}
+
+          {/* {comment.user_id === user.id && (
+            <button onClick={(e) => }>
+              edit
+            </button>
+          )} */}
         </div>
       ))}
 
