@@ -25,3 +25,6 @@ def commentDelete(id):
     db.session.commit()
     return {'comments': id}
 
+@comment_routes.route('/health')
+def events():
+  return { 'message': 'set up correctly'}
