@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
-import { NavLink, useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './LoginForm.css'
 
@@ -21,7 +21,9 @@ const NavBar = () => {
                 </a>
             }
             {!current_user &&
-                <img className='logo' src='/images/Logo3.png'></img>
+                <Link to='/'>
+                    <img className='logo' src='/images/Logo3.png'></img>
+                </Link>
             }
             {/* <NavLink to='/' exact={true} className='logo'>Home</NavLink> */}
             <a href='/'>
