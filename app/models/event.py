@@ -34,7 +34,8 @@ class Event(db.Model):
             'state' : self.state,
             'image' : self.image,
             'start' : self.start,
-            'end' : self.end
+            'end' : self.end,
+            'rsvp': [user.to_dict_exrsvp() for user in self.attendees]
         }
 
     def to_dict_exUser(self):
