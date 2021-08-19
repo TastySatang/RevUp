@@ -16,12 +16,12 @@ class Event(db.Model):
     start = db.Column(db.String, nullable=False)
     end = db.Column(db.String, nullable=False)
 
-    respondez = db.relationship(
-        "Event",
+    attendees = db.relationship(
+        "User",
         secondary=rsvps,
-        primaryjoin=(rsvps.c.events_id == id),
-        backref=db.backref("rsvps", lazy="dynamic"),
-        lazy="dynamic"
+        # primaryjoin=(rsvps.c.events_id == id),
+        # backref=db.backref("rsvps", lazy="dynamic"),
+        back_populates='meets',
     )
 
     def to_dict(self):

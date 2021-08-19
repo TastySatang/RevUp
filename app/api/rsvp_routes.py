@@ -24,12 +24,12 @@ def get_for_user(id):
 @rsvp_routes.route('/create', methods=['POST'])
 @login_required
 def create():
-    data = request.get_json();
+    data = request.get_json()
     user = User.query.get(data['users_id'])
     event = Event.query.get(data['events_id'])
     print('THE USERRR', user)
     print('THE EVENTTTTT', event)
-    user.respondez.append(user)
+    user.meets.append(event)
     db.session.add(user)
     db.session.commit()
     return {'message': 'rsvp DELETED'}

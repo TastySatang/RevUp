@@ -38,12 +38,18 @@ class User(db.Model, UserMixin):
             'type': self.type,
         }
 
-    respondez = db.relationship(
-        "User",
+    # respondez = db.relationship(
+    #     "User",
+    #     secondary=rsvps,
+    #     primaryjoin=(rsvps.c.users_id == id),
+    #     backref=db.backref("rsvps", lazy="dynamic"),
+    #     lazy="dynamic"
+    # )
+
+    meets = db.relationship(
+        "Event",
         secondary=rsvps,
-        primaryjoin=(rsvps.c.users_id == id),
-        backref=db.backref("rsvps", lazy="dynamic"),
-        lazy="dynamic"
+        back_populates='attendees',
     )
 
     comments = db.relationship("Comment", back_populates='user')
