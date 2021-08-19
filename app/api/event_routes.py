@@ -31,7 +31,7 @@ def eventPost():
       category=form.data['category'],
       description=form.data['description'],
       address=form.data['address'],
-        city=form.data['city'],
+      city=form.data['city'],
       state=form.data['state'],
       image=form.data['image'],
       start=form.data['start'],

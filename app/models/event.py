@@ -16,19 +16,31 @@ class Event(db.Model):
     start = db.Column(db.String, nullable=False)
     end = db.Column(db.String, nullable=False)
 
-    respondez = db.relationship(
-        "Event",
+    attendees = db.relationship(
+        "User",
         secondary=rsvps,
-        primaryjoin=(rsvps.c.events_id == id),
-        backref=db.backref("rsvps", lazy="dynamic"),
-        lazy="dynamic"
+        back_populates='meets',
     )
 
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
-            'user': self.user.to_dict(),
+            'user': self.user.to_dict_exrsvp(),
+            'category': self.category,
+            'description': self.description,
+            'address' : self.address,
+            'city' : self.city,
+            'state' : self.state,
+            'image' : self.image,
+            'start' : self.start,
+            'end' : self.end
+        }
+
+    def to_dict_exUser(self):
+        return {
+            'id': self.id,
+            'name': self.name,
             'category': self.category,
             'description': self.description,
             'address' : self.address,
