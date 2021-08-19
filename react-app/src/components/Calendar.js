@@ -37,7 +37,7 @@ export default function CalendarComponent() {
                         }
                     </div>)
                 }
-                {/* {day.format("MM/DD")} */}
+                {day.format("MM/DD")}
             </div>
         </>
 
