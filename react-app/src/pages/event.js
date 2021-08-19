@@ -6,6 +6,8 @@ import EventForm from "../components/EventForm";
 import Comments from "../components/Comments";
 import { getComments } from "../store/comments";
 
+import './event.css'
+
 export default function EventPage() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -54,14 +56,14 @@ export default function EventPage() {
   if (user) {
     if (user.name === event.user_id) {
       content = (
-        <>
+        <div>
           <button type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
           <button type="button" onClick={() => {
             dispatch(deleteEvent(id))
             history.push('/events')
           }}>delete</button>
 
-        </>
+        </div>
       )
     }
   } else {
@@ -74,27 +76,50 @@ export default function EventPage() {
   return (
     <div className='content'>
       <div className='event__header'>
-        {event.user.username}
+        <div className='header__eventinfo'>
+          <span className='eventinfo__start'>
+            {event.start}
+          </span>
+          <h2 className='eventinfo__name'>
+            {event.name}
+          </h2>
+        </div>
+        <div className='header__userinfo'>
+          <div className='userinfo__image--holder'>
+            <img className='userinfo__image' src={event.user.vehicle_pic} />
+          </div>
+          <div className='userinfo__host'>
+            <span>Hosted By</span>
+            <span className='host__name'>{event.user.username}</span>
+          </div>
+        </div>
       </div>
-      <div className='event__content'>
+      <div className='content__event'>
         <div className='event__image'>
           <img src={event.image} alt='event' />
         </div>
-        <div>
-          {event.name}
-        </div>
+        <h2>
+          Details
+        </h2>
+        <p>
+          {event.description}
+        </p>
+
+        {content}
+        {showForm && (
+          <EventForm id={id} event={event} />
+        )}
+        <Comments id={id} comments={comments} />
       </div>
-      <Comments id={id} comments={comments} />
-      {content}
-      {showForm && (
-        <EventForm id={id} event={event} />
-      )}
-      {!rsvp &&
-        <button onClick={cRsvp}>Rsvp</button>
-      }
-      {rsvp &&
-        <button onClick={dRsvp}>Delete Rsvp</button>
-      }
+
+      <div className='content__side'>
+        {!rsvp &&
+          <button onClick={cRsvp}>Rsvp</button>
+        }
+        {rsvp &&
+          <button onClick={dRsvp}>Delete Rsvp</button>
+        }
+      </div>
     </ div>
 
   )
