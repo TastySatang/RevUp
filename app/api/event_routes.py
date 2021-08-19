@@ -73,7 +73,7 @@ def eventDel(id):
 @event_routes.route('/<id>/comments')
 def commentsGet(id):
     comments = Comment.query.filter(Comment.event_id == id).all()
-    return [comment.to_dict() for comment in comments]
+    return {'comments': [comment.to_dict() for comment in comments]}
 
 @event_routes.route('/<id>/comments', methods=['POST'])
 def commentPost(id):
@@ -89,7 +89,7 @@ def commentPost(id):
 
         db.session.add(newComment)
         db.session.commit()
-        return {'comment': [newComment.to_dict()]}
+        return {'comments': [newComment.to_dict()]}
     return {'errors': [form.errors]}
 
 # /api/events/health to check if api is working correctly
