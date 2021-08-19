@@ -23,12 +23,6 @@ export default function EventForm({id, event}) {
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(start)
 
-    const onChange = (dates) => {
-        const[start, end] = dates;
-        setStart(start);
-        setEnd(end)
-    }
-
     useEffect(() => {
         if (id) {
             setName(event.name)

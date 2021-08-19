@@ -1,7 +1,8 @@
+from re import M
 from flask import Blueprint, request
 from flask.wrappers import Request
-from app.models import db, Event
-from app.forms import EventForm
+from app.models import db, Event, Comment
+from app.forms import EventForm, CommentForm
 
 event_routes = Blueprint('events', __name__)
 
@@ -46,7 +47,6 @@ def eventPost():
 
 @event_routes.route('/<id>', methods=['PUT'])
 def eventPut(id):
-  print('inside the put route', id)
   form = EventForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -67,6 +67,29 @@ def eventDel(id):
   db.session.delete(event)
   db.session.commit()
   return {'events': id}
+
+# getting comments for events
+@event_routes.route('/<id>/comments')
+def commentsGet(id):
+    comments = Comment.query.filter(Comment.event_id == id).all()
+    return {'comments': [comment.to_dict() for comment in comments]}
+
+@event_routes.route('/<id>/comments', methods=['POST'])
+def commentPost(id):
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        newComment = Comment(
+          comment=form.data['comment'],
+          event_id=id,
+          user_id=form.data['user_id']
+        )
+
+        db.session.add(newComment)
+        db.session.commit()
+        return {'comments': [newComment.to_dict()]}
+    return {'errors': [form.errors]}
 
 # /api/events/health to check if api is working correctly
 @event_routes.route('/health')
