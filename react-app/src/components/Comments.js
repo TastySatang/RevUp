@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createComment, updateComment, deleteComment } from '../store/comments';
+import { createComment, updateComment, deleteComment, getComments } from '../store/comments';
 
 const Comments = ({id, comments}) => {
   const dispatch = useDispatch()
@@ -9,6 +9,10 @@ const Comments = ({id, comments}) => {
   const [showEdit, setShowEdit] = useState(false)
   const [editComment, setEditComment] = useState('')
   const [comment, setComment] = useState('')
+
+  useEffect(() => {
+    dispatch(getComments(id))
+  }, [id, dispatch, editComment])
 
   const handleNewSubmit = async e => {
     e.preventDefault()
@@ -39,6 +43,12 @@ const Comments = ({id, comments}) => {
     await dispatch(updateComment(payload))
   }
 
+  const handleDeleteSubmit = async e => {
+    e.preventDefault()
+
+    await dispatch(deleteComment(editId))
+  }
+
 
 
   return (
@@ -62,7 +72,7 @@ const Comments = ({id, comments}) => {
                 onChange={e => setEditComment(e.target.value)} />
               <button type='submit'>submit</button>
               <button onClick={() => setShowEdit(false)}>Cancel</button>
-              <button onClick={() => dispatch(deleteComment(editId))}>Delete</button>
+              <button onClick={handleDeleteSubmit}>Delete</button>
             </form>
           )
         } else {
