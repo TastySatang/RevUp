@@ -31,7 +31,7 @@
 	width: 100px;
 	height: 50px;
 	border: 1px solid black;
-	background: linear-gradient(70deg, rgb(255, 255, 255), rgb(235, 235, 235));
+	background: linear-gradient(70deg, rgb(255, 255, 255), rgb(240, 240, 240));
 	font-weight: bold;
 }
 
@@ -69,4 +69,5 @@ p {
 	margin: 2px;
     font-size: 14.3px;
     margin-top: 15px;
+    font-weight: bold;
 }
