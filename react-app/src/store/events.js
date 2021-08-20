@@ -1,10 +1,16 @@
 import { refresh } from './session';
 
 const SET_EVENT = 'events/SET_EVENT'
+const SET_EVENTS = 'events/SET_EVENTS'
 const REMOVE_EVENT = 'events/REMOVE_EVENT'
 
 const setEvent = (event) => ({
   type: SET_EVENT,
+  event
+})
+
+const setEvents = (event) => ({
+  type: SET_EVENTS,
   event
 })
 
@@ -18,7 +24,26 @@ export const getEvents = () => async dispatch => {
 
   if (res.ok) {
     const events = await res.json();
+    console.log(events)
     dispatch(setEvent(events))
+  }
+}
+
+export const getEventsSearch = ({name, category, state}) => async dispatch => {
+  const res = await fetch('/api/events/search', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name,
+      category,
+      state
+    })})
+
+  if (res.ok) {
+    const events = await res.json();
+    dispatch(setEvents(events))
   }
 }
 
@@ -151,6 +176,12 @@ const eventReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_EVENT:
       // newState = { ...state }
+      action.event.events.forEach(eve => {
+        newState[eve.id] = eve
+      })
+      return newState
+    case SET_EVENTS:
+      newState = { }
       action.event.events.forEach(eve => {
         newState[eve.id] = eve
       })
