@@ -10,25 +10,21 @@ const NavBar = () => {
     const history = useHistory()
 
     const toHome = (e) => {
-        history.push('/')
+        history.push('/home')
       };
 
     return (
         <header>
             {current_user &&
-                <a onClick={toHome}>
+                <Link to='/home'>
                     <img className='logo' src='/images/Logo3.png'></img>
-                </a>
+                </Link>
             }
             {!current_user &&
                 <Link to='/'>
                     <img className='logo' src='/images/Logo3.png'></img>
                 </Link>
             }
-            {/* <NavLink to='/' exact={true} className='logo'>Home</NavLink> */}
-            <a href='/'>
-                <img className='logo'src='/images/Logo3.png'></img>
-            </a>
             <ul>
                 <nav className='nav__links'>
                     {!current_user &&
