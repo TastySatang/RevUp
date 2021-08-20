@@ -55,7 +55,7 @@ export default function EventPage() {
 
   let content;
   if (user) {
-    if (user.name === event.user_id) {
+    if (user.id === event.user.id) {
       content = (
         <div>
           <button type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
