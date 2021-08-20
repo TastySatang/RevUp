@@ -1,28 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
-import { Link, NavLink, useHistory } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './LoginForm.css'
 
 
 const NavBar = () => {
     const current_user = useSelector(state => state.session.user)
-    const history = useHistory()
-
-    const toHome = (e) => {
-        history.push('/home')
-      };
 
     return (
         <header>
             {current_user &&
                 <Link to='/home'>
-                    <img className='logo' src='/images/Logo3.png'></img>
+                    <img className='logo' src='/images/Logo3.png' alt='logo-main'></img>
                 </Link>
             }
             {!current_user &&
                 <Link to='/'>
-                    <img className='logo' src='/images/Logo3.png'></img>
+                    <img className='logo' src='/images/Logo3.png' alt='logo-main-alt'></img>
                 </Link>
             }
             <ul>
