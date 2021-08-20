@@ -10,6 +10,7 @@ import EventsPage from './pages/events';
 import EventPage from './pages/event';
 import CreateEvent from './pages/CreateEvent';
 import User from './components/User';
+import CalendarComponent from './components/Calendar'
 import { authenticate } from './store/session';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+          <CalendarComponent />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
