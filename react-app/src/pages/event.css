@@ -174,6 +174,10 @@
   margin: 0 5px;
 }
 
+.delete {
+    background-color: #F65858;
+}
+
 .edit {
   bottom: 10px;
   right: 0px;
@@ -334,4 +338,9 @@
 .rsvp--do:hover {
     background-color: #0097AA;
     color: #FEFEFE;
+}
+
+.event__details {
+    display: flex;
+    justify-content: space-between;
 }

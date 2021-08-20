@@ -92,9 +92,9 @@ const Comments = ({ id, comments }) => {
                   value={editComment}
                   onChange={e => setEditComment(e.target.value)} />
                 <div className='editbuttons__holder'>
-                  <button className='button' type='submit'>submit</button>
+                  <button className='button' type='submit'>Submit</button>
                   <button className='button' onClick={() => setShowEdit(false)}>Cancel</button>
-                  <button className='button' onClick={handleDeleteSubmit}>Delete</button>
+                  <button className='button delete' onClick={handleDeleteSubmit}>Delete</button>
                 </div>
               </form>
             </div>

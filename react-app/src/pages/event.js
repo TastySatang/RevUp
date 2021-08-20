@@ -58,11 +58,11 @@ export default function EventPage() {
     if (user.id === event.user.id) {
       content = (
         <div>
-          <button type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
-          <button type="button" onClick={() => {
+          <button className='button' type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
+          <button className='button delete' type="button" onClick={() => {
             dispatch(deleteEvent(id))
             history.push('/events')
-          }}>delete</button>
+          }}>DELETE EVENT</button>
 
         </div>
       )
@@ -106,12 +106,16 @@ export default function EventPage() {
         <div className='event__image'>
           <img src={event.image} alt='event' />
         </div>
-        <h2 className='event__h2'>
-          Details
-        </h2>
+        <div className='event__details'>
+          <h2 className='event__h2'>
+            Details
+          </h2>
+          {content}
+        </div>
         <p className='event__description'>
           {event.description}
         </p>
+
         {showForm && (
           <EventForm id={id} event={event} />
         )}
@@ -119,8 +123,6 @@ export default function EventPage() {
       </div>
 
       <div className='content__side'>
-        {content}
-
         <div className='side__date'>
           <i className="fas fa-clock"></i>
           <div className='date__info'>
