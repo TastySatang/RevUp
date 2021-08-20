@@ -90,7 +90,6 @@
 }
 
 .search__title {
-  margin-top: 10px;
   margin-right: 0px;
   height: 42px;
   border: 1px solid #D9D9D9;
@@ -118,6 +117,7 @@
 
 .form__title {
   background-color: #FFFFFF;
+  display: flex;
 }
 
 .form__type {
