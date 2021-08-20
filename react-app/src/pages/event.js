@@ -165,9 +165,12 @@ export default function EventPage() {
             )
           })}
         </div>
-        {showForm && (
-          <EventForm id={id} event={event} />
-        )}
+        <div id='updateformholder'>
+          {showForm && (
+            <EventForm id={id} event={event} />
+          )}
+
+        </div>
       </div>
     </ div>
 
