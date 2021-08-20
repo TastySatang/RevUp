@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/session';
 import '.././LoginForm.css'
-import { useHistory, NavLink } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 const LogoutButton = () => {
   const history = useHistory()
@@ -17,23 +17,23 @@ const LogoutButton = () => {
 
   return (
     <>
-      <button className='logout-button' onClick={() => setClicked(!clicked)}>
-        <p>Profile</p>
+      <button className='logout-button' onClick={() => setClicked(!clicked)} style={{backgroundImage: `url(${current_user.vehicle_pic})`}}>
+        {/* <img src={current_user.vehicle_pic} alt='profile' className='profile-btn__img'/> */}
+        {/* <p>Profile</p> */}
       </button>
       {clicked &&
         <>
-          <table className='profileTable'>
-            <tr>
-              <NavLink to={`/users/${current_user.id}`} exact={true} activeClassName='active' onClick={() => setClicked(false)}>
-                profile
-              </NavLink>
-            </tr>
-            <tr>
-              <a className='logoutButton' onClick={onLogout}>
-                logout
-              </a>
-            </tr>
-          </table>
+          <div className='profile-dropdown-div'>
+            <div>
+              <h4 className='profile-dropdown__greeting'>{`Hello, ${current_user.username}!`}</h4>
+            </div>
+            <Link to={`/users/${current_user.id}`} onClick={() => setClicked(false)}>
+              profile
+            </Link>
+            <Link className='profile-dropdown__a' onClick={onLogout} to='/'>
+              logout
+            </Link>
+          </div>
         </>
       }
     </>

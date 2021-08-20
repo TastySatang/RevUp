@@ -28,7 +28,7 @@ const LoginForm = () => {
     };
 
     if (user) {
-        return <Redirect to='/' />;
+        return <Redirect to='/home' />;
     }
 
     return (
@@ -44,25 +44,25 @@ const LoginForm = () => {
                         ))}
                     </div>
                     <div className='fields'>
-                    <div className='email-field'>
-                        <input
-                            name='email'
-                            type='text'
-                            placeholder=' enter e-mail address'
-                            value={email}
-                            onChange={updateEmail}
-                        />
-                        <i class="far fa-envelope"></i>
-                    </div>
-                    <div className='password-field'>
-                        <input
-                            name='password'
-                            type='password'
-                            placeholder=' enter password'
-                            value={password}
-                            onChange={updatePassword}
-                        />
-                    </div>
+                        <div className='email-field'>
+                            <input
+                                name='email'
+                                type='text'
+                                placeholder=' enter e-mail address'
+                                value={email}
+                                onChange={updateEmail}
+                            />
+                            <i className="far fa-envelope"></i>
+                        </div>
+                        <div className='password-field'>
+                            <input
+                                name='password'
+                                type='password'
+                                placeholder=' enter password'
+                                value={password}
+                                onChange={updatePassword}
+                            />
+                        </div>
                     </div>
                     <button className='loginButton' type='submit'>Sign In</button>
                 </form>
