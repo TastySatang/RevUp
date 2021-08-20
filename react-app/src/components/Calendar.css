@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Montserrat", sans-serif;
+}
+
+.calendar {
+	border: 2px solid rgb(251, 190, 190);
+	width: 850px;
+	display: flex;
+	border-radius: 5px;
+	box-shadow: 0 0 10px;
+	margin-left: 20%;
+	margin-right: 50%;
+    margin-top: 10px;
+}
+
+.today {
+	background-color: #e6b6b64d;
+}
+
+.in-prev-month,
+.in-next-month {
+	opacity: 0.5;
+}
+
+.indv-date {
+	width: 100px;
+	height: 50px;
+	border: 1px solid black;
+	background: linear-gradient(70deg, rgb(255, 255, 255), rgb(240, 240, 240));
+	font-weight: bold;
+}
+
+.prev-button,
+.next-button {
+	margin-top: 7px;
+	border-radius: 15px;
+	height: 40px;
+	font-weight: bold;
+    color: white;
+    border: 1px solid white;
+	background-color: rgba(0, 0, 0, 0.767);
+}
+
+.prev-button {
+    margin-top: 20px;
+}
+
+.prev-button:hover,
+.next-button:hover {
+	cursor: pointer;
+    background: linear-gradient(70deg, rgb(92, 91, 91), rgb(31, 31, 31))
+
+}
+
+th {
+	background-color: rgba(0, 0, 0, 0.767);
+	color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+p {
+	font-family: "Montserrat", sans-serif;
+	margin: 2px;
+    font-size: 14.3px;
+    margin-top: 15px;
+    font-weight: bold;
+}
