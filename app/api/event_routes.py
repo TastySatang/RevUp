@@ -21,7 +21,7 @@ def eventsSearch():
   category = data['category']
   state = data['state']
   print('In!!!!!!!', data)
-  events = Event.query.filter(Event.name.ilike(f'{name}%'), Event.category.ilike(f'{category}%'), Event.state.ilike(f'{state}%'))
+  events = Event.query.filter(Event.name.ilike(f'%{name}%'), Event.category.ilike(f'{category}%'), Event.state.ilike(f'{state}%'))
   print('EVENTS!!!', [event.to_dict()['name'] for event in events])
   return {'events': [event.to_dict() for event in events]}
 
