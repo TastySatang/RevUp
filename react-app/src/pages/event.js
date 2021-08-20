@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent, getEvent, createRsvp, deleteRsvp } from "../store/events";
 import EventForm from "../components/EventForm";
@@ -58,11 +58,11 @@ export default function EventPage() {
     if (user.id === event.user.id) {
       content = (
         <div>
-          <button type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
-          <button type="button" onClick={() => {
+          <button className='button' type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
+          <button className='button delete' type="button" onClick={() => {
             dispatch(deleteEvent(id))
             history.push('/events')
-          }}>delete</button>
+          }}>DELETE</button>
 
         </div>
       )
@@ -74,12 +74,17 @@ export default function EventPage() {
     )
   }
 
+  const eventStart = event.start.split('')
+  const eventEnd = event.end.split('')
+  eventStart.splice(-7, 3)
+  eventEnd.splice(-7, 3)
+
   return (
     <div className='content'>
       <div className='event__header'>
         <div className='header__eventinfo'>
           <span className='eventinfo__start'>
-            {event.start}
+            {eventStart}
           </span>
           <h2 className='eventinfo__name'>
             {event.name}
@@ -87,7 +92,9 @@ export default function EventPage() {
         </div>
         <div className='header__userinfo'>
           <div className='userinfo__image--holder'>
-            <img className='userinfo__image' src={event.user.vehicle_pic} />
+            <Link to={`/users/${event.user.id}`}>
+              <img className='userinfo__image' src={event.user.vehicle_pic} alt='userinfo' />
+            </Link>
           </div>
           <div className='userinfo__host'>
             <span>Hosted By</span>
@@ -99,27 +106,71 @@ export default function EventPage() {
         <div className='event__image'>
           <img src={event.image} alt='event' />
         </div>
-        <h2>
-          Details
-        </h2>
-        <p>
+        <div className='event__details'>
+          <h2 className='event__h2'>
+            Details
+          </h2>
+          {content}
+        </div>
+        <p className='event__description'>
           {event.description}
         </p>
 
-        {content}
-        {showForm && (
+        {/* {showForm && (
           <EventForm id={id} event={event} />
-        )}
+        )} */}
         <Comments id={id} comments={comments} />
       </div>
 
       <div className='content__side'>
+        <div className='side__date'>
+          <i className="fas fa-clock"></i>
+          <div className='date__info'>
+            <p>
+              From {eventStart}
+            </p>
+            <p>
+              To {eventEnd}
+            </p>
+          </div>
+        </div>
+
+        <div className='side__location'>
+          <i className="fas fa-map-marker-alt"></i>
+          <div className='location__info'>
+            {event.address} · {event.city}, {event.state}
+          </div>
+        </div>
+
         {!rsvp &&
-          <button onClick={cRsvp}>Rsvp</button>
+          <button className='rsvp--do' onClick={cRsvp}>RSVP</button>
         }
         {rsvp &&
-          <button onClick={dRsvp}>Delete Rsvp</button>
-        }
+          <button className='rsvp--undo' onClick={dRsvp}>Delete RSVP</button>}
+        <h3 className='attendeeh3'>{event.rsvp.length} Attendees</h3>
+        <div className='attendee__list'>
+          {event.rsvp.map((attendee, idx) => {
+
+            return (
+              <div key={idx} className='holder__attendee'>
+                <div className='holder__image--holder'>
+                  <Link to={`/users/${attendee.id}`}>
+                    <img className='holder__image' src={attendee.vehicle_pic} alt='userinfo' />
+                  </Link>
+                </div>
+                <div className='holder__username'>
+                  {attendee.username}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+        <div id='updateformholder'>
+          {showForm && (
+            <EventForm id={id} event={event} />
+          )}
+
+        </div>
       </div>
     </ div>
 
