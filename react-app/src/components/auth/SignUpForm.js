@@ -59,7 +59,7 @@ const SignUpForm = () => {
     <div className='backgroundSignUp'>
       <Errors />
       <form onSubmit={onSignUp} className='signUp'>
-        <h1>Create Acount</h1>
+        <h1>Create Account</h1>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../store/session';
 import UpdateForm from './auth/updateForm'
+import './User.css'
 
 
 function User() {
@@ -29,11 +30,10 @@ function User() {
             const user = await response.json();
             setUser(user);
         })();
+        setUpdate(false)
     }, [currentUser])
 
-    if (!user) {
-        return null;
-    }
+
 
     const deleteUser = async () => {
         await fetch(`/api/auth/delete/${userId}`, {
@@ -42,78 +42,70 @@ function User() {
         dispatch(logout())
     }
 
-    if (currentUser.id !== 1) {
-        return (
-            <ul>
-                <li>
-                    <strong>User Id</strong> {userId}
-                </li>
-                <li>
-                    <strong>Username</strong> {user.username}
-                </li>
-                <li>
-                    <strong>Email</strong> {user.email}
-                </li>
-                <li>
-                    <strong>Vehicle</strong> {user.vehicle}
-                </li>
-                <li>
-                    <strong>Pic</strong> {user.vehicle_pic}
-                </li>
-                <li>
-                    <strong>Type</strong> {user.type}
-                </li>
-                <li>
-                    <strong>Description</strong> {user.description}
-                </li>
-                {currentUser.id === user.id &&
-                    <div>
-                        <button onClick={deleteUser}>
-                            delete
-                        </button>
-                        {!update &&
-                            <button onClick={() => setUpdate(true)}>
-                                edit
-                            </button>
+    return (
+        <>
+            <div className='userHeader'>
+                <h1>{`${user.username}'s Profile Page`}</h1>
+                <div className='email_vehicle'>
+                    <strong>Email:</strong> {user.email}
+                    <strong>Vehicle:</strong> {user.vehicle}
+                </div>
+                {currentUser.id !== 1 &&
+                    <>
+                        {currentUser.id === user.id &&
+                            <>
+                                <div className='profile_buttons'>
+                                    <button className='delete_user_button' onClick={deleteUser}>
+                                        Delete
+                                    </button>
+                                    {!update &&
+                                        <button className='update_user_button' onClick={() => setUpdate(true)}>
+                                            Edit
+                                        </button>
+                                    }
+                                    {update &&
+                                        <button className='update_user_button' onClick={() => setUpdate(false)}>
+                                            Done Editing
+                                        </button>
+                                    }
+                                </div>
+                                {update &&
+                                    <div className='update_form'>
+                                        <UpdateForm user={currentUser} />
+                                    </div>
+                                }
+                            </>
                         }
-                        {update &&
-                            <div>
-                                <button onClick={() => setUpdate(false)}>
-                                    don't edit
-                                </button>
-                                <UpdateForm user={currentUser}/>
-                            </div>
-                        }
-                    </div>
+                    </>
                 }
-            </ul>
-        );
-    } else {
-        return (
-            <ul>
-                <li>
-                    <strong>User Id</strong> {userId}
-                </li>
-                <li>
-                    <strong>Username</strong> {user.username}
-                </li>
-                <li>
-                    <strong>Email</strong> {user.email}
-                </li>
-                <li>
-                    <strong>Vehicle</strong> {user.vehicle}
-                </li>
-                <li>
-                    <strong>Pic</strong> {user.vehicle_pic}
-                </li>
-                <li>
-                    <strong>Type</strong> {user.type}
-                </li>
-                <li>
-                    <strong>Description</strong> {user.description}
-                </li>
-            </ul>
-        );
-    }
-}
+            </div>
+            <div className='vehicle_user'>
+                <div className='vehicle_info'>
+                    <ul>
+                        <h3>User Info</h3>
+                        <li>
+                            <strong>Email</strong> {user.email}
+                        </li>
+                        <li>
+                            <strong>Description</strong> {user.description}
+                        </li>
+                    </ul>
+                </div>
+                <div className='vehicle_info'>
+                    <h3>Vehicle Info</h3>
+                    <img src={user.vehicle_pic}></img>
+                    <ul>
+                        <li>
+                            <strong>Vehicle</strong> {user.vehicle}
+                        </li>
+                        <li>
+                            <strong>Type</strong> {user.type}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </>
+    );
+};
+
 export default User;

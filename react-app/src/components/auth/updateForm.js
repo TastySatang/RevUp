@@ -23,74 +23,76 @@ const UpdateForm = ({user}) => {
         setErrors(data)
       }
       history.push(`/users/${user.id}`)
-      // history.push(`/`)
-  };
-
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
   };
 
   return (
-    <>
+    <div className='backgroundUpdate'>
       <Errors />
-      <form onSubmit={onUpdate}>
+      <form onSubmit={onUpdate} className='update'>
+        <h1>Update Account</h1>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
         <div>
-          <label>User Name</label>
           <input
             type='text'
             name='username'
-            onChange={updateUsername}
+            onChange={(e) => setUsername(e.target.value)}
             value={username}
+            placeholder='username'
           ></input>
         </div>
         <div>
-          <label>Email</label>
+
           <input
             type='text'
             name='email'
-            onChange={updateEmail}
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
+            placeholder='email'
           ></input>
         </div>
         <div>
-          <label>Description</label>
+          <label className='label__textarea'>Tell us about your vehicle</label>
           <textarea
+            placeholder={`My car is the bestest car there is`}
+            className='description'
             name='description'
             onChange={e => setDescription(e.target.value)}
             value={description}
             required={true}
+
           ></textarea>
         </div>
         <div>
-          <label>Vehicle</label>
+
           <input
             type='text'
             name='Vehicle'
             onChange={e => setVehicle(e.target.value)}
             value={vehicle}
+            placeholder='Whats your vehicle?'
           ></input>
         </div>
         <div>
-          <label>Vehicle Picture</label>
           <input
             type='text'
             name='VehiclePic'
             onChange={e => setVehicle_Pic(e.target.value)}
             value={vehicle_pic}
+            placeholder='URL of your vehicle pic'
           ></input>
         </div>
+
         <div>
-          <label>Vehicle Type</label>
-          <select onChange={e => setType(e.target.value)} value={type}>
+          <label className='label__selectField' >Select vehicle Type</label>
+          <select
+          className='signup__selectField'
+          onChange={e => setType(e.target.value)}
+          value={type}
+          >
             <option value='American Muscle'>American Muscle</option>
             <option value='JDM'>JDM</option>
             <option value='Luxury'>Luxury</option>
@@ -103,9 +105,9 @@ const UpdateForm = ({user}) => {
             <option value='Other'>Formula</option>
           </select>
         </div>
-        <button type='submit'>Confirm Update</button>
+        <button className='SignupB' type='submit'>Update</button>
       </form>
-    </>
+    </div>
   );
 };
 

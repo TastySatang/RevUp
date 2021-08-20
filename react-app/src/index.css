@@ -20,6 +20,7 @@ h1, label {
 
 input, textarea, select, option {
     background-color: #edf0f1;
+    border: 2px solid black;
 }
 
 
