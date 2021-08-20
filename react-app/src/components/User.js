@@ -29,7 +29,7 @@ function User() {
             const user = await response.json();
             setUser(user);
         })();
-    }, [currentUser])
+    }, [currentUser, userId])
 
     if (!user) {
         return null;
