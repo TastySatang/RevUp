@@ -18,7 +18,7 @@ const CalendarComponent = () => {
     }, [dispatch])
 
     const strToNum = (str) => {
-        
+
         if (str === 'Aug') return '8'
     }
 
@@ -47,9 +47,9 @@ const CalendarComponent = () => {
                                         return (
                                             user.rsvp.some(rsvp => rsvp.start.slice(5,7) === col.value.toString() && strToNum(rsvp.start.slice(8,11)) === col.date.split('-')[1])
                                                 ? <td key={col.date} onClick={() => dateClickHandler(col.date)}>
-                                                    <div className='indv-date'>{col.value}<a href={`/events/${event[0].id}`}>{event[0].name}</a></div>
+                                                    <div className='indv-date'>{col.value}<a className='cal-rsvp' href={`/events/${event[0].id}`}>{event[0].category}</a></div>
                                                 </td>
-                                                : < td key={col.date} onClick={() => dateClickHandler(col.value)}><div className='indv-date'>{col.date}</div></td>
+                                                : < td key={col.date} onClick={() => dateClickHandler(col.value)}><div className='indv-date'>{col.value}</div></td>
                                         )
                             })}
                                 </tr>
