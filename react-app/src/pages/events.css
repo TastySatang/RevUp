@@ -70,3 +70,13 @@
 .events__datepicker {
   background-color: #F6F6F6;
 }
+
+.search__title {
+    margin-bottom: 20px;
+    font-family: darkmode_off, arial;
+    font-weight: bold;
+}
+
+.search__form {
+    /* background-color: #8D8D8D; */
+}
