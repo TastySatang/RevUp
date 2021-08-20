@@ -3,21 +3,21 @@ import { useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './LoginForm.css'
+import logo from './images/Logo3.png'
 
 
 const NavBar = () => {
     const current_user = useSelector(state => state.session.user)
-
     return (
         <header>
             {current_user &&
                 <Link to='/home'>
-                    <img className='logo' src='/images/Logo3.png' alt='logo-main'></img>
+                    <img className='logo' src={logo} alt='logo-main'></img>
                 </Link>
             }
             {!current_user &&
                 <Link to='/'>
-                    <img className='logo' src='/images/Logo3.png' alt='logo-main-alt'></img>
+                    <img className='logo' src={logo} alt='logo-main-alt'></img>
                 </Link>
             }
             <ul>
