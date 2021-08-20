@@ -153,8 +153,13 @@
 .editbuttons__holder {
     display: flex;
     flex-direction: row;
-    margin: 10px;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    background-color: #E9E9E9;
 }
+
+
 
 .button {
   bottom: 10px;
@@ -167,11 +172,12 @@
   background-color: #7BAA00;
   text-decoration: none;
   transition: .15s;
-  border-radius: 3px;
+  border-radius: 8px;
   border: none;
   color: #fff;
   cursor: pointer;
-  margin: 0 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .delete {
@@ -190,7 +196,7 @@
   background-color: #7BAA00;
   text-decoration: none;
   transition: .15s;
-  border-radius: 3px;
+  border-radius: 8px;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -208,7 +214,8 @@
     border-radius: 2px;
 }
 
-.content__holder:hover {
+.content__holder:hover,
+.content__holder:hover .editbuttons__holder{
     background-color: #cccccc;
 }
 

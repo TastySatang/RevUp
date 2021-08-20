@@ -62,7 +62,7 @@ export default function EventPage() {
           <button className='button delete' type="button" onClick={() => {
             dispatch(deleteEvent(id))
             history.push('/events')
-          }}>DELETE EVENT</button>
+          }}>DELETE</button>
 
         </div>
       )
@@ -116,9 +116,9 @@ export default function EventPage() {
           {event.description}
         </p>
 
-        {showForm && (
+        {/* {showForm && (
           <EventForm id={id} event={event} />
-        )}
+        )} */}
         <Comments id={id} comments={comments} />
       </div>
 
@@ -161,12 +161,13 @@ export default function EventPage() {
                 <div className='holder__username'>
                   {attendee.username}
                 </div>
-
-
               </div>
             )
           })}
         </div>
+        {showForm && (
+          <EventForm id={id} event={event} />
+        )}
       </div>
     </ div>
 
