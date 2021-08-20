@@ -10,6 +10,8 @@ const CalendarComponent = () => {
         console.log(date);
     }
 
+    
+
     return (
         <Fragment>
             <div className='calendar'>
