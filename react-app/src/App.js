@@ -19,48 +19,43 @@ import Home from './pages/home';
 import { authenticate } from './store/session';
 
 function App() {
-  const [loaded, setLoaded] = useState(false);
-  const dispatch = useDispatch();
+    const [loaded, setLoaded] = useState(false);
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async() => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
-  }, [dispatch]);
+    useEffect(() => {
+        (async () => {
+            await dispatch(authenticate());
+            setLoaded(true);
+        })();
+    }, [dispatch]);
 
-  if (!loaded) {
-    return null;
-  }
+    if (!loaded) {
+        return null;
+    }
 
-  return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/login' exact={true} component={LoginForm}/>
-        <Route path='/sign-up' exact={true} component={SignUpForm}/>
-        <Route path='/events' exact={true} component={EventsPage}/>
-        <Route path='/events/new' exact={true} component={CreateEvent}/>
-        <Route path='/events/:id' exact component={EventPage}/>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
+    return (
+        <BrowserRouter>
+            <NavBar />
+            <Switch>
+                <Route path='/login' exact={true} component={LoginForm} />
+                <Route path='/sign-up' exact={true} component={SignUpForm} />
+                <Route path='/events' exact={true} component={EventsPage} />
+                <Route path='/events/new' exact={true} component={CreateEvent} />
+                <Route path='/events/:id' exact component={EventPage} />
+                <ProtectedRoute path='/users' exact={true} >
+                    <UsersList />
+                </ProtectedRoute>
+                <ProtectedRoute path='/users/:userId' exact={true} >
+                    <User />
+                </ProtectedRoute>
+                    <ProtectedRoute path='/home' exact={true} >
+                    <CalendarComponent />
+                        <Home />
+                    </ProtectedRoute>
+                    <Route path='/' exact={true} component={Splash} />
+                 </Switch>
+        </BrowserRouter>
+            );
+};
 
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-          <CalendarComponent />
-
-        <ProtectedRoute path='/home' exact={true} >
-          <Home />
-
-        </ProtectedRoute>
-        <Route path='/' exact={true} component={Splash}/>
-      </Switch>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+            export default App;
