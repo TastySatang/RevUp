@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask.wrappers import Request
 from app.models import db, Event
 from app.forms import EventForm
+import re
 
 event_routes = Blueprint('events', __name__)
 
@@ -10,6 +11,19 @@ event_routes = Blueprint('events', __name__)
 def eventsH():
   events = Event.query.all()
   return {'events': [event.to_dict() for event in events]}
+
+
+@event_routes.route('/search', methods=['POST'])
+def eventsSearch():
+  data = request.get_json()
+  name = data['name']
+  category = data['category']
+  state = data['state']
+  print('In!!!!!!!', data)
+  events = Event.query.filter(Event.name.ilike(f'{name}%'), Event.category.ilike(f'{category}%'), Event.state.ilike(f'{state}%'))
+  print('EVENTS!!!', [event.to_dict()['name'] for event in events])
+  return {'events': [event.to_dict() for event in events]}
+
 
 @event_routes.route('/<id>')
 def eventOne(id):
