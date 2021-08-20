@@ -11,40 +11,23 @@ export default function Search() {
     const [state, setState] = useState('');
 
     useEffect(() => {
-        dispatch(getEventsSearch({name, category, state}))
+        dispatch(getEventsSearch({ name, category, state }))
     }, [dispatch, name, category, state])
 
 
     return (
         <>
             <form className='search__form'>
-                <h1 className='search__title'>Search Events</h1>
-                <div>
-                    <label>Title</label>
-                    <input
-                    type='text'
-                    value={name}
-                    onChange={e => setName(e.target.value)}></input>
-                </div>
-                <div>
-                    <label>Type</label>
-                    <select value={category} onChange={e => setCategory(e.target.value)}>
-                        <option value=''>All</option>
-                        <option value={`Meet & Greet`}>Meet and Greet</option>
-                        <option value='Track Event'>Track Event</option>
-                        <option value='Drag Event'>Drag Event</option>
-                        <option value='Car Show'>Car Show</option>
-                        <option value='Virtual'>Virtual</option>
-                        <option value='Promotional'>Promotional</option>
-                        <option value='Cruise'>Cruise</option>
-                        <option value='Demolition-Derby'>Demolition-Derby</option>
-                        <option value='Others'>Other</option>
-                    </select>
-                </div>
-                <div>
-                    <label>State</label>
-                    <select onChange={e => setState(e.target.value)} value={state}>
-                        <option value="">All</option>
+                <h1 className='search__h1'>Search Meetups</h1>
+                <div className='form__title'>
+                    <label className='search__form--label'>Title</label>
+                    <input className='search__title'
+                        type='text'
+                        placeholder='Search for Titles'
+                        value={name}
+                        onChange={e => setName(e.target.value)} />
+                    <select className='search__state' onChange={e => setState(e.target.value)} value={state}>
+                        <option value="">Any State</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -96,6 +79,21 @@ export default function Search() {
                         <option value="WV">West Virginia</option>
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+                <div className='form__type'>
+                    <label className='search__form--label'>Meetup Type</label>
+                    <select className='search__type' value={category} onChange={e => setCategory(e.target.value)}>
+                        <option value=''>All</option>
+                        <option value={`Meet & Greet`}>Meet and Greet</option>
+                        <option value='Track Event'>Track Event</option>
+                        <option value='Drag Event'>Drag Event</option>
+                        <option value='Car Show'>Car Show</option>
+                        <option value='Virtual'>Virtual</option>
+                        <option value='Promotional'>Promotional</option>
+                        <option value='Cruise'>Cruise</option>
+                        <option value='Demolition-Derby'>Demolition-Derby</option>
+                        <option value='Others'>Other</option>
                     </select>
                 </div>
             </form>
