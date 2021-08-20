@@ -147,10 +147,10 @@ export default function EventPage() {
           <button className='rsvp--undo' onClick={dRsvp}>Delete RSVP</button>}
         <h3 className='attendeeh3'>{event.rsvp.length} Attendees</h3>
         <div className='attendee__list'>
-          {event.rsvp.map((attendee) => {
+          {event.rsvp.map((attendee, idx) => {
 
             return (
-              <div className='holder__attendee'>
+              <div key={idx} className='holder__attendee'>
                 <div className='holder__image--holder'>
                   <Link to={`/users/${attendee.id}`}>
                     <img className='holder__image' src={attendee.vehicle_pic} />

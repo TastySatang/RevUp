@@ -193,6 +193,10 @@
   margin: 0;
 }
 
+.edit:hover {
+    background-color: #8bc200;
+}
+
 .content__holder {
     padding: 5px 5px 10px 10px;
     margin-bottom: 10px;
@@ -217,8 +221,8 @@
 
 .editform__textarea {
     margin-left: 60px;
-    width: 760px;
-    max-height: 200px;
+    width: 700px;
+    max-height: 300px;
     resize: vertical;
     font-family:  Arial, Helvetica, sans-serif;
     font-size: 17px;
