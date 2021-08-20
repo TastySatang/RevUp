@@ -13,8 +13,14 @@ const CalendarComponent = () => {
 
     const user = useSelector(state => state.session.user)
     useEffect(() => {
-        setRsvp(user?.rsvp)
+        setRsvp(user.rsvp)
+        console.log(rsvp)
     }, [dispatch])
+
+    const strToNum = (str) => {
+        
+        if (str === 'Aug') return '8'
+    }
 
     return (
         <Fragment>
@@ -36,18 +42,17 @@ const CalendarComponent = () => {
                         {
                             Object.values(calendarRows).map(cols => {
                                 return <tr key={cols[0].date}>
-                                    {cols.map(col => (
-                                        rsvp.forEach(rsvp => {
-                                            if (rsvp.start === col.date) {
-                                                <td key={col.date} className={`${col.classes} today`} onClick={() => dateClickHandler(col.date)}>
-                                                    {col.value}
+                                    {cols.map(col =>{
+                                        const event = user.rsvp.filter(rsvp => rsvp.start.slice(5,7) === col.value.toString() && strToNum(rsvp.start.slice(8,11)) === col.date.split('-')[1])
+                                        return (
+                                            user.rsvp.some(rsvp => rsvp.start.slice(5,7) === col.value.toString() && strToNum(rsvp.start.slice(8,11)) === col.date.split('-')[1])
+                                                ? <td key={col.date} onClick={() => dateClickHandler(col.date)}>
+                                                    <div className='indv-date'>{col.value}<a href={`/events/${event[0].id}`}>{event[0].name}</a></div>
                                                 </td>
-                                            }
-                                        })}
-                                        < td key = { col.date } onClick = {() => dateClickHandler(col.date)}><div className='indv-date'>{col.date}</div></td>
-                                        ))}
-                                        </tr>
-
+                                                : < td key={col.date} onClick={() => dateClickHandler(col.value)}><div className='indv-date'>{col.date}</div></td>
+                                        )
+                            })}
+                                </tr>
                             })
                         }
                     </tbody>
