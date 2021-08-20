@@ -74,7 +74,7 @@ const Comments = ({ id, comments }) => {
               <div className='header__userinfo'>
                 <div className='userinfo__image--holder'>
                   <Link to={`/users/${comment.user.id}`}>
-                    <img className='userinfo__image' src={comment.user.vehicle_pic} />
+                    <img className='userinfo__image' src={comment.user.vehicle_pic} alt='userinfo' />
                   </Link>
                 </div>
                 <div className='userinfo__name'>
@@ -105,7 +105,7 @@ const Comments = ({ id, comments }) => {
               <div className='header__userinfo'>
                 <div className='userinfo__image--holder'>
                   <Link to={`/users/${comment.user.id}`}>
-                    <img className='userinfo__image' src={comment.user.vehicle_pic} />
+                    <img className='userinfo__image' src={comment.user.vehicle_pic} alt='userinfo' />
                   </Link>
                 </div>
                 <div className='userinfo__name'>

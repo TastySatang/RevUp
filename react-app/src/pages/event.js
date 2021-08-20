@@ -93,7 +93,7 @@ export default function EventPage() {
         <div className='header__userinfo'>
           <div className='userinfo__image--holder'>
             <Link to={`/users/${event.user.id}`}>
-              <img className='userinfo__image' src={event.user.vehicle_pic} />
+              <img className='userinfo__image' src={event.user.vehicle_pic} alt='userinfo' />
             </Link>
           </div>
           <div className='userinfo__host'>
@@ -153,7 +153,7 @@ export default function EventPage() {
               <div key={idx} className='holder__attendee'>
                 <div className='holder__image--holder'>
                   <Link to={`/users/${attendee.id}`}>
-                    <img className='holder__image' src={attendee.vehicle_pic} />
+                    <img className='holder__image' src={attendee.vehicle_pic} alt='userinfo' />
                   </Link>
                 </div>
                 <div className='holder__username'>
