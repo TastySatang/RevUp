@@ -263,3 +263,34 @@ input {
 .profile-dropdown__greeting {
     margin-bottom: 5px;
 }
+
+.email-field {
+    position: relative;
+}
+
+.email-field i {
+    position: absolute;
+    left:  80px;
+    top: 6px;
+    color: gray;
+}
+
+input {
+    text-align: center;
+    width: 250px;
+}
+
+.key {
+    background-color: red;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field i {
+    color: gray;
+    position: absolute;
+    left: 80px;
+    top: 6px;
+}

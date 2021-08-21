@@ -33,7 +33,7 @@ const LoginForm = () => {
 
     return (
         <>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+            {/* <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link> */}
             <div className='backgroundLogin'>
                 <Errors />
                 <form onSubmit={onLogin} className='login-form'>
@@ -47,12 +47,12 @@ const LoginForm = () => {
                         <div className='email-field'>
                             <input
                                 name='email'
-                                type='text'
-                                placeholder=' enter e-mail address'
+                                type='search'
+                                placeholder='          enter e-mail address'
                                 value={email}
                                 onChange={updateEmail}
                             />
-                            <i className="far fa-envelope"></i>
+                                <i class="fas fa-envelope"></i>
                         </div>
                         <div className='password-field'>
                             <input
@@ -62,6 +62,7 @@ const LoginForm = () => {
                                 value={password}
                                 onChange={updatePassword}
                             />
+                            <i class="fas fa-lock"></i>
                         </div>
                     </div>
                     <button className='loginButton' type='submit'>Sign In</button>
