@@ -4,7 +4,7 @@ This is the starter for the Flask React project to demo technologies learned so 
 
 Python used for backend with React Redux frontend.
 
-(<Link to Live Website!>)[https://rev-up.herokuapp.com/]
+[<Link to Live Website!>](https://rev-up.herokuapp.com/)
 
 ## Using this repository
 
@@ -60,4 +60,4 @@ Python used for backend with React Redux frontend.
 
 Website on succesful load should look something like these:
 `Landing`
-[https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/exampleweb.png]
+(https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/exampleweb.png)
