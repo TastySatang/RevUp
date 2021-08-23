@@ -1,8 +1,12 @@
 # Rev up
 
-This is the starter for the Flask React project.
+This is the starter for the Flask React project to demo technologies learned so far.
 
-## Getting started
+Python used for backend with React Redux frontend.
+
+[<Link to Live Website!>](https://rev-up.herokuapp.com/)
+
+## Using this repository
 
 1. Clone this repository (only this branch)
 
@@ -53,3 +57,21 @@ This is the starter for the Flask React project.
    psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
+
+Website on succesful load should look something like these:
+
+`Landing Page`
+
+![Landing](https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/exampleweb.png)
+
+`Events Page`
+
+![Events](https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/events.png)
+
+`Event Page`
+
+![Event](https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/event.png)
+
+`Home Page`
+
+![Home](https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/home.png)
