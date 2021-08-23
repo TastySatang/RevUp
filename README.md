@@ -70,4 +70,4 @@ Website on succesful load should look something like these:
 ![Event](https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/event.png)
 
 `Home`
-![Home](https://github.com/TastySatang/aprilMod6GroupProject/tree/main/react-app/public)
+![Home](https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/home.png)
