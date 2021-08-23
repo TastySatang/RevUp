@@ -75,7 +75,7 @@ def eventPut(id):
 
 @event_routes.route('/<id>', methods=['DELETE'])
 def eventDel(id):
-
+  print('inside delete route api')
   event = Event.query.filter(Event.id==id).first()
   print('inside delete route api', event)
   db.session.delete(event)

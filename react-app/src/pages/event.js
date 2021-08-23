@@ -39,6 +39,8 @@ export default function EventPage() {
     )
   }
 
+
+
   const cRsvp = async () => {
     const users_id = user.id;
     const events_id = event.id;
@@ -53,16 +55,23 @@ export default function EventPage() {
     setRsvp(false);
   }
 
+  const handleDelete = async e => {
+    e.preventDefault();
+
+    const deleted = await dispatch(deleteEvent(id))
+
+    if (deleted) {
+      history.push('/event')
+    }
+  }
+
   let content;
   if (user) {
     if (user.id === event.user.id) {
       content = (
         <div>
           <button className='button' type='button' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)}>Edit</button>
-          <button className='button delete' type="button" onClick={() => {
-            dispatch(deleteEvent(id))
-            history.push('/events')
-          }}>DELETE</button>
+          <button className='button delete' type="button" onClick={handleDelete}>DELETE</button>
 
         </div>
       )

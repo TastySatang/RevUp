@@ -52,5 +52,5 @@ class Event(db.Model):
             'end' : self.end
         }
 
-    comments = db.relationship("Comment", back_populates='event')
+    comments = db.relationship("Comment", back_populates='event', cascade='delete')
     user = db.relationship("User", back_populates="events")
