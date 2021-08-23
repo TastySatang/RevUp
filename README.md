@@ -60,5 +60,6 @@ Python used for backend with React Redux frontend.
 
 Website on succesful load should look something like these:
 
-[`Landing`](https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/exampleweb.png)
+`Landing`
+[!Landing](https://github.com/TastySatang/aprilMod6GroupProject/blob/main/react-app/public/exampleweb.png)
 
