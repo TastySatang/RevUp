@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
+    background-color: #F6F7F8;
 }
 
 .event__header {
@@ -10,7 +11,7 @@
     padding-left: 20px;
     padding-bottom: 20px;
     margin-bottom: 20px;
-    background-color: whitesmoke;
+    background-color: #FFFFFF;
 }
 
 .header__eventinfo {
@@ -54,6 +55,10 @@
     margin-top: 3px;
 }
 
+.userinfo__name {
+    margin-top: 10px;
+}
+
 .host__name {
     font-family: darkmode_off, arial;
     font-weight: bold;
@@ -62,13 +67,17 @@
 .content__event {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    align-items: center;
+    width: 60%;
+    margin-left: 30px;
 }
 
 .event__image {
     width: 100%;
+    max-height: 500px;
     text-align: center;
+    background-color: #535353;
+    margin-bottom: 40px;
+    overflow: hidden;
 }
 
 .event__image > img {
@@ -80,4 +89,270 @@
     display: flex;
     flex-direction: column;
     width: 30%;
+}
+
+.event__h2 {
+    margin-bottom: 20px;
+}
+
+.event__description {
+    margin-bottom: 50px;
+    word-wrap: break-word;
+}
+
+.event__header {
+    text-align: left;
+}
+
+.comment__form {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    height: 155px;
+    font-size: 13px;
+    font-family: darkmode-off, sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    box-sizing: border-box;
+    resize: none;
+    border-radius: 3px;
+    position: relative;
+    padding: 0px;
+}
+
+.comment__form--textarea{
+    font-size: 13px;
+    font-family: darkmode-off, sans-serif;
+    font-weight: 100;
+    height: 100px;
+    width: 100%;
+    background-color: #FFFFFF;
+    margin: 10;
+    resize: none;
+    overflow-y: scroll;
+}
+
+.comment__button {
+  position: absolute;
+  bottom: 10px;
+  right: 0px;
+  font: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 32px;
+  width: 100px;
+  background-color: #7BAA00;
+  text-decoration: none;
+  transition: .15s;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 0;
+}
+
+.editbuttons__holder {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    background-color: #E9E9E9;
+}
+
+
+
+.button {
+  bottom: 10px;
+  right: 0px;
+  font: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 32px;
+  width: 100px;
+  background-color: #7BAA00;
+  text-decoration: none;
+  transition: .15s;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.delete {
+    background-color: #F65858;
+}
+
+.edit {
+  bottom: 10px;
+  right: 0px;
+  font: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  height: 32px;
+  width: 100px;
+  background-color: #7BAA00;
+  text-decoration: none;
+  transition: .15s;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 0;
+}
+
+.edit:hover {
+    background-color: #8bc200;
+}
+
+.content__holder {
+    padding: 5px 5px 10px 10px;
+    margin-bottom: 10px;
+    background-color: #e9e9e9;
+    border-radius: 2px;
+}
+
+.content__holder:hover,
+.content__holder:hover .editbuttons__holder{
+    background-color: #cccccc;
+}
+
+.comment {
+    padding-left: 60px;
+    margin: 0 0 10px 0;
+}
+
+.comment__editform {
+    max-width: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+.editform__textarea {
+    margin-left: 60px;
+    width: 700px;
+    max-height: 300px;
+    resize: vertical;
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    padding-bottom: 50px;
+}
+
+.side__date {
+    background-color: #FFFFFF;
+    padding: 20px 20px 10px 20px;
+    margin: 10px 10px 10px 40px;
+    border-radius: 5px;
+    display: flex;
+    font-size: 19px;
+}
+
+.side__location {
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin: 10px 10px 10px 40px;
+    border-radius: 5px;
+    display: flex;
+    font-size: 20px;
+}
+
+.location__info {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.date__info > p {
+    margin-bottom: 5px;
+}
+
+.date__info {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.attendee__list {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.attendeeh3 {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.holder__attendee {
+    margin: 10px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.holder__image--holder {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    border-radius: 1000px;
+    margin: 10px 15px 10px 10px;
+}
+
+.holder__image {
+    height: 100%;
+    width: 100%;
+}
+
+.holder__username {
+    font-size: 18px;
+    margin: 30px 20px 20px 20px;
+    color: #212121;
+    font-weight: 500;
+}
+
+.rsvp--do,
+.rsvp--undo {
+  bottom: 10px;
+  right: 0px;
+  font: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  height: 60px;
+  width: 100px;
+  text-decoration: none;
+  transition: .15s;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px 5px 0 40px;
+}
+
+.rsvp--undo {
+    background-color: #F56868;
+}
+
+.rsvp--do {
+    color: #0097AA;
+    background-color: #FEFEFE;
+    border: 1px solid #0097AA;
+}
+
+.rsvp--do:hover {
+    background-color: #0097AA;
+    color: #FEFEFE;
+}
+
+.event__details {
+    display: flex;
+    justify-content: space-between;
+}
+
+#updateformholder > #event__form {
+    background-color: #FFFFFF;
 }

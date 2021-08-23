@@ -29,7 +29,7 @@ export const getEvents = () => async dispatch => {
   }
 }
 
-export const getEventsSearch = ({name, category, state}) => async dispatch => {
+export const getEventsSearch = ({ name, category, state }) => async dispatch => {
   const res = await fetch('/api/events/search', {
     method: "POST",
     headers: {
@@ -39,7 +39,8 @@ export const getEventsSearch = ({name, category, state}) => async dispatch => {
       name,
       category,
       state
-    })})
+    })
+  })
 
   if (res.ok) {
     const events = await res.json();
@@ -126,12 +127,13 @@ export const updateEvent = (event) => async dispatch => {
 }
 
 export const deleteEvent = (id) => async dispatch => {
-  console.log('inside thunk start')
+  console.log('inside thunk start', id)
   const res = await fetch(`/api/events/${id}`, {
     method: "DELETE",
   });
 
   if (res.ok) {
+    console.log('res.ok passes')
     await res.json();
     console.log('after res ok', res.json)
     dispatch(removeEvent(id))
@@ -181,7 +183,7 @@ const eventReducer = (state = initialState, action) => {
       })
       return newState
     case SET_EVENTS:
-      newState = { }
+      newState = {}
       action.event.events.forEach(eve => {
         newState[eve.id] = eve
       })

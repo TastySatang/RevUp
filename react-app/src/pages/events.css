@@ -70,3 +70,64 @@
 .events__datepicker {
   background-color: #F6F6F6;
 }
+
+.search__h1 {
+    margin-bottom: 20px;
+    font-family: darkmode_off, arial;
+    font-weight: bold;
+}
+
+.search__form {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+}
+
+.search__form--label {
+  font-size: 16px;
+  margin-right: 5px;
+  background-color: #FFFFFF;
+}
+
+.search__title {
+  margin-right: 0px;
+  height: 42px;
+  border: 1px solid #D9D9D9;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.search__state {
+  height: 42px;
+  border: 1px solid #D9D9D9;
+  border-left: none;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.search__title:hover,
+.search__state:hover {
+  border: 1px solid #757575;
+}
+
+.search__title:focus,
+.search__state:focus {
+  border: 1px solid #008294
+}
+
+.form__title {
+  background-color: #FFFFFF;
+  display: flex;
+}
+
+.form__type {
+  background-color: #FFFFFF;
+
+}
+
+.search__type {
+  height: 42px;
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  margin-top: 10px;
+}

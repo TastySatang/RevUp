@@ -31,7 +31,7 @@ function User() {
             setUser(user);
         })();
         setUpdate(false)
-    }, [currentUser])
+    }, [currentUser, userId])
 
 
 

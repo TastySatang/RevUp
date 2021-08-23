@@ -58,7 +58,6 @@ header {
 
 .nav__links li a{
     transition: all 0.3s ease 0s;
-    background-color: #2e2e2e;
 }
 
 .nav__links li a:hover {
@@ -74,15 +73,23 @@ h1 {
 
 .logout-button {
     margin-left: 5px;
-    padding: 9px 25px;
+    /* padding: 9px 25px; */
+    background-size: cover;
     background-color: #F5100D;
     border: none;
     border-radius: 50px;
-    width: 100px;
+    width: 50px;
     height: 50px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    transition: all 0.3s ease 0s
+    /* transition: all 0.3s ease 0s */
+}
+
+.profile-btn__img {
+    height: 100%;
+    width: 100%;
 }
 
 .logout-button:hover {
@@ -90,7 +97,7 @@ h1 {
 }
 
 .logout-button > p {
-    background-color: rgba(0,136,169,0);
+    /* background-color: rgba(0,136,169,0); */
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -189,8 +196,23 @@ input {
 
 }
 
-.profileTable {
+.profile-dropdown-div {
     position: absolute;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    right: 25px;
+    padding: 10px;
+    width: auto;
+    height: 100px;
+    border-radius: 3px;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-dropdown__a {
+    cursor: pointer;
 }
 
 .SignupB {
@@ -236,4 +258,39 @@ input {
 
 .password-field {
     margin-bottom: 20px;
+}
+
+.profile-dropdown__greeting {
+    margin-bottom: 5px;
+}
+
+.email-field {
+    position: relative;
+}
+
+.email-field i {
+    position: absolute;
+    left:  80px;
+    top: 6px;
+    color: gray;
+}
+
+input {
+    text-align: center;
+    width: 250px;
+}
+
+.key {
+    background-color: red;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field i {
+    color: gray;
+    position: absolute;
+    left: 80px;
+    top: 6px;
 }
