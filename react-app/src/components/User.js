@@ -48,7 +48,6 @@ function User() {
                 <h1>{`${user.username}'s Profile Page`}</h1>
                 <div className='email_vehicle'>
                     <strong>Email:</strong> {user.email}
-                    <strong>Vehicle:</strong> {user.vehicle}
                 </div>
                 {currentUser.id !== 1 &&
                     <>
@@ -79,30 +78,23 @@ function User() {
                     </>
                 }
             </div>
-            <div className='vehicle_user'>
-                <div className='vehicle_info'>
-                    <ul>
-                        <h3>User Info</h3>
-                        <li>
-                            <strong>Email</strong> {user.email}
-                        </li>
-                        <li>
-                            <strong>Description</strong> {user.description}
-                        </li>
-                    </ul>
-                </div>
-                <div className='vehicle_info'>
-                    <h3>Vehicle Info</h3>
-                    <img src={user.vehicle_pic}></img>
-                    <ul>
-                        <li>
-                            <strong>Vehicle</strong> {user.vehicle}
-                        </li>
-                        <li>
-                            <strong>Type</strong> {user.type}
-                        </li>
-                    </ul>
-                </div>
+            <img className='vehicleImg' src={user.vehicle_pic}></img>
+            <div className='vehicle_info'>
+                <h3>Vehicle Info</h3>
+                <ul>
+                    <li className='infoLi'>
+                        <strong>Description</strong>
+                        <p>{user.description}</p>
+                    </li>
+                    <li className='infoLi'>
+                        <strong>Vehicle</strong>
+                        <p>{user.vehicle}</p>
+                    </li>
+                    <li className='infoLi'>
+                        <strong>Type</strong>
+                        <p>{user.type}</p>
+                    </li>
+                </ul>
             </div>
         </>
     );
