@@ -49,8 +49,8 @@ function App() {
                     <User />
                 </ProtectedRoute>
                     <ProtectedRoute path='/home' exact={true} >
-                    <CalendarComponent />
                         <Home />
+                        <CalendarComponent />
                     </ProtectedRoute>
                     <Route path='/' exact={true} component={Splash} />
                  </Switch>
