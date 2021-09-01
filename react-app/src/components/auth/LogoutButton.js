@@ -11,8 +11,8 @@ const LogoutButton = () => {
   const current_user = useSelector(state => state.session.user)
 
   const onLogout = async (e) => {
-    await dispatch(logout());
     history.push('/')
+    await dispatch(logout());
   };
 
   return (
