@@ -1,8 +1,17 @@
 # Rev up
 
-This is the starter for the Flask React project to demo technologies learned so far.
+### Technologies used
 
-Python used for backend with React Redux frontend.
+* PostgreSQL
+* Python
+* Flask
+* JavaScript
+* React
+* Redux
+* HTML5
+* CSS3
+
+Please chck the [Wiki](https://github.com/TastySatang/RevUp/wiki) for lists of MVPs, User Stories, Database Schema, API Dcoumentation, Frontend Routes.
 
 [<Link to Live Website!>](https://rev-up.herokuapp.com/)
 
