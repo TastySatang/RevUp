@@ -1,5 +1,7 @@
 # Rev up
 
+Rev up is a fullstack application that lets users create and view their car events with others.
+
 ### Technologies used
 
 * PostgreSQL
