@@ -1,11 +1,13 @@
 import React from 'react'
 
+import './Footer.css'
+
 export default function Footer() {
 
   return (
-    <div className='footer__container'>
+    <div className='footer'>
       <div>
-        <span>Junyeob Lee</span>
+        <div className='social__name'>Junyeob Lee</div>
         <div className='socials'>
           <a href='https://github.com/TastySatang' target='_blank'>
             <i className="fab fa-github" aria-hidden="true" />
@@ -18,6 +20,49 @@ export default function Footer() {
           </a>
         </div>
       </div>
+      <div>
+        <div className='social__name'>Placeholder</div>
+        <div className='socials'>
+          <a href='#' target='_blank'>
+            <i className="fab fa-github" aria-hidden="true" />
+          </a>
+          <a href='#' target='_blank'>
+            <i className="fab fa-linkedin" aria-hidden="true" />
+          </a>
+          <a href="#" target='_blank'>
+            <i className="fab fa-angellist" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+      <div>
+        <div className='social__name'>Placeholder</div>
+        <div className='socials'>
+          <a href='#' target='_blank'>
+            <i className="fab fa-github" aria-hidden="true" />
+          </a>
+          <a href='#' target='_blank'>
+            <i className="fab fa-linkedin" aria-hidden="true" />
+          </a>
+          <a href="#" target='_blank'>
+            <i className="fab fa-angellist" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+      <div>
+        <div className='social__name'>Placeholder</div>
+        <div className='socials'>
+          <a href='#' target='_blank'>
+            <i className="fab fa-github" aria-hidden="true" />
+          </a>
+          <a href='#' target='_blank'>
+            <i className="fab fa-linkedin" aria-hidden="true" />
+          </a>
+          <a href="#" target='_blank'>
+            <i className="fab fa-angellist" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+
     </div>
   )
 }
