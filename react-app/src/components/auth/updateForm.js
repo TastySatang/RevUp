@@ -4,8 +4,7 @@ import { update } from '../../store/session';
 import Errors from '.././Errors'
 import { useHistory } from 'react-router-dom';
 
-const UpdateForm = ({user}) => {
-  // const user = useSelector(state => state.session.user);
+const UpdateForm = ({ user }) => {
   const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState(user.username);
@@ -18,11 +17,11 @@ const UpdateForm = ({user}) => {
 
   const onUpdate = async (e) => {
     e.preventDefault();
-      const data = await dispatch(update(username, email, description, vehicle, vehicle_pic, type, user.id));
-      if (data) {
-        setErrors(data)
-      }
-      history.push(`/users/${user.id}`)
+    const data = await dispatch(update(username, email, description, vehicle, vehicle_pic, type, user.id));
+    if (data) {
+      setErrors(data)
+    }
+    history.push(`/users/${user.id}`)
   };
 
   return (
@@ -89,9 +88,9 @@ const UpdateForm = ({user}) => {
         <div>
           <label className='label__selectField' >Select vehicle Type</label>
           <select
-          className='signup__selectField'
-          onChange={e => setType(e.target.value)}
-          value={type}
+            className='signup__selectField'
+            onChange={e => setType(e.target.value)}
+            value={type}
           >
             <option value='American Muscle'>American Muscle</option>
             <option value='JDM'>JDM</option>

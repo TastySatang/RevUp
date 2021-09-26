@@ -18,9 +18,23 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const validateEmail = (mail) => {
+    const regMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    return regMail.test(String(mail).toLowerCase())
+  }
+
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    if (password !== repeatPassword) {
+      setErrors(['The Password and confirm Password do not match!'])
+    }
+
+    else if (!validateEmail(email)) {
+      setErrors(['Please enter a valid Email'])
+    }
+
+    else {
       const data = await dispatch(signUp(username, email, password, description, vehicle, vehicle_pic, type));
       if (data) {
         setErrors(data)
@@ -46,9 +60,9 @@ const SignUpForm = () => {
 
   const demoLogin = async () => {
     const data = await dispatch(login('demo@aa.io', 'password'));
-      if (data) {
-        setErrors(data)
-      }
+    if (data) {
+      setErrors(data)
+    }
   }
 
   if (user) {
@@ -140,9 +154,9 @@ const SignUpForm = () => {
         <div>
           <label className='label__selectField' >Select vehicle Type</label>
           <select
-          className='signup__selectField'
-          onChange={e => setType(e.target.value)}
-          value={type}
+            className='signup__selectField'
+            onChange={e => setType(e.target.value)}
+            value={type}
           >
             <option value='American Muscle'>American Muscle</option>
             <option value='JDM'>JDM</option>
