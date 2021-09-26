@@ -11,6 +11,7 @@ import EventPage from './pages/event';
 import Splash from './pages/splash';
 import CreateEvent from './pages/CreateEvent';
 import User from './components/User';
+import Footer from './components/Footer';
 
 import CalendarComponent from './components/Calendar'
 
@@ -48,14 +49,15 @@ function App() {
                 <ProtectedRoute path='/users/:userId' exact={true} >
                     <User />
                 </ProtectedRoute>
-                    <ProtectedRoute path='/home' exact={true} >
-                        <Home />
-                        <CalendarComponent />
-                    </ProtectedRoute>
-                    <Route path='/' exact={true} component={Splash} />
-                 </Switch>
+                <ProtectedRoute path='/home' exact={true} >
+                    <Home />
+                    <CalendarComponent />
+                </ProtectedRoute>
+                <Route path='/' exact={true} component={Splash} />
+            </Switch>
+            <Footer />
         </BrowserRouter>
-            );
+    );
 };
 
-            export default App;
+export default App;

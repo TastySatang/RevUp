@@ -78,7 +78,7 @@ function User() {
                     </>
                 }
             </div>
-            <img className='vehicleImg' src={user.vehicle_pic}></img>
+            <img className='vehicleImg' src={user.vehicle_pic} alt='vehicle'></img>
             <div className='vehicle_info'>
                 <h3>Vehicle Info</h3>
                 <ul>
