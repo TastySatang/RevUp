@@ -26,7 +26,7 @@ const NavBar = () => {
                         <>
                             <li>
                                 <NavLink to='/login' exact={true} activeClassName='active'>
-                                    Sign In
+                                    Log In
                                 </NavLink>
                             </li>
                             <li>

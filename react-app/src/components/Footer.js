@@ -9,13 +9,13 @@ export default function Footer() {
       <div>
         <div className='social__name'>Junyeob Lee</div>
         <div className='socials'>
-          <a href='https://github.com/TastySatang' target='_blank'>
+          <a href='https://github.com/TastySatang' target='_blank' rel="noreferrer">
             <i className="fab fa-github" aria-hidden="true" />
           </a>
-          <a href='https://www.linkedin.com/in/junyeob-lee-10a87621b/' target='_blank'>
+          <a href='https://www.linkedin.com/in/junyeob-lee-10a87621b/' target='_blank' rel="noreferrer">
             <i className="fab fa-linkedin" aria-hidden="true" />
           </a>
-          <a href="https://angel.co/u/junyeob-lee" target='_blank'>
+          <a href="https://angel.co/u/junyeob-lee" target='_blank' rel="noreferrer">
             <i className="fab fa-angellist" aria-hidden="true" />
           </a>
         </div>
@@ -23,13 +23,13 @@ export default function Footer() {
       <div>
         <div className='social__name'>Placeholder</div>
         <div className='socials'>
-          <a href='#' target='_blank'>
+          <a href='#0' target='_blank'>
             <i className="fab fa-github" aria-hidden="true" />
           </a>
-          <a href='#' target='_blank'>
+          <a href='#0' target='_blank'>
             <i className="fab fa-linkedin" aria-hidden="true" />
           </a>
-          <a href="#" target='_blank'>
+          <a href="#0" target='_blank'>
             <i className="fab fa-angellist" aria-hidden="true" />
           </a>
         </div>
@@ -37,13 +37,13 @@ export default function Footer() {
       <div>
         <div className='social__name'>Placeholder</div>
         <div className='socials'>
-          <a href='#' target='_blank'>
+          <a href='#0' target='_blank'>
             <i className="fab fa-github" aria-hidden="true" />
           </a>
-          <a href='#' target='_blank'>
+          <a href='#0' target='_blank'>
             <i className="fab fa-linkedin" aria-hidden="true" />
           </a>
-          <a href="#" target='_blank'>
+          <a href="#0" target='_blank'>
             <i className="fab fa-angellist" aria-hidden="true" />
           </a>
         </div>
@@ -51,13 +51,13 @@ export default function Footer() {
       <div>
         <div className='social__name'>Placeholder</div>
         <div className='socials'>
-          <a href='#' target='_blank'>
+          <a href='#0' target='_blank'>
             <i className="fab fa-github" aria-hidden="true" />
           </a>
-          <a href='#' target='_blank'>
+          <a href='#0' target='_blank'>
             <i className="fab fa-linkedin" aria-hidden="true" />
           </a>
-          <a href="#" target='_blank'>
+          <a href="#0" target='_blank'>
             <i className="fab fa-angellist" aria-hidden="true" />
           </a>
         </div>
