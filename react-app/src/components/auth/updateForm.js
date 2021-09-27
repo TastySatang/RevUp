@@ -20,7 +20,6 @@ const UpdateForm = ({ user }) => {
 
     return regMail.test(String(mail).toLowerCase())
   }
-
   const onUpdate = async (e) => {
     e.preventDefault();
 
