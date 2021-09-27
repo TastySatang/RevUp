@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 const UpdateForm = ({ user }) => {
   const history = useHistory()
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [description, setDescription] = useState(user.description);
   const [vehicle, setVehicle] = useState(user.vehicle);
@@ -28,7 +27,7 @@ const UpdateForm = ({ user }) => {
     }
 
     else {
-      const data = await dispatch(update(username, email, description, vehicle, vehicle_pic, type));
+      const data = await dispatch(update(user.username, email, description, vehicle, vehicle_pic, type));
       if (data) {
         setErrors(data)
       }
