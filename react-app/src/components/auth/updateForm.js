@@ -35,15 +35,6 @@ const UpdateForm = ({ user }) => {
           ))}
         </div>
         <div>
-          <input
-            type='text'
-            name='username'
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-            placeholder='username'
-          ></input>
-        </div>
-        <div>
 
           <input
             type='text'

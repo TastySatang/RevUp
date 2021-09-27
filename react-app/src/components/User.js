@@ -49,34 +49,32 @@ function User() {
                 <div className='email_vehicle'>
                     <strong>Email:</strong> {user.email}
                 </div>
-                {currentUser.id !== 1 &&
-                    <>
-                        {currentUser.id === user.id &&
-                            <>
-                                <div className='profile_buttons'>
-                                    <button className='delete_user_button' onClick={deleteUser}>
-                                        Delete
+                <>
+                    {currentUser.id === user.id &&
+                        <>
+                            <div className='profile_buttons'>
+                                <button className='delete_user_button' onClick={deleteUser}>
+                                    Delete
+                                </button>
+                                {!update &&
+                                    <button className='update_user_button' onClick={() => setUpdate(true)}>
+                                        Edit
                                     </button>
-                                    {!update &&
-                                        <button className='update_user_button' onClick={() => setUpdate(true)}>
-                                            Edit
-                                        </button>
-                                    }
-                                    {update &&
-                                        <button className='update_user_button' onClick={() => setUpdate(false)}>
-                                            Done Editing
-                                        </button>
-                                    }
-                                </div>
-                                {update &&
-                                    <div className='update_form'>
-                                        <UpdateForm user={currentUser} />
-                                    </div>
                                 }
-                            </>
-                        }
-                    </>
-                }
+                                {update &&
+                                    <button className='update_user_button' onClick={() => setUpdate(false)}>
+                                        Done Editing
+                                    </button>
+                                }
+                            </div>
+                            {update &&
+                                <div className='update_form'>
+                                    <UpdateForm user={currentUser} />
+                                </div>
+                            }
+                        </>
+                    }
+                </>
             </div>
             <img className='vehicleImg' src={user.vehicle_pic} alt='vehicle'></img>
             <div className='vehicle_info'>
