@@ -15,11 +15,24 @@ const UpdateForm = ({ user }) => {
   const [type, setType] = useState(user.type);
   const dispatch = useDispatch();
 
+  const validateEmail = (mail) => {
+    const regMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    return regMail.test(String(mail).toLowerCase())
+  }
+
   const onUpdate = async (e) => {
     e.preventDefault();
-    const data = await dispatch(update(username, email, description, vehicle, vehicle_pic, type, user.id));
-    if (data) {
-      setErrors(data)
+
+    if (!validateEmail(email)) {
+      setErrors(['Please enter a valid Email'])
+    }
+
+    else {
+      const data = await dispatch(update(username, email, description, vehicle, vehicle_pic, type));
+      if (data) {
+        setErrors(data)
+      }
     }
     history.push(`/users/${user.id}`)
   };
