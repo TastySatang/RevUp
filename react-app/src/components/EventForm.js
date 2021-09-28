@@ -99,12 +99,11 @@ export default function EventForm({ id, event }) {
                     </select>
                 </div>
                 <div>
-                    <label>Details
-                        <textarea
-                            className='Event__Create--textarea'
-                            onChange={e => setDescription(e.target.value)}
-                            value={description} />
-                    </label>
+                    <textarea
+                        className='Event__Create--textarea'
+                        onChange={e => setDescription(e.target.value)}
+                        placeholder='Details'
+                        value={description} />
                 </div>
                 <div>
                     <input type='text' placeholder='address' required value={address}
@@ -174,7 +173,7 @@ export default function EventForm({ id, event }) {
                         onChange={e => setImage(e.target.value)} />
                 </div>
                 <div>
-                    <label>Select Start Date
+                    <label>Start Date
                         <DatePicker
                             className='events__datepicker'
                             selectsStart
@@ -188,7 +187,7 @@ export default function EventForm({ id, event }) {
                     </label>
                 </div>
                 <div>
-                    <label>Select End Date
+                    <label>End Date
                         <DatePicker
                             selected={end}
                             onChange={(date) => setEnd(date)}
