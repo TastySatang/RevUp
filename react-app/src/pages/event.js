@@ -61,7 +61,7 @@ export default function EventPage() {
     const deleted = await dispatch(deleteEvent(id))
 
     if (deleted) {
-      history.push('/event')
+      history.push('/events')
     }
   }
 
