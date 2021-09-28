@@ -20,16 +20,8 @@ export default function EventForm({ id, event }) {
     const [city, setCity] = useState('')
     const [state, setState] = useState('AL')
     const [image, setImage] = useState('')
-    const [start, setStart] = useState(new Date());
+    const [start, setStart] = useState(null);
     const [end, setEnd] = useState(null)
-    const [dateRange, setDateRange] = useState([null, null]);
-    const [startDate, endDate] = dateRange;
-
-    const dateOnChange = (dates) => {
-        const [start, end] = dates;
-        setStart(start);
-        setEnd(end);
-    };
 
     useEffect(() => {
         if (id) {
@@ -179,15 +171,30 @@ export default function EventForm({ id, event }) {
                         onChange={e => setImage(e.target.value)} />
                 </div>
                 <div class='dpicker'>
+
                     <DatePicker
                         selected={start}
-                        onChange={dateOnChange}
+                        onChange={(date) => setStart(date)}
+                        selectsStart
+                        showTimeSelect
+                        placeholderText='Click to select a start date'
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        minDate={new Date()}
                         startDate={start}
                         endDate={end}
-                        selectsRange
-                        inline
-                        dateFormat="Pp"
-                        minDate={new Date()} />
+                    />
+                    <DatePicker
+                        selected={end}
+                        onChange={(date) => setEnd(date)}
+                        selectsEnd
+                        showTimeSelect
+                        placeholderText='Click to select an end date'
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        startDate={start}
+                        endDate={end}
+                        minDate={start}
+                    />
+
                 </div>
 
                 <div className='buttonHolder'>
