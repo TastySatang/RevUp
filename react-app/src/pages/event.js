@@ -58,11 +58,8 @@ export default function EventPage() {
   const handleDelete = async e => {
     e.preventDefault();
 
-    const deleted = await dispatch(deleteEvent(id))
-
-    if (deleted) {
-      history.push('/events')
-    }
+    await dispatch(deleteEvent(id))
+    history.push("/events")
   }
 
   let content;
