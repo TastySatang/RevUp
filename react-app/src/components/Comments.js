@@ -38,7 +38,6 @@ const Comments = ({ id, comments }) => {
       event_id: Number.parseInt(id),
     }
 
-    console.log('inside handle update', payload)
     setEditId(false)
     setShowEdit(false)
     await dispatch(updateComment(payload))
@@ -123,7 +122,7 @@ const Comments = ({ id, comments }) => {
                     showEdit === false ? setShowEdit(true) : setShowEdit(false)
                     setEditId(comment.id)
                     setEditComment(comment.comment)
-                    console.log(editId, showEdit)
+
                   }}>Edit</button>
               )}
             </div>

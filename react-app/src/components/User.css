@@ -65,6 +65,7 @@
   border: 2px solid black;
   border-radius: 2px;
   border: none;
+  text-align: center;
 }
 
 .vehicle_user {
