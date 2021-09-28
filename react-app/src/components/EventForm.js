@@ -21,7 +21,15 @@ export default function EventForm({ id, event }) {
     const [state, setState] = useState('AL')
     const [image, setImage] = useState('')
     const [start, setStart] = useState(new Date());
-    const [end, setEnd] = useState(start)
+    const [end, setEnd] = useState(null)
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
+
+    const dateOnChange = (dates) => {
+        const [start, end] = dates;
+        setStart(start);
+        setEnd(end);
+    };
 
     useEffect(() => {
         if (id) {
@@ -32,8 +40,6 @@ export default function EventForm({ id, event }) {
             setCity(event.city)
             setState(event.state)
             setImage(event.image)
-            // setStart(event.start)
-            // setEnd(event.end)
         }
     }, [id, event?.name, event?.category, event?.description, event?.address, event?.city, event?.state, event?.image, event?.start, event?.end])
 
@@ -173,31 +179,15 @@ export default function EventForm({ id, event }) {
                         onChange={e => setImage(e.target.value)} />
                 </div>
                 <div class='dpicker'>
-                    <label>Start Date
-                        <DatePicker
-                            className='events__datepicker'
-                            selectsStart
-                            onChange={date => setStart(date)}
-                            selected={start}
-                            showTimeSelect
-                            dateFormat="Pp"
-                            startdate={start}
-                            endDate={end}
-                            minDate={new Date()} />
-                    </label>
-                </div>
-                <div class='dpicker'>
-                    <label>End Date
-                        <DatePicker
-                            selected={end}
-                            onChange={(date) => setEnd(date)}
-                            selectsEnd
-                            startDate={start}
-                            endDate={end}
-                            minDate={start}
-                            showTimeSelect
-                            dateFormat="Pp" />
-                    </label>
+                    <DatePicker
+                        selected={start}
+                        onChange={dateOnChange}
+                        startDate={start}
+                        endDate={end}
+                        selectsRange
+                        inline
+                        dateFormat="Pp"
+                        minDate={new Date()} />
                 </div>
 
                 <div className='buttonHolder'>
