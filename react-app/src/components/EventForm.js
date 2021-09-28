@@ -172,7 +172,7 @@ export default function EventForm({ id, event }) {
                     <input type='url' placeholder='imageUrl' required value={image}
                         onChange={e => setImage(e.target.value)} />
                 </div>
-                <div>
+                <div class='dpicker'>
                     <label>Start Date
                         <DatePicker
                             className='events__datepicker'
@@ -186,7 +186,7 @@ export default function EventForm({ id, event }) {
                             minDate={new Date()} />
                     </label>
                 </div>
-                <div>
+                <div class='dpicker'>
                     <label>End Date
                         <DatePicker
                             selected={end}
