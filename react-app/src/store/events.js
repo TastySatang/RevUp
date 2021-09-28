@@ -24,7 +24,6 @@ export const getEvents = () => async dispatch => {
 
   if (res.ok) {
     const events = await res.json();
-    console.log(events)
     dispatch(setEvent(events))
   }
 }
@@ -59,12 +58,12 @@ export const getEvent = (id) => async dispatch => {
 }
 
 export const createEvent = (event) => async dispatch => {
-  console.log('please log')
+
   const { name, user_id, category,
     description, address, city, state,
     image, start, end } = event;
 
-  console.log('before sending to api', event)
+
 
   const res = await fetch('/api/events/', {
     method: "POST",
@@ -80,7 +79,7 @@ export const createEvent = (event) => async dispatch => {
 
   if (res.ok) {
     const data = await res.json();
-    console.log('monki', data)
+
     dispatch(setEvent(data))
     return data
   } else if (res.status < 500) {
@@ -113,7 +112,7 @@ export const updateEvent = (event) => async dispatch => {
 
   if (res.ok) {
     const data = await res.json();
-    console.log('monkeydata', data)
+
     dispatch(setEvent(data))
     return data
   } else if (res.status < 500) {
@@ -127,15 +126,13 @@ export const updateEvent = (event) => async dispatch => {
 }
 
 export const deleteEvent = (id) => async dispatch => {
-  console.log('inside thunk start', id)
+
   const res = await fetch(`/api/events/${id}`, {
     method: "DELETE",
   });
 
   if (res.ok) {
-    console.log('res.ok passes')
     await res.json();
-    console.log('after res ok', res.json)
     dispatch(removeEvent(id))
   }
 }
@@ -156,7 +153,6 @@ export const deleteRsvp = (users_id, events_id) => async dispatch => {
 }
 
 export const createRsvp = (users_id, events_id) => async dispatch => {
-  console.log('in create rsvp')
   const res = await fetch('/api/rsvp/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

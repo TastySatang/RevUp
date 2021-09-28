@@ -5,7 +5,7 @@ import './events.css';
 
 export default function EventsPage() {
     const events = useSelector((state) => Object.values(state.events))
-    console.log("The events", events)
+
     return (
         <>
             <Search />

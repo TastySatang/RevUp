@@ -54,7 +54,6 @@ export default function EventForm({ id, event }) {
                 start,
                 end
             }
-            console.log('inside handlesubmit before dispatch', newEvent)
             dispatch(updateEvent(newEvent))
             return
         }
@@ -71,7 +70,6 @@ export default function EventForm({ id, event }) {
             start,
             end
         }
-        console.log('inside handlesubmit before dispatch', event)
         const posted = await dispatch(createEvent(event))
 
         if (posted) {

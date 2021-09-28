@@ -20,7 +20,7 @@ html, body {
 }
 
 body {
-    margin-top: 70px;
+    padding-top: 70px;
 }
 
 header {
@@ -249,6 +249,7 @@ input {
     width: 320px;
     height: 130px;
     resize: none;
+    text-align: center;
 }
 
 .email-field,

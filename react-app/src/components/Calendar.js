@@ -8,13 +8,13 @@ const CalendarComponent = () => {
     const dispatch = useDispatch();
     const [rsvp, setRsvp] = useState([]);
     const dateClickHandler = date => {
-        console.log(date);
+        // console.log(date);
     }
 
     const user = useSelector(state => state.session.user)
     useEffect(() => {
         setRsvp(user.rsvp)
-        console.log(rsvp)
+
     }, [dispatch, rsvp, user])
 
     const strToNum = (str) => {
