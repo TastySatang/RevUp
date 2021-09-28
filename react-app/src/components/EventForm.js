@@ -79,7 +79,7 @@ export default function EventForm({ id, event }) {
         <div>
             <form id='event__form' className='event__form' onSubmit={handleSubmit}>
                 <div>
-                    <input type='text' placeholder='name' required
+                    <input type='text' placeholder='Name' required
                         value={name}
                         onChange={e => setName(e.target.value)} />
                 </div>
@@ -104,11 +104,11 @@ export default function EventForm({ id, event }) {
                         value={description} />
                 </div>
                 <div>
-                    <input type='text' placeholder='address' required value={address}
+                    <input type='text' placeholder='Address' required value={address}
                         onChange={e => setAddress(e.target.value)} />
                 </div>
                 <div>
-                    <input type='text' placeholder='city' required value={city}
+                    <input type='text' placeholder='City' required value={city}
                         onChange={e => setCity(e.target.value)} />
                 </div>
                 <div>
@@ -167,7 +167,7 @@ export default function EventForm({ id, event }) {
                     </select>
                 </div>
                 <div>
-                    <input type='url' placeholder='imageUrl' required value={image}
+                    <input type='url' placeholder='Image Url' required value={image}
                         onChange={e => setImage(e.target.value)} />
                 </div>
                 <div class='dpicker'>
