@@ -99,7 +99,7 @@ export default function EventForm({ id, event }) {
                     </select>
                 </div>
                 <div>
-                    <label>write description
+                    <label>Details
                         <textarea
                             className='Event__Create--textarea'
                             onChange={e => setDescription(e.target.value)}
