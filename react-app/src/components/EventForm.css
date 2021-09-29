@@ -23,6 +23,7 @@
 #event__form input,
 #event__form select {
   border: 1px solid black;
+  text-align: center;
 }
 
 .react-datepicker__input-container > input {
