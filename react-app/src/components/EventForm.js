@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import './EventForm.css'
 import '../pages/events.css';
 
-export default function EventForm({ id, event }) {
+export default function EventForm({ id, event, setShowForm }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user)
@@ -55,6 +55,7 @@ export default function EventForm({ id, event }) {
                 end
             }
             dispatch(updateEvent(newEvent))
+            setShowForm(false)
             return
         }
 
