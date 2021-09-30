@@ -10,6 +10,7 @@ const Comments = ({ id, comments }) => {
   const [showEdit, setShowEdit] = useState(false)
   const [editComment, setEditComment] = useState('')
   const [comment, setComment] = useState('')
+  const [errors, setErrors] = useState('')
 
   useEffect(() => {
     dispatch(getComments(id))
@@ -17,6 +18,10 @@ const Comments = ({ id, comments }) => {
 
   const handleNewSubmit = async e => {
     e.preventDefault()
+
+    if (!comment) {
+      setErrors('Please type your comment before posting.')
+    }
 
     let payload = {
       comment,
@@ -57,7 +62,7 @@ const Comments = ({ id, comments }) => {
         className='comment__form'
         onSubmit={handleNewSubmit}>
         <textarea type='text'
-
+          maxLength='500'
           className='comment__form--textarea'
           placeholder='New Comment (limit 500 chars)'
           value={comment}

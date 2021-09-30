@@ -57,6 +57,7 @@
 
 .userinfo__name {
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .host__name {
@@ -118,6 +119,7 @@
     border-radius: 3px;
     position: relative;
     padding: 0px;
+    white-space: pre-line;
 }
 
 .comment__form--textarea{
@@ -222,7 +224,10 @@
 
 .comment {
     padding-left: 60px;
-    margin: 0 0 10px 0;
+    margin: 0 1rem 1rem 0;
+    white-space: pre-line;
+    word-wrap: break-word;
+
 }
 
 .comment__editform {
