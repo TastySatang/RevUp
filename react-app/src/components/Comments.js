@@ -21,6 +21,7 @@ const Comments = ({ id, comments }) => {
 
     if (!comment) {
       setErrors('Please type your comment before posting.')
+      return
     }
 
     let payload = {
@@ -67,7 +68,17 @@ const Comments = ({ id, comments }) => {
           placeholder='New Comment (limit 500 chars)'
           value={comment}
           onChange={e => setComment(e.target.value)} />
-        <button className='comment__button' type='submit'>submit</button>
+        <div className='form__barrel'>
+          <p className='maxLength'>{comment.length}/{500}</p>
+          <div className='error__container'>
+            {errors && (
+              <p className='errors'>
+                {errors}
+              </p>
+            )}
+          </div>
+          <button className='comment__button' type='submit'>submit</button>
+        </div>
       </form>
 
       {comments?.slice(0).reverse().map((comment, idx) => {
@@ -127,7 +138,6 @@ const Comments = ({ id, comments }) => {
                     showEdit === false ? setShowEdit(true) : setShowEdit(false)
                     setEditId(comment.id)
                     setEditComment(comment.comment)
-
                   }}>Edit</button>
               )}
             </div>

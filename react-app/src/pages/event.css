@@ -117,6 +117,7 @@
     box-sizing: border-box;
     resize: none;
     border-radius: 3px;
+    position: relative;
     padding: 0px;
     white-space: pre-line;
 }
@@ -366,4 +367,30 @@
 
 #updateformholder > #event__form {
     background-color: #FFFFFF;
+}
+
+.form__barrel {
+  display: flex;
+  width: 100%;
+  margin: 0px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.maxLength {
+  color: #AAAAAA;
+  font-size: 13px;
+  margin: 0;
+  margin-right: 10rem;
+}
+
+
+.error__container {
+  justify-self: flex-end;
+}
+
+.errors {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
 }
