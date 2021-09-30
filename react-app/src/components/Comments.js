@@ -31,11 +31,17 @@ const Comments = ({ id, comments }) => {
     }
 
     setComment('')
+    setErrors('')
     await dispatch(createComment(payload))
   }
 
   const handleUpdateSubmit = async e => {
     e.preventDefault()
+
+    if (!editComment) {
+      setErrors('Please type your comment before posting.')
+      return
+    }
 
     let payload = {
       id: editId,
@@ -77,8 +83,8 @@ const Comments = ({ id, comments }) => {
               </p>
             )}
           </div>
-          <button className='comment__button' type='submit'>submit</button>
         </div>
+        <button className='comment__button' type='submit'>submit</button>
       </form>
 
       {comments?.slice(0).reverse().map((comment, idx) => {
@@ -106,6 +112,16 @@ const Comments = ({ id, comments }) => {
                   placeholder='Edit Comment'
                   value={editComment}
                   onChange={e => setEditComment(e.target.value)} />
+                <div className='form__barrel'>
+                  <p className='maxLength'>{editComment.length}/{500}</p>
+                  <div className='error__container'>
+                    {errors && (
+                      <p className='errors'>
+                        {errors}
+                      </p>
+                    )}
+                  </div>
+                </div>
                 <div className='editbuttons__holder'>
                   <button className='button' type='submit'>Submit</button>
                   <button className='button' onClick={() => setShowEdit(false)}>Cancel</button>
