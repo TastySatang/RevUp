@@ -89,8 +89,10 @@ export default function EventForm({ id, event, setShowForm }) {
 
             <form id='event__form' className='event__form' onSubmit={handleSubmit}>
                 {dateErrors && (
-                    <div>
-                        Please check start and end date
+                    <div className='errors'>
+                        <p className='error'>
+                            Please enter valid dates
+                        </p>
                     </div>
 
                 )}

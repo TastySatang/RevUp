@@ -97,3 +97,12 @@
 .dpicker label {
  font-size: 1rem;
 }
+
+.errors {
+  padding: 10px;
+}
+
+.error {
+  background-color: red;
+  padding: 10px;
+}
