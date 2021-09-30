@@ -32,6 +32,8 @@ export default function EventForm({ id, event }) {
             setCity(event.city)
             setState(event.state)
             setImage(event.image)
+            setStart(event.start.toDateString())
+            setEnd(event.end.toDateString())
         }
     }, [id, event?.name, event?.category, event?.description, event?.address, event?.city, event?.state, event?.image, event?.start, event?.end])
 
@@ -170,11 +172,13 @@ export default function EventForm({ id, event }) {
                     <input type='url' placeholder='Image Url' required value={image}
                         onChange={e => setImage(e.target.value)} />
                 </div>
-                <div class='dpicker'>
+                <div className='dpicker'>
 
                     <DatePicker
                         selected={start}
-                        onChange={(date) => setStart(date)}
+                        onChange={(date) => {
+                            setStart(date)
+                        }}
                         selectsStart
                         showTimeSelect
                         placeholderText='Click to select a start date'
