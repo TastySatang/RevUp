@@ -32,8 +32,8 @@ export default function EventForm({ id, event }) {
             setCity(event.city)
             setState(event.state)
             setImage(event.image)
-            setStart(event.start.toDateString())
-            setEnd(event.end.toDateString())
+            setStart(new Date(event.start))
+            setEnd(new Date(event.end))
         }
     }, [id, event?.name, event?.category, event?.description, event?.address, event?.city, event?.state, event?.image, event?.start, event?.end])
 
