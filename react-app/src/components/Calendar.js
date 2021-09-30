@@ -6,16 +6,17 @@ import "./Calendar.css"
 const CalendarComponent = ({ user }) => {
     const { calendarRows, selectedDate, daysShort, monthNames, getNextMonth, getPrevMonth } = useCalendar();
     const dispatch = useDispatch();
-    const [rsvp, setRsvp] = useState([]);
+    const [rsvps, setRsvps] = useState([]);
     const dateClickHandler = date => {
         // console.log(date);
     }
 
     // const user = useSelector(state => state.session.user)
     useEffect(() => {
-        setRsvp(user.rsvp)
+        console.log(rsvps)
+        setRsvps(user.rsvp)
 
-    }, [dispatch, rsvp, user])
+    }, [dispatch, rsvps, user])
 
     const strToNum = (str) => {
         if (str === 'Jan') return '1';
@@ -53,9 +54,9 @@ const CalendarComponent = ({ user }) => {
                             Object.values(calendarRows).map(cols => {
                                 return <tr key={cols[0].date}>
                                     {cols.map(col => {
-                                        const event = user.rsvp.filter(rsvp => rsvp.start.slice(5, 7) === col.value.toString() && strToNum(rsvp.start.slice(8, 11)) === col.date.split('-')[1])
+                                        const event = rsvps?.filter(rsvp => rsvp.start.slice(5, 7) === col.value.toString() && strToNum(rsvp.start.slice(8, 11)) === col.date.split('-')[1])
                                         return (
-                                            user.rsvp.some(rsvp => rsvp.start.slice(5, 7) === col.value.toString() && strToNum(rsvp.start.slice(8, 11)) === col.date.split('-')[1])
+                                            rsvps?.some(rsvp => rsvp.start.slice(5, 7) === col.value.toString() && strToNum(rsvp.start.slice(8, 11)) === col.date.split('-')[1])
                                                 ? <td key={col.date} onClick={() => dateClickHandler(col.date)}>
                                                     <div className='indv-date'>{col.value}<a className='cal-rsvp' href={`/events/${event[0].id}`}>{event[0].category}</a></div>
                                                 </td>
