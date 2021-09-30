@@ -58,11 +58,8 @@ export default function EventPage() {
   const handleDelete = async e => {
     e.preventDefault();
 
-    const deleted = await dispatch(deleteEvent(id))
-
-    if (deleted) {
-      history.push('/event')
-    }
+    await dispatch(deleteEvent(id))
+    history.push("/events")
   }
 
   let content;
@@ -176,7 +173,7 @@ export default function EventPage() {
         </div>
         <div id='updateformholder'>
           {showForm && (
-            <EventForm id={id} event={event} />
+            <EventForm id={id} event={event} setShowForm={setShowForm} />
           )}
 
         </div>

@@ -12,6 +12,7 @@ import Splash from './pages/splash';
 import CreateEvent from './pages/CreateEvent';
 import User from './components/User';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 import CalendarComponent from './components/Calendar'
 
@@ -36,26 +37,28 @@ function App() {
 
     return (
         <BrowserRouter>
-            <NavBar />
-            <Switch>
-                <Route path='/login' exact={true} component={LoginForm} />
-                <Route path='/sign-up' exact={true} component={SignUpForm} />
-                <Route path='/events' exact={true} component={EventsPage} />
-                <Route path='/events/new' exact={true} component={CreateEvent} />
-                <Route path='/events/:id' exact component={EventPage} />
-                <ProtectedRoute path='/users' exact={true} >
-                    <UsersList />
-                </ProtectedRoute>
-                <ProtectedRoute path='/users/:userId' exact={true} >
-                    <User />
-                </ProtectedRoute>
-                <ProtectedRoute path='/home' exact={true} >
-                    <Home />
-                    <CalendarComponent />
-                </ProtectedRoute>
-                <Route path='/' exact={true} component={Splash} />
-            </Switch>
-            <Footer />
+            <ScrollToTop>
+                <NavBar />
+                <Switch>
+                    <Route path='/login' exact={true} component={LoginForm} />
+                    <Route path='/sign-up' exact={true} component={SignUpForm} />
+                    <Route path='/events' exact={true} component={EventsPage} />
+                    <Route path='/events/new' exact={true} component={CreateEvent} />
+                    <Route path='/events/:id' exact component={EventPage} />
+                    <ProtectedRoute path='/users' exact={true} >
+                        <UsersList />
+                    </ProtectedRoute>
+                    <ProtectedRoute path='/users/:userId' exact={true} >
+                        <User />
+                    </ProtectedRoute>
+                    {/* <ProtectedRoute path='/home' exact={true} >
+                        <Home />
+                        <CalendarComponent />
+                    </ProtectedRoute> */}
+                    <Route path='/' exact={true} component={Splash} />
+                </Switch>
+                <Footer />
+            </ScrollToTop>
         </BrowserRouter>
     );
 };

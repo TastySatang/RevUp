@@ -10,6 +10,7 @@ const Comments = ({ id, comments }) => {
   const [showEdit, setShowEdit] = useState(false)
   const [editComment, setEditComment] = useState('')
   const [comment, setComment] = useState('')
+  const [errors, setErrors] = useState('')
 
   useEffect(() => {
     dispatch(getComments(id))
@@ -18,6 +19,11 @@ const Comments = ({ id, comments }) => {
   const handleNewSubmit = async e => {
     e.preventDefault()
 
+    if (!comment) {
+      setErrors('Please type your comment before posting.')
+      return
+    }
+
     let payload = {
       comment,
       user_id: user.id,
@@ -25,11 +31,17 @@ const Comments = ({ id, comments }) => {
     }
 
     setComment('')
+    setErrors('')
     await dispatch(createComment(payload))
   }
 
   const handleUpdateSubmit = async e => {
     e.preventDefault()
+
+    if (!editComment) {
+      setErrors('Please type your comment before posting.')
+      return
+    }
 
     let payload = {
       id: editId,
@@ -57,11 +69,21 @@ const Comments = ({ id, comments }) => {
         className='comment__form'
         onSubmit={handleNewSubmit}>
         <textarea type='text'
-
+          maxLength='500'
           className='comment__form--textarea'
           placeholder='New Comment (limit 500 chars)'
           value={comment}
           onChange={e => setComment(e.target.value)} />
+        <div className='form__barrel'>
+          <p className='maxLength'>{comment.length}/{500}</p>
+          <div className='error__container'>
+            {errors && (
+              <p className='errors'>
+                {errors}
+              </p>
+            )}
+          </div>
+        </div>
         <button className='comment__button' type='submit'>submit</button>
       </form>
 
@@ -90,6 +112,16 @@ const Comments = ({ id, comments }) => {
                   placeholder='Edit Comment'
                   value={editComment}
                   onChange={e => setEditComment(e.target.value)} />
+                <div className='form__barrel'>
+                  <p className='maxLength'>{editComment.length}/{500}</p>
+                  <div className='error__container'>
+                    {errors && (
+                      <p className='errors'>
+                        {errors}
+                      </p>
+                    )}
+                  </div>
+                </div>
                 <div className='editbuttons__holder'>
                   <button className='button' type='submit'>Submit</button>
                   <button className='button' onClick={() => setShowEdit(false)}>Cancel</button>
@@ -122,7 +154,6 @@ const Comments = ({ id, comments }) => {
                     showEdit === false ? setShowEdit(true) : setShowEdit(false)
                     setEditId(comment.id)
                     setEditComment(comment.comment)
-
                   }}>Edit</button>
               )}
             </div>

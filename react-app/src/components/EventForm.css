@@ -23,6 +23,7 @@
 #event__form input,
 #event__form select {
   border: 1px solid black;
+  text-align: center;
 }
 
 .react-datepicker__input-container > input {
@@ -78,10 +79,6 @@
   background-color: #FFD9CA;
 }
 
-.events__datepicker {
-  margin-bottom: 20px;
-}
-
 .Event__Create--textarea {
   width: 80%;
   font-size: 15px;
@@ -90,5 +87,22 @@
   max-height: 130px;
   font-family: darkmode-off, sans-serif;
   font-weight: 100;
-  overflow: none;
+  text-align: center;
+}
+
+.dpicker {
+  margin-bottom: 0px;
+}
+
+.dpicker label {
+ font-size: 1rem;
+}
+
+.errors {
+  padding: 10px;
+}
+
+.error {
+  background-color: red;
+  padding: 10px;
 }

@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import './EventForm.css'
 import '../pages/events.css';
 
-export default function EventForm({ id, event }) {
+export default function EventForm({ id, event, setShowForm }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user)
@@ -20,8 +20,9 @@ export default function EventForm({ id, event }) {
     const [city, setCity] = useState('')
     const [state, setState] = useState('AL')
     const [image, setImage] = useState('')
-    const [start, setStart] = useState(new Date());
-    const [end, setEnd] = useState(start)
+    const [start, setStart] = useState(null);
+    const [end, setEnd] = useState(null)
+    const [dateErrors, setDateErrors] = useState(false)
 
     useEffect(() => {
         if (id) {
@@ -32,13 +33,18 @@ export default function EventForm({ id, event }) {
             setCity(event.city)
             setState(event.state)
             setImage(event.image)
-            // setStart(event.start)
-            // setEnd(event.end)
+            setStart(new Date(event.start))
+            setEnd(new Date(event.end))
         }
     }, [id, event?.name, event?.category, event?.description, event?.address, event?.city, event?.state, event?.image, event?.start, event?.end])
 
     const handleSubmit = async e => {
         e.preventDefault();
+
+        if (!(start && end)) {
+            setDateErrors(true)
+            return
+        }
 
         if (id) {
             const newEvent = {
@@ -55,6 +61,7 @@ export default function EventForm({ id, event }) {
                 end
             }
             dispatch(updateEvent(newEvent))
+            setShowForm(false)
             return
         }
 
@@ -79,9 +86,18 @@ export default function EventForm({ id, event }) {
 
     return (
         <div>
+
             <form id='event__form' className='event__form' onSubmit={handleSubmit}>
+                {dateErrors && (
+                    <div className='errors'>
+                        <p className='error'>
+                            Please enter valid dates
+                        </p>
+                    </div>
+
+                )}
                 <div>
-                    <input type='text' placeholder='name' required
+                    <input type='text' placeholder='Name' required
                         value={name}
                         onChange={e => setName(e.target.value)} />
                 </div>
@@ -99,19 +115,19 @@ export default function EventForm({ id, event }) {
                     </select>
                 </div>
                 <div>
-                    <label>write description
-                        <textarea
-                            className='Event__Create--textarea'
-                            onChange={e => setDescription(e.target.value)}
-                            value={description} />
-                    </label>
+                    <textarea
+                        className='Event__Create--textarea'
+                        onChange={e => setDescription(e.target.value)}
+                        placeholder='Details'
+                        required
+                        value={description} />
                 </div>
                 <div>
-                    <input type='text' placeholder='address' required value={address}
+                    <input type='text' placeholder='Address' required value={address}
                         onChange={e => setAddress(e.target.value)} />
                 </div>
                 <div>
-                    <input type='text' placeholder='city' required value={city}
+                    <input type='text' placeholder='City' required value={city}
                         onChange={e => setCity(e.target.value)} />
                 </div>
                 <div>
@@ -170,35 +186,36 @@ export default function EventForm({ id, event }) {
                     </select>
                 </div>
                 <div>
-                    <input type='url' placeholder='imageUrl' required value={image}
+                    <input type='url' placeholder='Image Url' required value={image}
                         onChange={e => setImage(e.target.value)} />
                 </div>
-                <div>
-                    <label>Select Start Date
-                        <DatePicker
-                            className='events__datepicker'
-                            selectsStart
-                            onChange={date => setStart(date)}
-                            selected={start}
-                            showTimeSelect
-                            dateFormat="Pp"
-                            startdate={start}
-                            endDate={end}
-                            minDate={new Date()} />
-                    </label>
-                </div>
-                <div>
-                    <label>Select End Date
-                        <DatePicker
-                            selected={end}
-                            onChange={(date) => setEnd(date)}
-                            selectsEnd
-                            startDate={start}
-                            endDate={end}
-                            minDate={start}
-                            showTimeSelect
-                            dateFormat="Pp" />
-                    </label>
+                <div className='dpicker'>
+
+                    <DatePicker
+                        selected={start}
+                        onChange={(date) => {
+                            setStart(date)
+                        }}
+                        selectsStart
+                        showTimeSelect
+                        placeholderText='Click to select a start date'
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        minDate={new Date()}
+                        startDate={start}
+                        endDate={end}
+                    />
+                    <DatePicker
+                        selected={end}
+                        onChange={(date) => setEnd(date)}
+                        selectsEnd
+                        showTimeSelect
+                        placeholderText='Click to select an end date'
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        startDate={start}
+                        endDate={end}
+                        minDate={start}
+                    />
+
                 </div>
 
                 <div className='buttonHolder'>
