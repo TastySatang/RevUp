@@ -51,10 +51,10 @@ function App() {
                     <ProtectedRoute path='/users/:userId' exact={true} >
                         <User />
                     </ProtectedRoute>
-                    <ProtectedRoute path='/home' exact={true} >
+                    {/* <ProtectedRoute path='/home' exact={true} >
                         <Home />
                         <CalendarComponent />
-                    </ProtectedRoute>
+                    </ProtectedRoute> */}
                     <Route path='/' exact={true} component={Splash} />
                 </Switch>
                 <Footer />

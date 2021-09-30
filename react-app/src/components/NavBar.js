@@ -11,7 +11,7 @@ const NavBar = () => {
     return (
         <header>
             {current_user &&
-                <Link to='/home'>
+                <Link to='/events'>
                     <img className='logo' src={logo} alt='logo-main'></img>
                 </Link>
             }

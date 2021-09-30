@@ -95,9 +95,11 @@ function User() {
                     </li>
                 </ul>
             </div>
-            {user && (
-                <CalendarComponent user={user} />
-            )}
+            <div className='calendar__holder'>
+                {user && (
+                    <CalendarComponent user={user} />
+                )}
+            </div>
 
         </>
     );
