@@ -22,6 +22,7 @@ export default function EventForm({ id, event, setShowForm }) {
     const [image, setImage] = useState('')
     const [start, setStart] = useState(null);
     const [end, setEnd] = useState(null)
+    const [dateErrors, setDateErrors] = useState(false)
 
     useEffect(() => {
         if (id) {
@@ -39,6 +40,11 @@ export default function EventForm({ id, event, setShowForm }) {
 
     const handleSubmit = async e => {
         e.preventDefault();
+
+        if (!(start && null)) {
+            setDateErrors(true)
+            return
+        }
 
         if (id) {
             const newEvent = {
@@ -80,7 +86,14 @@ export default function EventForm({ id, event, setShowForm }) {
 
     return (
         <div>
+
             <form id='event__form' className='event__form' onSubmit={handleSubmit}>
+                {dateErrors && (
+                    <div>
+                        Please check start and end date
+                    </div>
+
+                )}
                 <div>
                     <input type='text' placeholder='Name' required
                         value={name}
@@ -104,6 +117,7 @@ export default function EventForm({ id, event, setShowForm }) {
                         className='Event__Create--textarea'
                         onChange={e => setDescription(e.target.value)}
                         placeholder='Details'
+                        required
                         value={description} />
                 </div>
                 <div>
