@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../store/session';
 import UpdateForm from './auth/updateForm'
 import './User.css'
+import CalendarComponent from './Calendar';
 
 
 function User() {
@@ -94,6 +95,10 @@ function User() {
                     </li>
                 </ul>
             </div>
+            {user && (
+                <CalendarComponent user={user} />
+            )}
+
         </>
     );
 };

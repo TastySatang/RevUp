@@ -41,7 +41,7 @@ export default function EventForm({ id, event, setShowForm }) {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        if (!(start && null)) {
+        if (!(start && end)) {
             setDateErrors(true)
             return
         }

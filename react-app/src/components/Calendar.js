@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import useCalendar from './useCalendar';
 import "./Calendar.css"
 
-const CalendarComponent = () => {
+const CalendarComponent = ({ user }) => {
     const { calendarRows, selectedDate, daysShort, monthNames, getNextMonth, getPrevMonth } = useCalendar();
     const dispatch = useDispatch();
     const [rsvp, setRsvp] = useState([]);
@@ -11,7 +11,7 @@ const CalendarComponent = () => {
         // console.log(date);
     }
 
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
     useEffect(() => {
         setRsvp(user.rsvp)
 
