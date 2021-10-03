@@ -35,7 +35,7 @@ const LoginForm = () => {
     }
 
     if (user) {
-        return <Redirect to='/home' />;
+        return <Redirect to='/events' />;
     }
 
     return (
