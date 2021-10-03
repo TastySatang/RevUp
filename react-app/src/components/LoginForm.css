@@ -169,6 +169,8 @@ h1 {
     position: relative;
     margin-left: 35px;
     margin-right: 100px;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
     width: 80%;
     height: 35px;
     border-radius: 5px;
