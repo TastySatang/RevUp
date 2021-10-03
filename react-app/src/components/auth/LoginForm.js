@@ -27,8 +27,15 @@ const LoginForm = () => {
         setPassword(e.target.value);
     };
 
+    const demoLogin = async () => {
+        const data = await dispatch(login('demo@aa.io', 'password'));
+        if (data) {
+            setErrors(data)
+        }
+    }
+
     if (user) {
-        return <Redirect to='/home' />;
+        return <Redirect to='/events' />;
     }
 
     return (
@@ -52,7 +59,7 @@ const LoginForm = () => {
                                 value={email}
                                 onChange={updateEmail}
                             />
-                                <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope"></i>
                         </div>
                         <div className='password-field'>
                             <input
@@ -66,6 +73,7 @@ const LoginForm = () => {
                         </div>
                     </div>
                     <button className='loginButton' type='submit'>Sign In</button>
+                    <button className='DemoB' onClick={demoLogin}>Demo User</button>
                 </form>
             </div>
         </>
