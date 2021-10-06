@@ -29,7 +29,7 @@ export default function Footer() {
           <a href='https://www.linkedin.com/in/austin-williams-44a6a21b8/' target='_blank' rel="noreferrer">
             <i className="fab fa-linkedin" aria-hidden="true" />
           </a>
-          <a href="https://angel.co/u/austin-williams-31" target='_blank' rel="noreferrer">
+          <a href="https://angel.co/u/austin-williams-31" target='_blank' >
             <i className="fab fa-angellist" aria-hidden="true" />
           </a>
         </div>
