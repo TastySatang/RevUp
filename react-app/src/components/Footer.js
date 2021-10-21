@@ -34,7 +34,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <div>
+      {/* <div>
         <div className='social__name'>Placeholder</div>
         <div className='socials'>
           <a href='#0' target='_blank'>
@@ -61,7 +61,7 @@ export default function Footer() {
             <i className="fab fa-angellist" aria-hidden="true" />
           </a>
         </div>
-      </div>
+      </div> */}
 
     </div>
   )
