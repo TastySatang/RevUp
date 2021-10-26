@@ -75,16 +75,19 @@
 }
 
 .vehicle_info {
-    width: 40%;
-    margin-left: 10px;
+    width: 100%;
+
+
 }
 
 .vehicleImg {
-    height: 350px;
-    width: 650px;
+    height: 305px;
+    width: 450px;
     border: 2px solid black;
     border-radius: 4px;
     margin-left: 10px;
+    border-radius: 16px;
+
 }
 
 .vehicle_info > h3 {
@@ -109,6 +112,25 @@
 }
 
 .calendar__holder {
+    display: flex;
     position: relative;
     padding-bottom: 3rem;
+}
+.second__header {
+    display: flex;
+    width: 35%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 60px;
+}
+.calendar__header {
+    justify-content: center;
+    text-align: center;
+}
+.events__header {
+    font-size: 28px;
+    font-style: "Montserrat";
+    margin-bottom: 20px;
 }

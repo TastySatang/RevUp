@@ -28,10 +28,10 @@ const LogoutButton = () => {
               <h4 className='profile-dropdown__greeting'>{`Hello, ${current_user.username}!`}</h4>
             </div>
             <Link to={`/users/${current_user.id}`} onClick={() => setClicked(false)}>
-              profile
+              Profile
             </Link>
             <Link className='profile-dropdown__a' onClick={onLogout} to='/'>
-              logout
+              Logout
             </Link>
           </div>
         </>

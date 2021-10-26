@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { update } from '../../store/session';
 import Errors from '.././Errors'
 import { useHistory } from 'react-router-dom';
@@ -13,7 +13,7 @@ const UpdateForm = ({ user }) => {
   const [vehicle_pic, setVehicle_Pic] = useState(user.vehicle_pic);
   const [type, setType] = useState(user.type);
   const dispatch = useDispatch();
-
+  const userId = useSelector((state) => state.session.user.id)
   const validateEmail = (mail) => {
     const regMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -27,13 +27,15 @@ const UpdateForm = ({ user }) => {
     }
 
     else {
-      const data = await dispatch(update(user.username, email, description, vehicle, vehicle_pic, type));
-      if (data) {
-        setErrors(data)
-      }
+        const data = await dispatch(update(user.username, email, description, vehicle, vehicle_pic, type, userId));
+
+        if (data) {
+            setErrors(data)
+        }
     }
     history.push(`/users/${user.id}`)
-  };
+};
+
 
   return (
     <div className='backgroundUpdate'>

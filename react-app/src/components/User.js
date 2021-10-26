@@ -36,17 +36,18 @@ function User() {
 
 
 
-    const deleteUser = async () => {
-        await fetch(`/api/auth/delete/${userId}`, {
-            method: 'DELETE'
-        })
-        dispatch(logout())
-    }
+    // const deleteUser = async () => {
+    //     await fetch(`/api/auth/delete/${userId}`, {
+    //         method: 'DELETE'
+    //     })
+    //     dispatch(logout())
+    // }
 
     return (
         <>
+
             <div className='userHeader'>
-                <h1>{`${user.username}'s Profile Page`}</h1>
+                <h1>{`${user.username}`}</h1>
                 <div className='email_vehicle'>
                     <strong>Email:</strong> {user.email}
                 </div>
@@ -54,9 +55,6 @@ function User() {
                     {currentUser.id === user.id &&
                         <>
                             <div className='profile_buttons'>
-                                <button className='delete_user_button' onClick={deleteUser}>
-                                    Delete
-                                </button>
                                 {!update &&
                                     <button className='update_user_button' onClick={() => setUpdate(true)}>
                                         Edit
@@ -77,27 +75,36 @@ function User() {
                     }
                 </>
             </div>
-            <img className='vehicleImg' src={user.vehicle_pic} alt='vehicle'></img>
-            <div className='vehicle_info'>
-                <h3>Vehicle Info</h3>
-                <ul>
-                    <li className='infoLi'>
-                        <strong>Description</strong>
-                        <p>{user.description}</p>
-                    </li>
-                    <li className='infoLi'>
-                        <strong>Vehicle</strong>
-                        <p>{user.vehicle}</p>
-                    </li>
-                    <li className='infoLi'>
-                        <strong>Type</strong>
-                        <p>{user.type}</p>
-                    </li>
-                </ul>
-            </div>
-            <div className='calendar__holder'>
+            <div style={{"display": "flex", "flex-direction": "row"}}>
+                <div className="second__header">
+                    <img className='vehicleImg' src={user.vehicle_pic} alt='vehicle'></img>
+                    <div className='vehicle_info'>
+                        <h3>Vehicle Info</h3>
+                        <ul>
+                            <li className='infoLi'>
+                                <strong>Description</strong>
+                                <p>{user.description}</p>
+                            </li>
+                            <li className='infoLi'>
+                                <strong>Vehicle</strong>
+                                <p>{user.vehicle}</p>
+                            </li>
+                            <li className='infoLi'>
+                                <strong>Type</strong>
+                                <p>{user.type}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='calendar__holder'>
+                    </div>
+                </div>
                 {user && (
-                    <CalendarComponent user={user} />
+                    <>
+                        <div className="calendar__header">
+                            <p className="events__header">Events {user.username} Is Attending! </p>
+                            <CalendarComponent user={user} />
+                        </div>
+                    </>
                 )}
             </div>
 
