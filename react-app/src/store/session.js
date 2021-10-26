@@ -101,6 +101,7 @@ export const signUp = (username, email, password, description, vehicle, vehicle_
 }
 
 export const update = (username, email, description, vehicle, vehicle_pic, type, userId) => async (dispatch) => {
+    console.log("IN UPDATE THUNK")
     const response = await fetch(`/api/auth/update/${userId}`, {
     method: 'POST',
     headers: {

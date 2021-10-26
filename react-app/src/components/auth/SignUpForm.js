@@ -167,7 +167,6 @@ const SignUpForm = () => {
             <option value='Off-road/Baja'>Off-road/Baja</option>
             <option value='Economy'>Economy</option>
             <option value='Formula'>Formula</option>
-            <option value='Other'>Formula</option>
           </select>
         </div>
         <button className='SignupB' type='submit'>Sign Up</button>

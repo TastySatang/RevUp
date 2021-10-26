@@ -13,7 +13,7 @@ const CalendarComponent = ({ user }) => {
 
     // const user = useSelector(state => state.session.user)
     useEffect(() => {
-        console.log(rsvps)
+       
         setRsvps(user.rsvp)
 
     }, [dispatch, rsvps, user])
