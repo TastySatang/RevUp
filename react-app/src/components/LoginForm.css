@@ -219,10 +219,11 @@ input {
     width: 80%;
     height: 35px;
     border-radius: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 7px;
     bottom: 10px;
     font-family: "Montserrat", sans-serif;
     background-color: #0C9FB7;
+    color: white;
 }
 
 .DemoB {

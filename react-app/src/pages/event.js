@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent, getEvent, createRsvp, deleteRsvp } from "../store/events";
+import  MapContainer  from '../components/Maps'
 import EventForm from "../components/EventForm";
 import Comments from "../components/Comments";
 import { getComments } from "../store/comments";
@@ -116,6 +117,7 @@ export default function EventPage() {
           <h2 className='event__h2'>
             Details
           </h2>
+          <MapContainer/>
           {content}
         </div>
         <p className='event__description'>

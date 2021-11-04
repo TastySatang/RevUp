@@ -4,12 +4,14 @@ import session from './session'
 import errors from './errors'
 import eventReducer from './events';
 import commentsReducer from './comments';
+import mapsReducer from './maps';
 
 const rootReducer = combineReducers({
   session,
   errors,
   events: eventReducer,
-  comments: commentsReducer
+  comments: commentsReducer,
+  maps: mapsReducer
 });
 
 
