@@ -56,13 +56,13 @@ function User() {
                         <>
                             <div className='profile_buttons'>
                                 {!update &&
-                                    <button className='update_user_button' onClick={() => setUpdate(true)}>
+                                    <button className='update_user_button' style={{"border-radius": "20px", "height": "30px"}} onClick={() => setUpdate(true)}>
                                         Edit
                                     </button>
                                 }
                                 {update &&
-                                    <button className='update_user_button' onClick={() => setUpdate(false)}>
-                                        Done Editing
+                                    <button className='update_user_button' style={{"border-radius": "20px", "height": "30px"}} onClick={() => setUpdate(false)}>
+                                        Close
                                     </button>
                                 }
                             </div>
@@ -75,7 +75,7 @@ function User() {
                     }
                 </>
             </div>
-            <div style={{"display": "flex", "flex-direction": "row"}}>
+            <div style={{"display": "flex", "flex-direction": "row", "width": "100%"}}>
                 <div className="second__header">
                     <img className='vehicleImg' src={user.vehicle_pic} alt='vehicle'></img>
                     <div className='vehicle_info'>

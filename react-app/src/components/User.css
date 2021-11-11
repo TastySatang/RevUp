@@ -82,7 +82,7 @@
 
 .vehicleImg {
     height: 305px;
-    width: 450px;
+    width: 90%;
     border: 2px solid black;
     border-radius: 4px;
     margin-left: 10px;
@@ -118,7 +118,7 @@
 }
 .second__header {
     display: flex;
-    width: 35%;
+    width: 37%;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -128,6 +128,7 @@
 .calendar__header {
     justify-content: center;
     text-align: center;
+
 }
 .events__header {
     font-size: 28px;
